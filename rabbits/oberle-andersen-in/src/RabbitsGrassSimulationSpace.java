@@ -107,4 +107,14 @@ public class RabbitsGrassSimulationSpace {
 		return retVal;
 	}
 
+	public int getAllGrass() {
+		int grass = 0;
+		for (int i = 0; i < agentSpace.getSizeX(); i++) {
+			for (int j = 0; j < agentSpace.getSizeY(); j++) {
+				grass += getGrassAt(i, j);
+			}
+		}
+		return grass;
+	}
+
 }

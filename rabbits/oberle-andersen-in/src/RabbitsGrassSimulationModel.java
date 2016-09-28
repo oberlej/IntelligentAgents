@@ -1,6 +1,11 @@
 import java.awt.Color;
 import java.util.ArrayList;
 
+import uchicago.src.sim.analysis.BinDataSource;
+import uchicago.src.sim.analysis.DataSource;
+import uchicago.src.sim.analysis.OpenHistogram;
+import uchicago.src.sim.analysis.OpenSequenceGraph;
+import uchicago.src.sim.analysis.Sequence;
 import uchicago.src.sim.engine.BasicAction;
 import uchicago.src.sim.engine.Schedule;
 import uchicago.src.sim.engine.SimInit;
@@ -26,6 +31,9 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 	private DisplaySurface displaySurf;
 	private ArrayList agentList;
 
+	private OpenSequenceGraph amountOfGrassInGarden;
+	private OpenHistogram agentWealthDistribution;
+
 	// Default Values
 	private static final int NUMAGENTS = 100;
 	private static final int WORLDXSIZE = 40;
@@ -41,6 +49,27 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 	private int agentMinLifespan = AGENT_MIN_LIFESPAN;
 	private int agentMaxLifespan = AGENT_MAX_LIFESPAN;
 
+	class grassInGarden implements DataSource, Sequence {
+
+		@Override
+		public Object execute() {
+			return new Double(getSValue());
+		}
+
+		@Override
+		public double getSValue() {
+			return garden.getAllGrass();
+		}
+	}
+
+	class agentGrass implements BinDataSource {
+		@Override
+		public double getBinValue(Object o) {
+			RabbitsGrassSimulationAgent rgsa = (RabbitsGrassSimulationAgent) o;
+			return rgsa.getGrass();
+		}
+	}
+
 	public static void main(String[] args) {
 		SimInit init = new SimInit();
 		RabbitsGrassSimulationModel model = new RabbitsGrassSimulationModel();
@@ -54,6 +83,8 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 		buildDisplay();
 
 		displaySurf.display();
+		amountOfGrassInGarden.display();
+		agentWealthDistribution.display();
 	}
 
 	public void buildModel() {
@@ -99,6 +130,24 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 		}
 
 		schedule.scheduleActionAtInterval(10, new RabbitsGrassSimulationCountLiving());
+
+		class RabbitsGrassSimulationUpdateGrassInGarden extends BasicAction {
+			@Override
+			public void execute() {
+				amountOfGrassInGarden.step();
+			}
+		}
+
+		schedule.scheduleActionAtInterval(10, new RabbitsGrassSimulationUpdateGrassInGarden());
+
+		class RabbitGrassSimulationUpdateAgentWealth extends BasicAction {
+			@Override
+			public void execute() {
+				agentWealthDistribution.step();
+			}
+		}
+
+		schedule.scheduleActionAtInterval(10, new RabbitGrassSimulationUpdateAgentWealth());
 	}
 
 	private int reapDeadAgents() {
@@ -132,6 +181,8 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 
 		displaySurf.addDisplayableProbeable(displayGrass, "Grass");
 		displaySurf.addDisplayableProbeable(displayAgents, "Agents");
+		amountOfGrassInGarden.addSequence("Grass In Garden", new grassInGarden());
+		agentWealthDistribution.createHistogramItem("Agent Wealth", agentList, new agentGrass());
 	}
 
 	private int countLivingAgents() {
@@ -170,9 +221,21 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 		}
 		displaySurf = null;
 
+		if (amountOfGrassInGarden != null) {
+			amountOfGrassInGarden.dispose();
+		}
+
+		if (agentWealthDistribution != null) {
+			agentWealthDistribution.dispose();
+		}
+		agentWealthDistribution = null;
+
 		displaySurf = new DisplaySurface(this, "Carry Drop Model Window 1");
+		amountOfGrassInGarden = new OpenSequenceGraph("Amount of grass in garden", this);
+		agentWealthDistribution = new OpenHistogram("Agent Wealth", 8, 0);
 
 		registerDisplaySurface("Carry Drop Model Window 1", displaySurf);
+		registerMediaProducer("Plot", amountOfGrassInGarden);
 	}
 
 	@Override
