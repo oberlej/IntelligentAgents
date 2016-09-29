@@ -1,5 +1,5 @@
 *.class
 *.jar
 *.DS_STORE
-.classpath
-.project
+*.classpath
+*.project
