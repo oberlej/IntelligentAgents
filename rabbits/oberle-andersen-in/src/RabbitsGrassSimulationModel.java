@@ -31,7 +31,7 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 	private OpenSequenceGraph plot;
 
 	// Default Values
-	private static final int NUM_AGENTS = 200;
+	private static final int NUM_AGENTS = 400;
 	private static final int WORLD_XSIZE = 40;
 	private static final int WORLD_YSIZE = 40;
 	private static final int GROWTH_RATE = 30;
@@ -212,6 +212,7 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 
 	@Override
 	public void setup() {
+		System.out.close();
 		System.out.println("Running setup");
 		garden = null;
 		agentList = new ArrayList();
@@ -229,6 +230,7 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 
 		displaySurf = new DisplaySurface(this, "Garden");
 		plot = new OpenSequenceGraph("Comparison of rabbit population and grass amount", this);
+		plot.setAxisTitles("Number of steps", "Count");
 
 		registerDisplaySurface("Garden", displaySurf);
 		registerMediaProducer("Plot", plot);
