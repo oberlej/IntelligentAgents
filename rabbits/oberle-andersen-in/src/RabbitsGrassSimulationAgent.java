@@ -1,4 +1,8 @@
-import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import uchicago.src.sim.gui.Drawable;
 import uchicago.src.sim.gui.SimGraphics;
@@ -15,26 +19,33 @@ public class RabbitsGrassSimulationAgent implements Drawable {
 	private int y;
 	private int vX;
 	private int vY;
-	private int grass;
-	private int stepsToLive;
+	private int energy;
 	private static int IDNumber = 0;
 	private int ID;
 	private RabbitsGrassSimulationSpace garden;
+	private final BufferedImage img = null;
 
-	public RabbitsGrassSimulationAgent(int minLifespan, int maxLifespan) {
+	public RabbitsGrassSimulationAgent(int initEnergy) {
 		x = -1;
 		y = -1;
 		setVxVy();
-		grass = 0;
-		stepsToLive = (int) (Math.random() * (maxLifespan - minLifespan) + minLifespan);
+		energy = initEnergy;
 		IDNumber++;
 		ID = IDNumber;
+
+		if (img == null) {
+			try {
+				ImageIO.read(new File("rabbit.png"));
+			} catch (IOException e) {
+				System.out.println("Cannot find Agent image!");
+			}
+		}
 	}
 
 	private void setVxVy() {
 		vX = 0;
 		vY = 0;
-		while (vX == 0 && vY == 0) {
+		while (vX == 0 && vY == 0 || vX != 0 && vY != 0) {
 			vX = (int) Math.floor(Math.random() * 3) - 1;
 			vY = (int) Math.floor(Math.random() * 3) - 1;
 		}
@@ -49,22 +60,24 @@ public class RabbitsGrassSimulationAgent implements Drawable {
 		return "A-" + ID;
 	}
 
-	public int getGrass() {
-		return grass;
-	}
-
-	public int getStepsToLive() {
-		return stepsToLive;
+	public int getEnergy() {
+		return energy;
 	}
 
 	public void report() {
-		System.out.println(getID() + " at " + x + ", " + y + " has " + getGrass() + " dollars" + " and "
-		        + getStepsToLive() + " steps to live.");
+		System.out.println(getID() + " at " + x + ", " + y + " has " + getEnergy() + " energy.");
 	}
 
 	@Override
 	public int getX() {
 		return x;
+	}
+
+	public void addEnergy(int energy) {
+		this.energy += energy;
+		if (this.energy < 0) {
+			this.energy = 0;
+		}
 	}
 
 	@Override
@@ -74,14 +87,12 @@ public class RabbitsGrassSimulationAgent implements Drawable {
 
 	@Override
 	public void draw(SimGraphics G) {
-		if (stepsToLive > 10) {
-			G.drawFastRoundRect(Color.green);
-		} else {
-			G.drawFastRoundRect(Color.blue);
-		}
+		G.drawImage(img);
+		// G.drawCircle(Color.RED);
 	}
 
-	public void step() {
+	public boolean step() {
+		setVxVy();
 		int newX = x + vX;
 		int newY = y + vY;
 
@@ -90,22 +101,11 @@ public class RabbitsGrassSimulationAgent implements Drawable {
 		newY = (newY + grid.getSizeY()) % grid.getSizeY();
 
 		if (tryMove(newX, newY)) {
-			grass += garden.eatGrass(x, y);
-		} else {
-			RabbitsGrassSimulationAgent rgsa = garden.getAgentAt(newX, newY);
-			if (rgsa != null) {
-				if (grass > 0) {
-					rgsa.receiveGrass(1);
-					grass--;
-				}
+			if (garden.eatGrass(x, y)) {
+				return true;
 			}
-			setVxVy();
 		}
-		stepsToLive--;
-	}
-
-	public void receiveGrass(int amount) {
-		grass += amount;
+		return false;
 	}
 
 	private boolean tryMove(int newX, int newY) {

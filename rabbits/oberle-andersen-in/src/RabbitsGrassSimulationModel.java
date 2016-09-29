@@ -1,9 +1,6 @@
 import java.awt.Color;
 import java.util.ArrayList;
 
-import uchicago.src.sim.analysis.BinDataSource;
-import uchicago.src.sim.analysis.DataSource;
-import uchicago.src.sim.analysis.OpenHistogram;
 import uchicago.src.sim.analysis.OpenSequenceGraph;
 import uchicago.src.sim.analysis.Sequence;
 import uchicago.src.sim.engine.BasicAction;
@@ -31,42 +28,46 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 	private DisplaySurface displaySurf;
 	private ArrayList agentList;
 
-	private OpenSequenceGraph amountOfGrassInGarden;
-	private OpenHistogram agentWealthDistribution;
+	private OpenSequenceGraph plot;
 
 	// Default Values
-	private static final int NUMAGENTS = 100;
-	private static final int WORLDXSIZE = 40;
-	private static final int WORLDYSIZE = 40;
-	private static final int TOTALGRASS = 1000;
-	private static final int AGENT_MIN_LIFESPAN = 30;
-	private static final int AGENT_MAX_LIFESPAN = 50;
+	private static final int NUM_AGENTS = 200;
+	private static final int WORLD_XSIZE = 40;
+	private static final int WORLD_YSIZE = 40;
+	private static final int GROWTH_RATE = 30;
+	private static final int BIRTH_TRESHOLD = 100;
+	private static final int INIT_ENERGY = 60;
+	private static final int INIT_GRASS = 10;
+	private static final int GRASS_INDEX = 1;
+	private static final int EMPTY_INDEX = 0;
+	private final static int ENERGY_LOSS = 5;
+	private final static int ENERGY_GAIN = 20;
 
-	private int numAgents = NUMAGENTS;
-	private int worldXSize = WORLDXSIZE;
-	private int worldYSize = WORLDYSIZE;
-	private int grass = TOTALGRASS;
-	private int agentMinLifespan = AGENT_MIN_LIFESPAN;
-	private int agentMaxLifespan = AGENT_MAX_LIFESPAN;
+	private int numAgents = NUM_AGENTS;
+	private int worldXSize = WORLD_XSIZE;
+	private int worldYSize = WORLD_YSIZE;
+	private int growthRate = GROWTH_RATE;
+	private int birthThreshold = BIRTH_TRESHOLD;
+	private int initEnergy = INIT_ENERGY;
+	private int initGrass = INIT_GRASS;
+	private int energyLoss = ENERGY_LOSS;
+	private int energyGain = ENERGY_GAIN;
 
-	class grassInGarden implements DataSource, Sequence {
-
-		@Override
-		public Object execute() {
-			return new Double(getSValue());
-		}
+	class grassSequence implements Sequence {
 
 		@Override
 		public double getSValue() {
+			System.out.println("nb grass: " + garden.getAllGrass());
 			return garden.getAllGrass();
 		}
 	}
 
-	class agentGrass implements BinDataSource {
+	class rabbitSequence implements Sequence {
+
 		@Override
-		public double getBinValue(Object o) {
-			RabbitsGrassSimulationAgent rgsa = (RabbitsGrassSimulationAgent) o;
-			return rgsa.getGrass();
+		public double getSValue() {
+			System.out.println("nb rabbits: " + agentList.size());
+			return agentList.size();
 		}
 	}
 
@@ -83,20 +84,20 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 		buildDisplay();
 
 		displaySurf.display();
-		amountOfGrassInGarden.display();
-		agentWealthDistribution.display();
+		plot.display();
 	}
 
 	public void buildModel() {
 		System.out.println("Running BuildModel");
+
 		garden = new RabbitsGrassSimulationSpace(worldXSize, worldYSize);
-		garden.plantGrass(grass);
+		garden.plantGrass(initGrass);
 		for (int i = 0; i < numAgents; i++) {
 			addNewAgent();
 		}
 		for (int i = 0; i < agentList.size(); i++) {
-			RabbitsGrassSimulationAgent rgsa = (RabbitsGrassSimulationAgent) agentList.get(i);
-			rgsa.report();
+			RabbitsGrassSimulationAgent rabbit = (RabbitsGrassSimulationAgent) agentList.get(i);
+			rabbit.report();
 		}
 	}
 
@@ -108,13 +109,26 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 			public void execute() {
 				SimUtilities.shuffle(agentList);
 				for (int i = 0; i < agentList.size(); i++) {
-					RabbitsGrassSimulationAgent rgsa = (RabbitsGrassSimulationAgent) agentList.get(i);
-					rgsa.step();
+					RabbitsGrassSimulationAgent rabbit = (RabbitsGrassSimulationAgent) agentList.get(i);
+
+					if (rabbit.step()) {
+						// rabbit ate grass
+						System.out.println("eating grass");
+						rabbit.addEnergy(energyGain);
+					}
+					// check for birth threshold
+					if (rabbit.getEnergy() >= birthThreshold) {
+						addNewAgent();
+						rabbit.addEnergy(-initEnergy);
+					} else {
+						rabbit.addEnergy(-energyLoss);
+					}
+					rabbit.report();
 				}
+				// remove rabbits with energy < 1
 				int deadAgents = reapDeadAgents();
-				for (int i = 0; i < deadAgents; i++) {
-					addNewAgent();
-				}
+				// plant grass
+				garden.plantGrass(growthRate);
 
 				displaySurf.updateDisplay();
 			}
@@ -131,32 +145,21 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 
 		schedule.scheduleActionAtInterval(10, new RabbitsGrassSimulationCountLiving());
 
-		class RabbitsGrassSimulationUpdateGrassInGarden extends BasicAction {
+		class PlotAction extends BasicAction {
 			@Override
 			public void execute() {
-				amountOfGrassInGarden.step();
+				plot.step();
 			}
 		}
-
-		schedule.scheduleActionAtInterval(10, new RabbitsGrassSimulationUpdateGrassInGarden());
-
-		class RabbitGrassSimulationUpdateAgentWealth extends BasicAction {
-			@Override
-			public void execute() {
-				agentWealthDistribution.step();
-			}
-		}
-
-		schedule.scheduleActionAtInterval(10, new RabbitGrassSimulationUpdateAgentWealth());
+		schedule.scheduleActionAtInterval(10, new PlotAction());
 	}
 
 	private int reapDeadAgents() {
 		int count = 0;
 		for (int i = agentList.size() - 1; i >= 0; i--) {
-			RabbitsGrassSimulationAgent rgsa = (RabbitsGrassSimulationAgent) agentList.get(i);
-			if (rgsa.getStepsToLive() < 1) {
-				garden.removeAgentAt(rgsa.getX(), rgsa.getY());
-				garden.plantGrass(rgsa.getGrass());
+			RabbitsGrassSimulationAgent rabbit = (RabbitsGrassSimulationAgent) agentList.get(i);
+			if (rabbit.getEnergy() < 1) {
+				garden.removeAgentAt(rabbit.getX(), rabbit.getY());
 				agentList.remove(i);
 				count++;
 			}
@@ -169,27 +172,25 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 
 		ColorMap map = new ColorMap();
 
-		for (int i = 1; i < 16; i++) {
-			map.mapColor(i, new Color(i * 8 + 127, 0, 0));
-		}
-		map.mapColor(0, Color.white);
+		map.mapColor(GRASS_INDEX, Color.green);
+		map.mapColor(EMPTY_INDEX, Color.black);
 
 		Value2DDisplay displayGrass = new Value2DDisplay(garden.getCurrentGrassSpace(), map);
 
 		Object2DDisplay displayAgents = new Object2DDisplay(garden.getCurrentAgentSpace());
 		displayAgents.setObjectList(agentList);
 
-		displaySurf.addDisplayableProbeable(displayGrass, "Grass");
-		displaySurf.addDisplayableProbeable(displayAgents, "Agents");
-		amountOfGrassInGarden.addSequence("Grass In Garden", new grassInGarden());
-		agentWealthDistribution.createHistogramItem("Agent Wealth", agentList, new agentGrass());
+		displaySurf.addDisplayable(displayGrass, "Grass");
+		displaySurf.addDisplayable(displayAgents, "Agents");
+		plot.addSequence("Amount of grass", new grassSequence());
+		plot.addSequence("Rabbit population", new rabbitSequence());
 	}
 
 	private int countLivingAgents() {
 		int livingAgents = 0;
 		for (int i = 0; i < agentList.size(); i++) {
 			RabbitsGrassSimulationAgent rgsa = (RabbitsGrassSimulationAgent) agentList.get(i);
-			if (rgsa.getStepsToLive() > 0) {
+			if (rgsa.getEnergy() > 0) {
 				livingAgents++;
 			}
 		}
@@ -199,7 +200,7 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 	}
 
 	private void addNewAgent() {
-		RabbitsGrassSimulationAgent a = new RabbitsGrassSimulationAgent(agentMinLifespan, agentMaxLifespan);
+		RabbitsGrassSimulationAgent a = new RabbitsGrassSimulationAgent(initEnergy);
 		agentList.add(a);
 		garden.addAgent(a);
 	}
@@ -221,21 +222,17 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 		}
 		displaySurf = null;
 
-		if (amountOfGrassInGarden != null) {
-			amountOfGrassInGarden.dispose();
+		if (plot != null) {
+			plot.dispose();
 		}
+		plot = null;
 
-		if (agentWealthDistribution != null) {
-			agentWealthDistribution.dispose();
-		}
-		agentWealthDistribution = null;
+		displaySurf = new DisplaySurface(this, "Garden");
+		plot = new OpenSequenceGraph("Comparison of rabbit population and grass amount", this);
 
-		displaySurf = new DisplaySurface(this, "Carry Drop Model Window 1");
-		amountOfGrassInGarden = new OpenSequenceGraph("Amount of grass in garden", this);
-		agentWealthDistribution = new OpenHistogram("Agent Wealth", 8, 0);
-
-		registerDisplaySurface("Carry Drop Model Window 1", displaySurf);
-		registerMediaProducer("Plot", amountOfGrassInGarden);
+		registerDisplaySurface("Garden", displaySurf);
+		registerMediaProducer("Plot", plot);
+		System.out.println("Setup done");
 	}
 
 	@Override
@@ -245,9 +242,33 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 
 	@Override
 	public String[] getInitParam() {
-		String[] initParams = { "NumAgents", "WorldXSize", "WorldYSize", "Grass", "AgentMinLifespan",
-		        "AgentMaxLifespan" };
+		String[] initParams = { "NumAgents", "WorldXSize", "WorldYSize", "GrowthRate", "BirthThreshold", "InitEnergy",
+		        "InitGrass", "EnergyLoss", "EnergyGain" };
 		return initParams;
+	}
+
+	public int getInitEnergy() {
+		return initEnergy;
+	}
+
+	public void setInitEnergy(int initEnergy) {
+		this.initEnergy = initEnergy;
+	}
+
+	public int getEnergyLoss() {
+		return energyLoss;
+	}
+
+	public void setEnergyLoss(int energyLoss) {
+		this.energyLoss = energyLoss;
+	}
+
+	public int getEnergyGain() {
+		return energyGain;
+	}
+
+	public void setEnergyGain(int energyGain) {
+		this.energyGain = energyGain;
 	}
 
 	/**
@@ -296,47 +317,47 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 	}
 
 	/**
-	 * @return the grass
+	 * @return the growthRate
 	 */
-	public int getGrass() {
-		return grass;
+	public int getGrowthRate() {
+		return growthRate;
 	}
 
 	/**
-	 * @param grass
-	 *            the grass to set
+	 * @param growthRate
+	 *            the growthRate to set
 	 */
-	public void setGrass(int grass) {
-		this.grass = grass;
+	public void setGrowthRate(int growthRate) {
+		this.growthRate = growthRate;
 	}
 
 	/**
-	 * @return the agentMinLifespan
+	 * @return the birthThreshold
 	 */
-	public int getAgentMinLifespan() {
-		return agentMinLifespan;
+	public int getBirthThreshold() {
+		return birthThreshold;
 	}
 
 	/**
-	 * @param agentMinLifespan
-	 *            the agentMinLifespan to set
+	 * @param birthThreshold
+	 *            the birthThreshold to set
 	 */
-	public void setAgentMinLifespan(int agentMinLifespan) {
-		this.agentMinLifespan = agentMinLifespan;
+	public void setBirthThreshold(int birthThreshold) {
+		this.birthThreshold = birthThreshold;
 	}
 
 	/**
-	 * @return the agentMaxLifespan
+	 * @return the initGrass
 	 */
-	public int getAgentMaxLifespan() {
-		return agentMaxLifespan;
+	public int getInitGrass() {
+		return initGrass;
 	}
 
 	/**
-	 * @param agentMaxLifespan
-	 *            the agentMaxLifespan to set
+	 * @param initGrass
+	 *            the initGrass to set
 	 */
-	public void setAgentMaxLifespan(int agentMaxLifespan) {
-		this.agentMaxLifespan = agentMaxLifespan;
+	public void setInitGrass(int initGrass) {
+		this.initGrass = initGrass;
 	}
 }

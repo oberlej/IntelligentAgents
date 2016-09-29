@@ -19,7 +19,7 @@ public class RabbitsGrassSimulationSpace {
 		agentSpace = new Object2DGrid(xSize, ySize);
 		for (int i = 0; i < xSize; i++) {
 			for (int j = 0; j < ySize; j++) {
-				grassSpace.putObjectAt(i, j, new Integer(0));
+				grassSpace.putObjectAt(i, j, 0);
 			}
 		}
 	}
@@ -32,21 +32,20 @@ public class RabbitsGrassSimulationSpace {
 			int x = (int) (Math.random() * grassSpace.getSizeX());
 			int y = (int) (Math.random() * grassSpace.getSizeY());
 
-			// Get the value of the object at those coordinates
-			int currentValue = getGrassAt(x, y);
-			// Replace the Integer object with another one with the new value
-			grassSpace.putObjectAt(x, y, new Integer(currentValue + 1));
+			// to simplify the project we ignore the case where the random grass
+			// position comes to a cell that already contains grass. This could
+			// lead to less grass being planted than the actual growth rate.
+			grassSpace.putObjectAt(x, y, 1);
 		}
 	}
 
-	public int getGrassAt(int x, int y) {
-		int i;
+	public boolean hasGrass(int x, int y) {
 		if (grassSpace.getObjectAt(x, y) != null) {
-			i = ((Integer) grassSpace.getObjectAt(x, y)).intValue();
-		} else {
-			i = 0;
+			int i = ((Integer) grassSpace.getObjectAt(x, y)).intValue();
+			return i > 0 ? true : false;
+
 		}
-		return i;
+		return false;
 	}
 
 	public Object2DGrid getCurrentGrassSpace() {
@@ -81,10 +80,10 @@ public class RabbitsGrassSimulationSpace {
 		agentSpace.putObjectAt(x, y, null);
 	}
 
-	public int eatGrass(int x, int y) {
-		int grass = getGrassAt(x, y);
-		grassSpace.putObjectAt(x, y, new Integer(0));
-		return grass;
+	public boolean eatGrass(int x, int y) {
+		boolean retVal = hasGrass(x, y);
+		grassSpace.putObjectAt(x, y, 0);
+		return retVal;
 	}
 
 	public boolean moveAgentAt(int x, int y, int newX, int newY) {
@@ -111,7 +110,7 @@ public class RabbitsGrassSimulationSpace {
 		int grass = 0;
 		for (int i = 0; i < agentSpace.getSizeX(); i++) {
 			for (int j = 0; j < agentSpace.getSizeY(); j++) {
-				grass += getGrassAt(i, j);
+				grass += hasGrass(i, j) ? 1 : 0;
 			}
 		}
 		return grass;
