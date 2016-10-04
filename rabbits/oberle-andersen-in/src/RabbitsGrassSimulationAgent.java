@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -87,8 +88,8 @@ public class RabbitsGrassSimulationAgent implements Drawable {
 
 	@Override
 	public void draw(SimGraphics G) {
-		G.drawImage(img);
-		// G.drawCircle(Color.RED);
+		// G.drawImage(img);
+		G.drawCircle(Color.RED);
 	}
 
 	public boolean step() {

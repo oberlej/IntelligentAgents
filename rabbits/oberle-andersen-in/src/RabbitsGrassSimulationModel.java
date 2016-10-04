@@ -107,6 +107,8 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 		class RabbitsGrassSimulationStep extends BasicAction {
 			@Override
 			public void execute() {
+				reapDeadAgents();
+
 				SimUtilities.shuffle(agentList);
 				for (int i = 0; i < agentList.size(); i++) {
 					RabbitsGrassSimulationAgent rabbit = (RabbitsGrassSimulationAgent) agentList.get(i);
@@ -126,7 +128,6 @@ public class RabbitsGrassSimulationModel extends SimModelImpl {
 					rabbit.report();
 				}
 				// remove rabbits with energy < 1
-				int deadAgents = reapDeadAgents();
 				// plant grass
 				garden.plantGrass(growthRate);
 
