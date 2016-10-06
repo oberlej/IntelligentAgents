@@ -117,20 +117,24 @@ public class ReactiveAgent implements ReactiveBehavior {
 		if (availableTask == null) {
 			if (a.isTackingPackage()) {
 				action = new Move(currentCity.randomNeighbor(random));
+				System.out.println("no task available -> random move");
 			} else {
 				action = new Move(a.getDestination());
+				System.out.println("no task available -> as planned");
 			}
 		} else {
 			if (a.isTackingPackage()) {
 				action = new Pickup(availableTask);
+				System.out.println("task available -> take task");
 			} else {
 				action = new Move(a.getDestination());
+				System.out.println("task available -> refuse it");
 			}
 		}
 
 		if (numActions >= 1) {
 			System.out.println("The total profit after " + numActions + " actions is " + myAgent.getTotalProfit()
-			        + " (average profit: " + myAgent.getTotalProfit() / (double) numActions + ")");
+					+ " (average profit: " + myAgent.getTotalProfit() / (double) numActions + ")");
 		}
 		numActions++;
 
@@ -140,7 +144,7 @@ public class ReactiveAgent implements ReactiveBehavior {
 	private double R(State s, AgentAction a) {
 		if (a.isTackingPackage()) {
 			return dist.probability(s.getCity(), a.getDestination())
-			        * (dist.reward(s.getCity(), a.getDestination()) - dist.weight(s.getCity(), a.getDestination()));
+					* (dist.reward(s.getCity(), a.getDestination()) - dist.weight(s.getCity(), a.getDestination()));
 		}
 		return -dist.weight(s.getCity(), a.getDestination());
 	}
