@@ -10,4 +10,10 @@
 		<set discount-factor=".85"/>
 	</agent>
 	
+   <agent name="reactive-agent">
+        <set class-path="bin/"/>
+        <set class-name="agents.ReactiveAgent"/>
+        <set discount-factor=".85"/>
+    </agent>
+	
 </agents>
