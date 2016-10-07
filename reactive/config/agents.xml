@@ -7,13 +7,48 @@
 	<agent name="reactive-random">
 		<set class-path="bin/"/>
 		<set class-name="template.ReactiveTemplate"/>
-		<set discount-factor=".85"/>
+		<set discount-factor="1"/>
 	</agent>
 	
-   <agent name="reactive-agent">
+   <agent name="reactive-agent-1">
         <set class-path="bin/"/>
         <set class-name="agents.ReactiveAgent"/>
-        <set discount-factor=".85"/>
+        <set discount-factor="1"/>
+    </agent>
+       <agent name="reactive-agent-0.75">
+        <set class-path="bin/"/>
+        <set class-name="agents.ReactiveAgent"/>
+        <set discount-factor="0.75"/>
+    </agent>
+       <agent name="reactive-agent-0.5">
+        <set class-path="bin/"/>
+        <set class-name="agents.ReactiveAgent"/>
+        <set discount-factor="0.5"/>
+    </agent>
+               <agent name="reactive-agent-0.3">
+        <set class-path="bin/"/>
+        <set class-name="agents.ReactiveAgent"/>
+        <set discount-factor="0.3"/>
+    </agent>
+       <agent name="reactive-agent-0.25">
+        <set class-path="bin/"/>
+        <set class-name="agents.ReactiveAgent"/>
+        <set discount-factor="0.25"/>
+    </agent>
+           <agent name="reactive-agent-0.2">
+        <set class-path="bin/"/>
+        <set class-name="agents.ReactiveAgent"/>
+        <set discount-factor="0.2"/>
+    </agent>
+           <agent name="reactive-agent-0.1">
+        <set class-path="bin/"/>
+        <set class-name="agents.ReactiveAgent"/>
+        <set discount-factor="0.1"/>
+    </agent>
+       <agent name="reactive-agent-0">
+        <set class-path="bin/"/>
+        <set class-name="agents.ReactiveAgent"/>
+        <set discount-factor="0"/>
     </agent>
 	
 </agents>

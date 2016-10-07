@@ -34,7 +34,7 @@ public class AgentAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -62,4 +62,12 @@ public class AgentAction {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		if (tackingPackage) {
+			return "take P and move to " + destination;
+		} else {
+			return "don't take P and move to " + destination;
+		}
+	}
 }

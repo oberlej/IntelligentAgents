@@ -11,6 +11,7 @@ import logist.behavior.ReactiveBehavior;
 import logist.plan.Action;
 import logist.plan.Action.Move;
 import logist.plan.Action.Pickup;
+import logist.plan.Plan;
 import logist.simulation.Vehicle;
 import logist.task.Task;
 import logist.task.TaskDistribution;
@@ -26,7 +27,7 @@ public class ReactiveAgent implements ReactiveBehavior {
 	private Random random;
 	private List<State> listOfStates;
 	private TaskDistribution dist;
-	private final double CHANGE_THRESHOLD = 0.0005;
+	private final double CHANGE_THRESHOLD = 0;
 
 	Map<State, AgentAction> bestAction;
 	Map<State, Double> stateValue;
@@ -75,27 +76,35 @@ public class ReactiveAgent implements ReactiveBehavior {
 		int nbStates = listOfStates.size();
 		while (changed != nbStates) {
 			changed = 0;
+			// printV();
+			printB();
 			for (State s : listOfStates) {
-
-				double maxValue = 0;
+				double maxValue = Double.MIN_NORMAL;
 				AgentAction bestAction = null;
 				for (AgentAction a : s.getListOfActions()) {
 					double sum = 0;
 					for (State sp : listOfStates) {
-						sum += T(s, a, sp) * stateValue.get(sp);
+						if (!sp.equals(s)) {
+							sum += T(s, a, sp) * stateValue.get(sp);
+						}
 					}
+					// System.out.println("sum: " + sum);
 					double currentValue = R(s, a) + pPickup * sum;
+					// System.out.println("current value: " + currentValue);
 					if (currentValue >= maxValue) {
 						maxValue = currentValue;
 						bestAction = a;
 					}
 				}
-				if (Math.abs(maxValue) - stateValue.get(s) <= CHANGE_THRESHOLD) {
+				if (Math.abs(maxValue - stateValue.get(s)) <= CHANGE_THRESHOLD) {
 					changed++;
 				}
 				stateValue.put(s, maxValue);
 				this.bestAction.put(s, bestAction);
 			}
+		}
+		for (Map.Entry<State, Double> entry : stateValue.entrySet()) {
+			System.out.println(entry.getKey().getCity() + ": " + entry.getValue());
 		}
 
 	}
@@ -114,9 +123,30 @@ public class ReactiveAgent implements ReactiveBehavior {
 		}
 		AgentAction a = bestAction.get(s);
 
+		System.out.println(myAgent.name() + ": action planned: " + a);
+
 		if (availableTask == null) {
 			if (a.isTackingPackage()) {
-				action = new Move(currentCity.randomNeighbor(random));
+				// check the best neighbors
+				State bestState = null;
+				Double bestValue = 0.0;
+				for (City c : currentCity.neighbors()) {
+					for (State ns : listOfStates) {
+						if (ns.getCity().equals(c)) {
+							if (stateValue.get(ns) >= bestValue) {
+								bestState = ns;
+							}
+
+						}
+					}
+				}
+				if (bestState != null) {
+					action = new Move(bestState.getCity());
+				} else {
+					action = null;
+					System.out.println("shouldnt happen");
+					System.exit(0);
+				}
 			} else {
 				action = new Move(a.getDestination());
 			}
@@ -129,8 +159,8 @@ public class ReactiveAgent implements ReactiveBehavior {
 		}
 
 		if (numActions >= 1) {
-			System.out.println("The total profit after " + numActions + " actions is " + myAgent.getTotalProfit()
-			        + " (average profit: " + myAgent.getTotalProfit() / (double) numActions + ")");
+			System.out.println(
+			        myAgent.name() + ": average profit: " + myAgent.getTotalProfit() / (double) numActions + ")");
 		}
 		numActions++;
 
@@ -138,27 +168,57 @@ public class ReactiveAgent implements ReactiveBehavior {
 	}
 
 	private double R(State s, AgentAction a) {
+
+		Plan p = new Plan(s.getCity(), new Move(a.getDestination()));
+		double cost = 5 * p.totalDistance();
+
 		if (a.isTackingPackage()) {
-			return dist.probability(s.getCity(), a.getDestination())
-			        * (dist.reward(s.getCity(), a.getDestination()) - dist.weight(s.getCity(), a.getDestination()));
+			// return dist.probability(s.getCity(), a.getDestination())
+			// * (dist.reward(s.getCity(), a.getDestination()) -
+			// dist.weight(s.getCity(), a.getDestination()));
+			// System.out.println("prob: " + dist.probability(s.getCity(),
+			// a.getDestination()));
+			double x = dist.probability(s.getCity(), a.getDestination())
+			        * (dist.reward(s.getCity(), a.getDestination()) - cost);
+			// System.out.println("Compute R: " + x);
+			return x;
 		}
-		return -dist.weight(s.getCity(), a.getDestination());
+		// return -dist.weight(s.getCity(), a.getDestination());
+		// System.out.println("Compute R: " + -cost);
+		return -cost;
 	}
 
 	private double T(State s, AgentAction a, State sp) {
 		if (a.isTackingPackage()) {
-			return dist.probability(s.getCity(), sp.getCity());
+			double x = a.getDestination().equals(sp.getCity()) ? dist.probability(s.getCity(), sp.getCity()) : 0;
+			// System.out.println("Compute T: " + x);
+			return x;
 		}
-		return a.getDestination() == sp.getCity() ? 1 : 0;
+		double x = a.getDestination().equals(sp.getCity()) ? 1 : 0;
+		// System.out.println("Compute T: " + x);
+		return x;
 	}
 
 	private State getStateFromCity(City c) throws Exception {
 		for (State s : listOfStates) {
-			if (s.getCity() == c) {
+			if (s.getCity().equals(c)) {
 				return s;
 			}
 		}
 		throw new Exception("No state found for city: " + c);
+	}
+
+	private void printV() {
+		for (Map.Entry<State, Double> entry : stateValue.entrySet()) {
+			System.out.print("V(" + entry.getKey().getCity() + ")= " + entry.getValue() + " | ");
+		}
+		System.out.println("");
+	}
+
+	private void printB() {
+		for (Map.Entry<State, AgentAction> entry : bestAction.entrySet()) {
+			System.out.println("B(" + entry.getKey().getCity() + ")= " + entry.getValue() + " | ");
+		}
 	}
 
 }

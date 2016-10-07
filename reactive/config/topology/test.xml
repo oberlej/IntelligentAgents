@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- the topology of 'france' -->
+<topology name="france" >
+
+	<!-- the list of cities in the topology -->
+	<cities>
+		<city x= "25" y="50" name="C1" />
+		<city x="50" y= "25" name="C2" />
+		<city x="324" y= "87" name="C3"/>
+		<city x="190" y="353" name="C4"/>
+	</cities>
+
+	<!-- the list of routes in the topology -->
+	<routes>
+		<route distance="591" from="Paris" to="Brest"/>
+		<route distance="584" from="Paris" to="Bordeaux"/>
+		<route distance="196" from="Paris" to="Le Havre"/>
+		<route distance="487" from="Paris" to="Strasbourg"/>
+		<route distance="466" from="Paris" to="Lyon"/>
+		<route distance="389" from="Strasbourg" to="Genève"/>
+		<route distance="149" from="Lyon" to="Genève"/>
+		<route distance="316" from="Lyon" to="Marseille"/>
+		<route distance="646" from="Bordeaux" to="Marseille"/>
+		<route distance="588" from="Bordeaux" to="Lyon"/>
+		<route distance="521" from="Monaco" to="Genève"/>
+		<route distance="225" from="Marseille" to="Monaco"/>
+	</routes>
+
+</topology>
