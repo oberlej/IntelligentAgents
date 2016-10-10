@@ -14,8 +14,14 @@ public class AgentAction {
 	 */
 	public AgentAction(City destination, boolean tackingPackage) {
 		super();
-		this.destination = destination;
 		this.tackingPackage = tackingPackage;
+
+		if (tackingPackage) {
+			this.destination = null;
+		} else {
+			this.destination = destination;
+		}
+
 	}
 
 	/**
@@ -65,7 +71,7 @@ public class AgentAction {
 	@Override
 	public String toString() {
 		if (tackingPackage) {
-			return "take P and move to " + destination;
+			return "take P";
 		} else {
 			return "don't take P and move to " + destination;
 		}

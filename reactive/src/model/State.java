@@ -34,14 +34,6 @@ public class State {
 		return listOfActions;
 	}
 
-	/**
-	 * @param listOfActions
-	 *            the listOfActions to set
-	 */
-	public void setListOfActions(List<AgentAction> listOfActions) {
-		this.listOfActions = listOfActions;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 *
@@ -67,6 +59,16 @@ public class State {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for (AgentAction a : listOfActions) {
+			sb.append("action: " + a.toString() + "\n");
+		}
+		sb.append("city: " + city.toString());
+		return sb.toString();
 	}
 
 }
