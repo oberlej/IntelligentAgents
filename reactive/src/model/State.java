@@ -5,26 +5,34 @@ import java.util.List;
 import logist.topology.Topology.City;
 
 public class State {
-	private City city;
+	private City current;
+	private City destination;
 	private List<AgentAction> listOfActions;
 
 	/**
-	 * Constructor using fields
-	 *
-	 * @param city
+	 * @param current
+	 * @param destination
 	 * @param listOfActions
 	 */
-	public State(City city, List<AgentAction> listOfActions) {
+	public State(City current, City destination, List<AgentAction> listOfActions) {
 		super();
-		this.city = city;
+		this.current = current;
+		this.destination = destination;
 		this.listOfActions = listOfActions;
 	}
 
 	/**
-	 * @return the city
+	 * @return the current
 	 */
-	public City getCity() {
-		return city;
+	public City getCurrent() {
+		return current;
+	}
+
+	/**
+	 * @return the destination
+	 */
+	public City getDestination() {
+		return destination;
 	}
 
 	/**
@@ -32,6 +40,11 @@ public class State {
 	 */
 	public List<AgentAction> getListOfActions() {
 		return listOfActions;
+	}
+
+	@Override
+	public String toString() {
+		return "S(" + current + ", " + destination + ")";
 	}
 
 	/*
@@ -51,24 +64,21 @@ public class State {
 			return false;
 		}
 		State other = (State) obj;
-		if (city == null) {
-			if (other.city != null) {
+		if (current == null) {
+			if (other.current != null) {
 				return false;
 			}
-		} else if (!city.equals(other.city)) {
+		} else if (!current.equals(other.current)) {
+			return false;
+		}
+		if (destination == null) {
+			if (other.destination != null) {
+				return false;
+			}
+		} else if (!destination.equals(other.destination)) {
 			return false;
 		}
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		for (AgentAction a : listOfActions) {
-			sb.append("action: " + a.toString() + "\n");
-		}
-		sb.append("city: " + city.toString());
-		return sb.toString();
 	}
 
 }

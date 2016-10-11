@@ -29,35 +29,35 @@
 		<set class-name="agents.ReactiveAgent" />
 		<set discount-factor="0.9" />
 	</agent>
+	   <agent name="reactive-agent-0.85">
+        <set class-path="bin/" />
+        <set class-name="agents.ReactiveAgent" />
+        <set discount-factor="0.85" />
+    </agent>
+        <agent name="reactive-agent-0.8">
+        <set class-path="bin/" />
+        <set class-name="agents.ReactiveAgent" />
+        <set discount-factor="0.8" />
+    </agent>
 	<agent name="reactive-agent-0.75">
 		<set class-path="bin/" />
 		<set class-name="agents.ReactiveAgent" />
 		<set discount-factor="0.75" />
 	</agent>
-	<agent name="reactive-agent-0.6">
-		<set class-path="bin/" />
-		<set class-name="agents.ReactiveAgent" />
-		<set discount-factor="0.6" />
-	</agent>
+	   <agent name="reactive-agent-0.7">
+        <set class-path="bin/" />
+        <set class-name="agents.ReactiveAgent" />
+        <set discount-factor="0.7" />
+    </agent>
 	<agent name="reactive-agent-0.5">
 		<set class-path="bin/" />
 		<set class-name="agents.ReactiveAgent" />
 		<set discount-factor="0.5" />
 	</agent>
-	<agent name="reactive-agent-0.3">
-		<set class-path="bin/" />
-		<set class-name="agents.ReactiveAgent" />
-		<set discount-factor="0.3" />
-	</agent>
 	<agent name="reactive-agent-0.25">
 		<set class-path="bin/" />
 		<set class-name="agents.ReactiveAgent" />
 		<set discount-factor="0.25" />
-	</agent>
-	<agent name="reactive-agent-0.2">
-		<set class-path="bin/" />
-		<set class-name="agents.ReactiveAgent" />
-		<set discount-factor="0.2" />
 	</agent>
 	<agent name="reactive-agent-0.1">
 		<set class-path="bin/" />

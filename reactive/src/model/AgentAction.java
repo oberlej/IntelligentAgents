@@ -15,13 +15,7 @@ public class AgentAction {
 	public AgentAction(City destination, boolean tackingPackage) {
 		super();
 		this.tackingPackage = tackingPackage;
-
-		if (tackingPackage) {
-			this.destination = null;
-		} else {
-			this.destination = destination;
-		}
-
+		this.destination = destination;
 	}
 
 	/**

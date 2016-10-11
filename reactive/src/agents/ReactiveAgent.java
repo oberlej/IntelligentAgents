@@ -25,7 +25,7 @@ public class ReactiveAgent implements ReactiveBehavior {
 	private Agent myAgent;
 	private List<State> listOfStates;
 	private TaskDistribution dist;
-	private final double CHANGE_THRESHOLD = 0;
+	private final double CHANGE_THRESHOLD = 0.0;
 	private Topology topology;
 
 	Map<State, AgentAction> bestAction;
@@ -33,37 +33,64 @@ public class ReactiveAgent implements ReactiveBehavior {
 
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution, Agent agent) {
+		System.out.println("Start ReactiveAgent Setup");
 		// Reads the discount factor from the agents.xml file.
 		// If the property is not present it defaults to 0.95
 		Double discount = agent.readProperty("discount-factor", Double.class, 0.95);
+		if (discount >= 1 || discount < 0) {
+			System.out.println("Please enter a number in [0,1[");
+			System.exit(-1);
+		}
 
 		this.topology = topology;
 		pPickup = discount;
-
 		numActions = 0;
 		myAgent = agent;
 		dist = distribution;
+
 		bestAction = new HashMap<State, AgentAction>();
 		stateValue = new HashMap<State, Double>();
-
 		listOfStates = new ArrayList<State>();
-		for (City c : topology.cities()) {
-			List<AgentAction> actions = new ArrayList<AgentAction>();
+		createStatesAndActions();
+		MDP();
+		System.out.println("Done with ReactiveAgent Setup");
+	}
 
-			for (City c2 : c.neighbors()) {
-				// add action for movement to c2 + without package
-				AgentAction moveWithout = new AgentAction(c2, false);
-				actions.add(moveWithout);
+	private void createStatesAndActions() {
+		System.out.println("Setting up States and Actions");
+		for (City current : topology.cities()) {
+			// Create one action per neighbor. The action is the movmement form
+			// City current to City neighb without package
+			List<AgentAction> neighborActions = new ArrayList<AgentAction>();
+
+			for (City neighb : current.neighbors()) {
+				AgentAction moveToNeighborWithoutPackage = new AgentAction(neighb, false);
+				neighborActions.add(moveToNeighborWithoutPackage);
 			}
+			// Create the state of being in City current and not having a
+			// package available, thus not having a detination city
+			State noPAvailabeState = new State(current, null, neighborActions);
+			listOfStates.add(noPAvailabeState);
+			stateValue.put(noPAvailabeState, 0.0);
 
-			AgentAction moveWith = new AgentAction(null, true);
-			actions.add(moveWith);
-
-			State s = new State(c, actions);
-			listOfStates.add(s);
-			stateValue.put(s, 0.0);
+			for (City dest : topology.cities()) {
+				if (!current.equals(dest)) {
+					// Create the action of moving from City current to City
+					// dest with a package
+					List<AgentAction> packageActions = new ArrayList<AgentAction>();
+					packageActions.add(new AgentAction(dest, true));
+					// Create the state of being in City current and having a
+					// package available to City dest
+					State takingPState = new State(current, dest, packageActions);
+					listOfStates.add(takingPState);
+					stateValue.put(takingPState, 0.0);
+				}
+			}
 		}
+	}
 
+	private void MDP() {
+		System.out.println("Run MDP-Algorithm");
 		int changed = 0;
 		int nbStates = listOfStates.size();
 
@@ -77,67 +104,24 @@ public class ReactiveAgent implements ReactiveBehavior {
 					double sum = 0;
 
 					for (State sp : listOfStates) {
-						sum += T(s, a, sp) * stateValue.get(sp);
-
+						if (!s.getCurrent().equals(sp.getCurrent())) {
+							sum += T(s, a, sp) * stateValue.get(sp);
+						}
 					}
-					if (a.isTackingPackage()) {
-						// the case of no task when wanting to take a task
-						sum += T(s, a, null) * stateValue.get(getBestNeighbor(s));
-					}
-
-					// System.out.println("sum: " + sum);
 					double currentValue = R(s, a) + pPickup * sum;
-
-					System.out.println("current value: " + currentValue);
 					if (currentValue >= maxValue) {
 						maxValue = currentValue;
 						bestAction = a;
-
 					}
-
 				}
-				if (Math.abs(maxValue - stateValue.get(s)) <= CHANGE_THRESHOLD) {
+				if (maxValue / stateValue.get(s) - 1 <= CHANGE_THRESHOLD) {
 					changed++;
 				}
 				stateValue.put(s, maxValue);
 				this.bestAction.put(s, bestAction);
-
-				System.out.println(s);
-				System.out.println(bestAction);
-
 			}
 		}
-		for (Map.Entry<State, Double> entry : stateValue.entrySet()) {
-			System.out.println(entry.getKey().getCity() + ": " + entry.getValue());
-		}
 
-	}
-
-	private State getBestNeighbor(State s) {
-
-		List<City> neighbors = s.getCity().neighbors();
-		City bestC = neighbors.get(0);
-
-		for (City c : neighbors) {
-			try {
-				if (stateValue.get(getStateFromCity(c)) > stateValue.get(getStateFromCity(bestC))) {
-					bestC = c;
-				}
-
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
-		// TODO Auto-generated method stub
-		try {
-			return getStateFromCity(bestC);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
@@ -146,47 +130,14 @@ public class ReactiveAgent implements ReactiveBehavior {
 
 		City currentCity = vehicle.getCurrentCity();
 		State s = null;
-		try {
-			s = getStateFromCity(currentCity);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.exit(0);
-		}
-		AgentAction a = bestAction.get(s);
-
-		// if (a == null) {
-		// System.out.println(s);
-		// System.out.println(a);
-		// }
-
-		// System.out.println(myAgent.name() + ": action planned: " + a);
 
 		if (availableTask == null) {
-			if (a.isTackingPackage()) {
-				// check the best neighbors
-				State bestState = null;
-				Double bestValue = 0.0;
-				for (City c : currentCity.neighbors()) {
-					for (State ns : listOfStates) {
-						if (ns.getCity().equals(c)) {
-							if (stateValue.get(ns) >= bestValue) {
-								bestState = ns;
-							}
-
-						}
-					}
-				}
-				if (bestState != null) {
-					action = new Move(bestState.getCity());
-				} else {
-					action = null;
-					System.out.println("shouldnt happen");
-					System.exit(0);
-				}
-			} else {
-				action = new Move(a.getDestination());
-			}
+			s = getState(currentCity, null);
+			AgentAction a = bestAction.get(s);
+			action = new Move(a.getDestination());
 		} else {
+			s = getState(currentCity, availableTask.deliveryCity);
+			AgentAction a = bestAction.get(s);
 			if (a.isTackingPackage()) {
 				action = new Pickup(availableTask);
 			} else {
@@ -204,61 +155,35 @@ public class ReactiveAgent implements ReactiveBehavior {
 	}
 
 	private double R(State s, AgentAction a) {
+		Plan p = new Plan(s.getCurrent(), new Move(a.getDestination()));
+		double costs = myAgent.vehicles().get(0).costPerKm() * p.totalDistance();
 
 		if (!a.isTackingPackage()) {
-			Plan p = new Plan(s.getCity(), new Move(a.getDestination()));
-			return -(5 * p.totalDistance());
-
+			return -costs;
 		} else {
-			double rewardSum = 0;
-			for (City n : topology.cities()) {
-				if (s.getCity() != n) {
-					rewardSum += dist.reward(s.getCity(), n) * dist.probability(s.getCity(), n);
-					Plan p = new Plan(s.getCity(), new Move(n));
-					rewardSum += -(5 * p.totalDistance());
-				}
-			}
-			return rewardSum / (topology.cities().size() - 1);
+			return dist.reward(s.getCurrent(), a.getDestination()) - costs;
 		}
 	}
 
 	private double T(State s, AgentAction a, State sp) {
-
-		if (sp == null) {
-			return dist.probability(s.getCity(), null);
+		if (s.getDestination() == null && sp.getCurrent().equals(a.getDestination())
+		        || a.getDestination().equals(sp.getCurrent())) {
+			// either destination is null (meaning no package is available) AND
+			// sp.current is a neighbor or s.destination is equal to sp.current
+			return dist.probability(sp.getCurrent(), sp.getDestination());
 		}
-
-		if (a.isTackingPackage()) {
-			return dist.probability(s.getCity(), sp.getCity());
-			// System.out.println("Compute T: " + x);
-		}
-
-		else {
-			return a.getDestination().equals(sp.getCity()) ? 1 : 0;
-		}
-
+		return 0;
 	}
 
-	private State getStateFromCity(City c) throws Exception {
+	private State getState(City current, City dest) {
+		State tmp = new State(current, dest, null);
 		for (State s : listOfStates) {
-			if (s.getCity().equals(c)) {
+			if (s.equals(tmp)) {
 				return s;
 			}
 		}
-		throw new Exception("No state found for city: " + c);
+		System.out.println("No state found for " + tmp);
+		System.exit(-1);
+		return null;
 	}
-
-	private void printV() {
-		for (Map.Entry<State, Double> entry : stateValue.entrySet()) {
-			System.out.print("V(" + entry.getKey().getCity() + ")= " + entry.getValue() + " | ");
-		}
-		System.out.println("");
-	}
-
-	private void printB() {
-		for (Map.Entry<State, AgentAction> entry : bestAction.entrySet()) {
-			System.out.println("B(" + entry.getKey().getCity() + ")= " + entry.getValue() + " | ");
-		}
-	}
-
 }
