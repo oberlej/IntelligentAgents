@@ -65,7 +65,7 @@ public class AgentAction {
 	@Override
 	public String toString() {
 		if (tackingPackage) {
-			return "take P";
+			return "take P and move to " + destination;
 		} else {
 			return "don't take P and move to " + destination;
 		}

@@ -14,6 +14,11 @@
         <set class-name="agents.DummyAgent"/>
         <set discount-factor="1"/>
     </agent>	
+    <agent name="reactive-rla">
+        <set class-path="bin/" />
+        <set class-name="agents.ReactiveAgent" />
+        <set discount-factor="0.95" />
+    </agent>
 	<agent name="reactive-agent-1">
 		<set class-path="bin/" />
 		<set class-name="agents.ReactiveAgent" />

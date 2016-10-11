@@ -1,7 +1,5 @@
 package agents;
 
-import java.util.Random;
-
 import logist.agent.Agent;
 import logist.behavior.ReactiveBehavior;
 import logist.plan.Action;
@@ -14,16 +12,19 @@ import logist.task.TaskDistribution;
 import logist.topology.Topology;
 import logist.topology.Topology.City;
 
+/**
+ * A dummy agent that takes every task available and moves to the closest
+ * neighbor otherwise.
+ * 
+ * @author jeremiaoberle
+ *
+ */
 public class DummyAgent implements ReactiveBehavior {
-
-	private Random random;
-	private double pPickup;
 	private int numActions;
 	private Agent myAgent;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution td, Agent agent) {
-		random = new Random();
 		numActions = 0;
 		myAgent = agent;
 	}
