@@ -77,11 +77,22 @@ public class ReactiveAgent implements ReactiveBehavior {
 				if (!current.equals(dest)) {
 					// Create the action of moving from City current to City
 					// dest with a package
-					List<AgentAction> packageActions = new ArrayList<AgentAction>();
-					packageActions.add(new AgentAction(dest, true));
+					List<AgentAction> packageAvailableActions = new ArrayList<AgentAction>();
+					packageAvailableActions.add(new AgentAction(dest, true));
+
+					// Create the actions of refusing the package and moving to
+					// a neighbor
+					for (City neighb : current.neighbors()) {
+						// it wouldnt make any sense to refuse a package to a
+						// neighbor if our aciton is going to that neighbor
+						if (!neighb.equals(dest)) {
+							AgentAction refusePackageAndMoveToNeighb = new AgentAction(neighb, false);
+							packageAvailableActions.add(refusePackageAndMoveToNeighb);
+						}
+					}
 					// Create the state of being in City current and having a
 					// package available to City dest
-					State takingPState = new State(current, dest, packageActions);
+					State takingPState = new State(current, dest, packageAvailableActions);
 					listOfStates.add(takingPState);
 					stateValue.put(takingPState, 0.0);
 				}
@@ -102,11 +113,8 @@ public class ReactiveAgent implements ReactiveBehavior {
 
 				for (AgentAction a : s.getListOfActions()) {
 					double sum = 0;
-
 					for (State sp : listOfStates) {
-						if (!s.getCurrent().equals(sp.getCurrent())) {
-							sum += T(s, a, sp) * stateValue.get(sp);
-						}
+						sum += T(s, a, sp) * stateValue.get(sp);
 					}
 					double currentValue = R(s, a) + pPickup * sum;
 					if (currentValue >= maxValue) {
@@ -166,13 +174,16 @@ public class ReactiveAgent implements ReactiveBehavior {
 	}
 
 	private double T(State s, AgentAction a, State sp) {
-		if (s.getDestination() == null && sp.getCurrent().equals(a.getDestination())
-		        || a.getDestination().equals(sp.getCurrent())) {
-			// either destination is null (meaning no package is available) AND
-			// sp.current is a neighbor or s.destination is equal to sp.current
-			return dist.probability(sp.getCurrent(), sp.getDestination());
+		// only for states that are not equal and where the
+		// future states current city is different from the
+		// current states current city and where the destination of the action
+		// is equal to the future states current city
+		if (s.equals(sp) || s.getCurrent().equals(sp.getCurrent()) || !sp.getCurrent().equals(a.getDestination())) {
+			return 0;
 		}
-		return 0;
+
+		// verifies (s != sp && s.current != sp.current && sp.current != a.dest)
+		return dist.probability(sp.getCurrent(), sp.getDestination());
 	}
 
 	private State getState(City current, City dest) {
