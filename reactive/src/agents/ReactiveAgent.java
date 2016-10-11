@@ -196,7 +196,7 @@ public class ReactiveAgent implements ReactiveBehavior {
 
 		if (numActions >= 1) {
 			System.out.println(
-					myAgent.name() + ": average profit: " + myAgent.getTotalProfit() / (double) numActions + ")");
+			        myAgent.name() + ": average profit: " + myAgent.getTotalProfit() / (double) numActions + ")");
 		}
 		numActions++;
 
