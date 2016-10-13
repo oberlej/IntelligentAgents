@@ -14,3 +14,7 @@ hs_err_pid*
 reactive/.classpath
 
 reactive/history.xml
+
+deliberative/.classpath
+
+deliberative/history.xml
