@@ -10,4 +10,10 @@
 		<set algorithm="BFS"/>
 	</agent>
 	
+	   <agent name="deliberative-main">
+        <set class-path="bin/"/>
+        <set class-name="agents.DeliberativeAgent"/>
+        <set algorithm="BFS"/>
+    </agent>
+	
 </agents>
