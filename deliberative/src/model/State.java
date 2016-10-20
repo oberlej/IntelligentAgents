@@ -5,7 +5,7 @@ import logist.task.Task;
 import logist.task.TaskSet;
 import logist.topology.Topology.City;
 
-public class State implements Cloneable {
+public class State implements Comparable<State>, Cloneable {
 
 	private TaskSet availableTasks;
 	private TaskSet pickedUpTasks;
@@ -13,6 +13,7 @@ public class State implements Cloneable {
 	private City currentCity;
 
 	private double cost;
+	private double fcost;
 	private int remainingCapacity;
 
 	private State parentState;
@@ -43,6 +44,10 @@ public class State implements Cloneable {
 
 	public double getCost() {
 		return cost;
+	}
+
+	public void addCost(Double c) {
+		cost += c;
 	}
 
 	public int getRemainingCapacity() {
@@ -102,7 +107,8 @@ public class State implements Cloneable {
 
 	@Override
 	public String toString() {
-		return "S(" + currentCity + ", " + getAvailableTasks().size() + ", " + getPickedUpTasks().size() + ")";
+		return "S(f:" + fcost + ", c:" + cost + ", " + currentCity + ", a:" + getAvailableTasks().size() + ", p:"
+		        + getPickedUpTasks().size() + ")";
 	}
 
 	// @Override
@@ -170,5 +176,31 @@ public class State implements Cloneable {
 	 */
 	public boolean hasPickedUpTaskInCurrentCity() {
 		return pickedUpTaskInCurrentCity;
+	}
+
+	@Override
+	public int compareTo(State s) {
+		if (fcost == s.fcost) {
+			return 0;
+		} else if (fcost < s.fcost) {
+			return -1;
+		} else {
+			return 1;
+		}
+	}
+
+	/**
+	 * @return the fcost
+	 */
+	public double getFcost() {
+		return fcost;
+	}
+
+	/**
+	 * @param fcost
+	 *            the fcost to set
+	 */
+	public void setFcost(double fcost) {
+		this.fcost = fcost;
 	}
 }

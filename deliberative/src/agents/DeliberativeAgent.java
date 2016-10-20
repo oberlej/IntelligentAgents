@@ -40,22 +40,26 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 
 	boolean isJumboTaskSet = false;
 
+	TaskSet pickedUpTasks = null;
+
 	@Override
 	public void setup(Topology topology, TaskDistribution td, Agent agent) {
+
 		this.topology = topology;
 		this.td = td;
 		this.agent = agent;
 		costPerKm = agent.vehicles().get(0).costPerKm();
 
-		int capacity = agent.vehicles().get(0).capacity();
 		String algorithmName = agent.readProperty("algorithm", String.class, "ASTAR");
-
 		algorithm = Algorithm.valueOf(algorithmName.toUpperCase());
 	}
 
 	@Override
 	public Plan plan(Vehicle vehicle, TaskSet tasks) {
+		System.out.println("Agent " + (agent.id() + 1) + ": " + agent.name());
 		Plan plan;
+		// System.out.println("tasks carried:" + vehicle.getCurrentTasks());
+		// System.out.println("tasks available:" + tasks);
 
 		switch (algorithm) {
 		case ASTAR:
@@ -72,13 +76,110 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 	}
 
 	private Plan aStar(Vehicle vehicle, TaskSet tasks) {
-		return null;
+
+		List<State> open = new ArrayList<State>();
+		// add root
+		open.add(new State(tasks, vehicle.getCurrentTasks(), vehicle.getCurrentCity(), 0, vehicle.capacity(),
+		        new State(null, null, null, 0, 0, null)));
+
+		State current;
+		int nbStates = 1;
+		State newNeighbor;
+
+		current = open.get(0);
+		open.remove(0);
+
+		while (!current.getAvailableTasks().isEmpty() || !current.getPickedUpTasks().isEmpty()) {
+			// System.out.println(current);
+			// add new neighbor states
+
+			// pick up a new task if possible
+			for (Task t : current.getAvailableTasks()) {
+				newNeighbor = current.clone();
+				if (newNeighbor.pickUpTask(t)) {
+					// task was picked up
+					newNeighbor.setParentState(current);
+					newNeighbor.setFcost(newNeighbor.getCost() + h(newNeighbor));
+					open.add(newNeighbor);
+					nbStates++;
+				}
+			}
+
+			// deliver one of our picked up tasks
+			for (Task t : current.getPickedUpTasks()) {
+				newNeighbor = current.clone();
+				if (newNeighbor.deliverTask(t)) {
+					// task was delivered
+					newNeighbor.setParentState(current);
+					newNeighbor.setFcost(newNeighbor.getCost() + h(newNeighbor));
+					open.add(newNeighbor);
+					nbStates++;
+				}
+			}
+
+			// System.out.println("before sort");
+			// for (State s : open) {
+			// System.out.println(s);
+			// }
+			Collections.sort(open);
+			// System.out.println("after sort");
+			// for (State s : open) {
+			// System.out.println(s);
+			// }
+			current = open.get(0);
+			open.remove(0);
+		}
+
+		System.out.println("While loop done after " + nbStates);
+		// System.out.println("final state:" + current);
+		// create actions
+		List<Action> actions = new ArrayList<Action>();
+		do {
+			Task t;
+			if (current.hasPickedUpTaskInCurrentCity()) {
+				// find task that has been picked up in the current.city
+				t = (Task) TaskSet
+				        .intersectComplement(current.getParentState().getAvailableTasks(), current.getAvailableTasks())
+				        .toArray()[0];
+				actions.add(new Pickup(t));
+			} else {
+				// find task that has been delivered in the current.city
+				t = (Task) TaskSet
+				        .intersectComplement(current.getParentState().getPickedUpTasks(), current.getPickedUpTasks())
+				        .toArray()[0];
+				actions.add(new Delivery(t));
+			}
+			actions.addAll(createReverseMoves(current.getParentState().getCurrentCity(), current.getCurrentCity()));
+
+			current = current.getParentState();
+		} while (current != null && current.getParentState() != null);
+		Collections.reverse(actions);
+		Plan p = new Plan(vehicle.getCurrentCity(), actions);
+		// System.out.println("Agent" + agent.id() + "\n" + p);
+		return p;
+	}
+
+	private double h(State s) {
+		double cost = 0;
+		for (Task t : s.getAvailableTasks()) {
+			cost += t.pickupCity.distanceTo(t.deliveryCity) * costPerKm;
+		}
+		double avCost = 0;
+		for (Task t : s.getPickedUpTasks()) {
+			// System.out.println(s.getCurrentCity().distanceTo(t.deliveryCity));
+			// cost += s.getCurrentCity().distanceTo(t.deliveryCity) *
+			// costPerKm;
+			// avCost += s.getCurrentCity().distanceTo(t.deliveryCity);
+			cost += 800;
+		}
+		// cost += avCost > 0 ? avCost / s.getPickedUpTasks().size() : 0;
+		return cost;
 	}
 
 	private Plan BFS(Vehicle vehicle, TaskSet tasks) {
 		List<State> queue = new ArrayList<State>();
 		// add root
-		queue.add(new State(tasks, TaskSet.noneOf(tasks), vehicle.getCurrentCity(), 0, vehicle.capacity(), null));
+		queue.add(new State(tasks, vehicle.getCurrentTasks(), vehicle.getCurrentCity(), 0, vehicle.capacity(), null));
 
 		State bestFinalState = new State(null, null, null, Integer.MAX_VALUE, 0, null);
 
@@ -86,7 +187,7 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 		State newNeighbor;
 		State current;
 		while (!queue.isEmpty() && bestFinalState.getCost() == Integer.MAX_VALUE) {
-			System.out.println("in while");
+			// System.out.println("in while");
 			current = queue.get(0);
 			queue.remove(0);
 			// add new neighbor states
@@ -126,7 +227,7 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 				}
 			}
 		}
-		System.out.println("While loop done after " + nbStates);
+		// System.out.println("While loop done after " + nbStates);
 		current = bestFinalState;
 		// create actions
 		List<Action> actions = new ArrayList<Action>();
@@ -153,29 +254,6 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 		return new Plan(vehicle.getCurrentCity(), actions);
 	}
 
-	// private List<Action> getActionsForState(State s) {
-	// List<Action> actions = new ArrayList<Action>();
-	// TaskSet availableTasks =
-	// TaskSet.intersectComplement(s.getParentState().getAvailableTasks(),
-	// s.getAvailableTasks());
-	// if (availableTasks.isEmpty()) {
-	// TaskSet pickedUpTasks =
-	// TaskSet.intersectComplement(s.getParentState().getPickedUpTasks(),
-	// s.getPickedUpTasks());
-	// if (pickedUpTasks.isEmpty()) {
-	// System.out.println("There is a problem, no diff between current and
-	// dad");
-	// } else {
-	// // we delivered a package
-	// Task t = (Task) pickedUpTasks.toArray()[0];
-	// if()
-	// }
-	// } else {
-	// // we picked up a package
-	// }
-	// return actions;
-	// }
-
 	private List<Action> createReverseMoves(City source, City destination) {
 		List<Action> moves = new ArrayList<Action>();
 		if (!source.equals(destination)) {
@@ -189,7 +267,6 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 
 	@Override
 	public void planCancelled(TaskSet carriedTasks) {
-		// TODO Auto-generated method stub
 	}
 
 }
