@@ -60,6 +60,13 @@ public class State implements Comparable<State>, Cloneable {
 		        parentState);
 	}
 
+	/**
+	 * picks up task t for this state and updates all necessary fields if
+	 * possible.
+	 * 
+	 * @param t
+	 * @return
+	 */
 	public boolean pickUpTask(Task t) {
 		// cannot accept task
 		if (remainingCapacity < t.weight) {
@@ -83,6 +90,12 @@ public class State implements Comparable<State>, Cloneable {
 		return false;
 	}
 
+	/**
+	 * delivers task t for this state and updates all necessary fields.
+	 *
+	 * @param t
+	 * @return
+	 */
 	public boolean deliverTask(Task t) {
 		if (pickedUpTasks.remove(t)) {
 			cost += currentCity.distanceTo(t.deliveryCity) * DeliberativeAgent.costPerKm;
@@ -110,12 +123,6 @@ public class State implements Comparable<State>, Cloneable {
 		return "S(f:" + fcost + ", c:" + cost + ", " + currentCity + ", a:" + getAvailableTasks().size() + ", p:"
 		        + getPickedUpTasks().size() + ")";
 	}
-
-	// @Override
-	// public String toString() {
-	// return "S(" + currentCity + ", " + getAvailableTasks() + ", " +
-	// getPickedUpTasks() + ")";
-	// }
 
 	/*
 	 * (non-Javadoc)

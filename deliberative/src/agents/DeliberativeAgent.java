@@ -58,8 +58,6 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 	public Plan plan(Vehicle vehicle, TaskSet tasks) {
 		System.out.println("Agent " + (agent.id() + 1) + ": " + agent.name());
 		Plan plan;
-		// System.out.println("tasks carried:" + vehicle.getCurrentTasks());
-		// System.out.println("tasks available:" + tasks);
 
 		switch (algorithm) {
 		case ASTAR:
@@ -72,15 +70,13 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 			throw new AssertionError("Should not happen.");
 		}
 		return plan;
-
 	}
 
 	private Plan aStar(Vehicle vehicle, TaskSet tasks) {
-
 		List<State> open = new ArrayList<State>();
 		// add root
-		open.add(new State(tasks, vehicle.getCurrentTasks(), vehicle.getCurrentCity(), 0, vehicle.capacity(),
-		        new State(null, null, null, 0, 0, null)));
+		open.add(new State(tasks, vehicle.getCurrentTasks(), vehicle.getCurrentCity(), agent.getTotalCost(),
+		        vehicle.capacity(), new State(null, null, null, 0, 0, null)));
 
 		State current;
 		int nbStates = 1;
@@ -90,7 +86,6 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 		open.remove(0);
 
 		while (!current.getAvailableTasks().isEmpty() || !current.getPickedUpTasks().isEmpty()) {
-			// System.out.println(current);
 			// add new neighbor states
 
 			// pick up a new task if possible
@@ -116,46 +111,16 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 					nbStates++;
 				}
 			}
-
-			// System.out.println("before sort");
-			// for (State s : open) {
-			// System.out.println(s);
-			// }
 			Collections.sort(open);
-			// System.out.println("after sort");
-			// for (State s : open) {
-			// System.out.println(s);
-			// }
 			current = open.get(0);
 			open.remove(0);
 		}
 
-		System.out.println("While loop done after " + nbStates);
-		// System.out.println("final state:" + current);
-		// create actions
-		List<Action> actions = new ArrayList<Action>();
-		do {
-			Task t;
-			if (current.hasPickedUpTaskInCurrentCity()) {
-				// find task that has been picked up in the current.city
-				t = (Task) TaskSet
-				        .intersectComplement(current.getParentState().getAvailableTasks(), current.getAvailableTasks())
-				        .toArray()[0];
-				actions.add(new Pickup(t));
-			} else {
-				// find task that has been delivered in the current.city
-				t = (Task) TaskSet
-				        .intersectComplement(current.getParentState().getPickedUpTasks(), current.getPickedUpTasks())
-				        .toArray()[0];
-				actions.add(new Delivery(t));
-			}
-			actions.addAll(createReverseMoves(current.getParentState().getCurrentCity(), current.getCurrentCity()));
+		// System.out.println("While loop done after " + nbStates + ". Final
+		// state: " + current);
+		System.out.println("Final cost: " + current.getCost());
+		Plan p = new Plan(vehicle.getCurrentCity(), createReversePathFromState(current));
 
-			current = current.getParentState();
-		} while (current != null && current.getParentState() != null);
-		Collections.reverse(actions);
-		Plan p = new Plan(vehicle.getCurrentCity(), actions);
-		// System.out.println("Agent" + agent.id() + "\n" + p);
 		return p;
 	}
 
@@ -164,32 +129,28 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 		for (Task t : s.getAvailableTasks()) {
 			cost += t.pickupCity.distanceTo(t.deliveryCity) * costPerKm;
 		}
-		double avCost = 0;
-		for (Task t : s.getPickedUpTasks()) {
-			// System.out.println(s.getCurrentCity().distanceTo(t.deliveryCity));
-			// cost += s.getCurrentCity().distanceTo(t.deliveryCity) *
-			// costPerKm;
-			// avCost += s.getCurrentCity().distanceTo(t.deliveryCity);
-			cost += 800;
-		}
-		// cost += avCost > 0 ? avCost / s.getPickedUpTasks().size() : 0;
+		cost += s.getPickedUpTasks().size() * 800;
 		return cost;
 	}
 
 	private Plan BFS(Vehicle vehicle, TaskSet tasks) {
 		List<State> queue = new ArrayList<State>();
 		// add root
-		queue.add(new State(tasks, vehicle.getCurrentTasks(), vehicle.getCurrentCity(), 0, vehicle.capacity(), null));
+		queue.add(new State(tasks, vehicle.getCurrentTasks(), vehicle.getCurrentCity(), agent.getTotalCost(),
+		        vehicle.capacity(), null));
 
 		State bestFinalState = new State(null, null, null, Integer.MAX_VALUE, 0, null);
 
 		int nbStates = 1;
 		State newNeighbor;
 		State current;
-		while (!queue.isEmpty() && bestFinalState.getCost() == Integer.MAX_VALUE) {
-			// System.out.println("in while");
+		// this would stop after finding the first final solution
+		// while (!queue.isEmpty() && bestFinalState.getCost() ==
+		// Integer.MAX_VALUE) {
+		while (!queue.isEmpty()) {
 			current = queue.get(0);
 			queue.remove(0);
+
 			// add new neighbor states
 
 			// pick up a new task if possible
@@ -213,9 +174,7 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 						newNeighbor.setParentState(current);
 						if (newNeighbor.getAvailableTasks().isEmpty() && newNeighbor.getPickedUpTasks().isEmpty()) {
 							// we are in a final state s we don't need to add it
-							// to
-							// the queue
-							// System.out.println("final state");
+							// to the queue
 							if (newNeighbor.getCost() < bestFinalState.getCost()) {
 								bestFinalState = newNeighbor;
 							}
@@ -228,9 +187,21 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 			}
 		}
 		// System.out.println("While loop done after " + nbStates);
-		current = bestFinalState;
-		// create actions
+		return new Plan(vehicle.getCurrentCity(), createReversePathFromState(bestFinalState));
+	}
+
+	/**
+	 * this function lets us create the list of actions for the final state. It
+	 * takes the optimal path in reverse order and creates all the corresponding
+	 * actions. In the end it reverses the list to put them in the correct
+	 * order.
+	 *
+	 * @param finalState
+	 * @return
+	 */
+	private List<Action> createReversePathFromState(State finalState) {
 		List<Action> actions = new ArrayList<Action>();
+		State current = finalState;
 		do {
 			Task t;
 			if (current.hasPickedUpTaskInCurrentCity()) {
@@ -251,9 +222,18 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 			current = current.getParentState();
 		} while (current != null && current.getParentState() != null);
 		Collections.reverse(actions);
-		return new Plan(vehicle.getCurrentCity(), actions);
+		return actions;
 	}
 
+	/**
+	 * this function creates the move actions to go from city source to city
+	 * destination but in reverse order. Reverse order is needed to recreate the
+	 * optimal path for a final state.
+	 *
+	 * @param source
+	 * @param destination
+	 * @return
+	 */
 	private List<Action> createReverseMoves(City source, City destination) {
 		List<Action> moves = new ArrayList<Action>();
 		if (!source.equals(destination)) {
@@ -265,6 +245,13 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 		return moves;
 	}
 
+	/**
+	 * no actions are needed here because we take the task that are picked up
+	 * but not delivered into account in the plan(). This is done by checking
+	 * vehile.getCurrentTasks().
+	 *
+	 * @param carriedTasks
+	 */
 	@Override
 	public void planCancelled(TaskSet carriedTasks) {
 	}
