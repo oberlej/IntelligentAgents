@@ -27,6 +27,8 @@ public class CentralizedAgent implements CentralizedBehavior {
 	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
 		listOfVehicles = vehicles;
 		
+		COD bestSolution = SLS();
+		
 		// TODO Auto-generated method stub
 		return null;
 	}

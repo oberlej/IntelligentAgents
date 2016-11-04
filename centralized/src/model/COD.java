@@ -35,7 +35,10 @@ public class COD {
 		
 		while(i.hasNext()){
 			if (tOrig == i.next()){
-				linkedVehicleTasks.get(vOrig).add(i.nextIndex(), tNext);
+				int taskIndex = i.nextIndex();
+				linkedVehicleTasks.get(tOrig).remove(taskIndex);
+				linkedVehicleTasks.get(vOrig).add(taskIndex, tNext);
+				break;
 			}
 		}
 	}
@@ -47,7 +50,8 @@ public class COD {
 	}
 	
 	public void setNextTask(Vehicle vOrig, Task tNext){
-				
+		
+		linkedVehicleTasks.get(vOrig).remove(1);
 		linkedVehicleTasks.get(vOrig).add(1, tNext);
 		
 	}
