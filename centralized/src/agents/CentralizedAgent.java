@@ -1,10 +1,14 @@
 package agents;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
+import logist.LogistSettings;
 import logist.agent.Agent;
 import logist.behavior.CentralizedBehavior;
+import logist.config.Parsers;
 import logist.plan.Plan;
 import logist.simulation.Vehicle;
 import logist.task.Task;
@@ -12,20 +16,46 @@ import logist.task.TaskDistribution;
 import logist.task.TaskSet;
 import logist.topology.Topology;
 import model.COD;
+import model.TaskInformation;
 
 public class CentralizedAgent implements CentralizedBehavior {
 	List<Vehicle> listOfVehicles;
+	TaskSet listOfTasks;
 	
+	private final Double LOCAL_CHOICE_P = 0.3; 
+	
+    private Topology topology;
+    private TaskDistribution distribution;
+    private Agent agent;
+    private long timeout_setup;
+    private long timeout_plan;
 	
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution, Agent agent) {
-		// TODO Auto-generated method stub
+        // this code is used to get the timeouts
+        LogistSettings ls = null;
+        try {
+            ls = Parsers.parseSettings("config/settings_default.xml");
+        }
+        catch (Exception exc) {
+            System.out.println("There was a problem loading the configuration file.");
+        }
+        
+        // the setup method cannot last more than timeout_setup milliseconds
+        timeout_setup = ls.get(LogistSettings.TimeoutKey.SETUP);
+        // the plan method cannot execute more than timeout_plan milliseconds
+        timeout_plan = ls.get(LogistSettings.TimeoutKey.PLAN);
+        
+        this.topology = topology;
+        this.distribution = distribution;
+        this.agent = agent;
 		
 	}
 
 	@Override
 	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
 		listOfVehicles = vehicles;
+		listOfTasks = tasks;
 		
 		COD bestSolution = SLS();
 		
@@ -37,11 +67,12 @@ public class CentralizedAgent implements CentralizedBehavior {
 		COD A = selectInitialSolution();
 		List<COD> N = new ArrayList<COD>();
 		
-		while (true) {
+		long start_time = System.currentTimeMillis();
+		
+		while (start_time + timeout_plan > System.currentTimeMillis()) {
 			COD oldA = A;
 			N = chooseNeighbors(oldA);
-			A = localChoice(N);
-			break;
+			A = localChoice(N, oldA);
 		}
 		
 		return A;
@@ -50,13 +81,54 @@ public class CentralizedAgent implements CentralizedBehavior {
 	private COD selectInitialSolution(){
 		COD initA = new COD();
 		
+		for (Vehicle v: listOfVehicles) {
+			initA.linkedVehicleTasks.put(v, new LinkedList<Task>());
+		}
+		
+		int count = 0;
+		int time = 0;
+		for (Task t: listOfTasks) {
+			initA.linkedVehicleTasks.get(listOfVehicles.get(count)).add(t);
+			initA.taskInformation.put(t, new TaskInformation(time, listOfVehicles.get(count)));
+			
+			if(++count == listOfVehicles.size()){
+				count = 0;
+				time++;
+			}
+		} 
+		
 		return initA;
 	}
 	
-	private COD localChoice(List<COD> N){
-		COD choiceA = null;
+	private COD localChoice(List<COD> N, COD oldA){
+		HashMap<COD, Double> bestChoicesA = new HashMap<COD, Double>();
 		
-		return choiceA;
+		COD choiceA = oldA;
+		
+		bestChoicesA.put(choiceA, C(choiceA));
+		
+		for (COD A: N){
+			
+			Double costA = C(A);
+			
+			if (costA >= bestChoicesA.get(choiceA)) {
+				
+				if (costA == bestChoicesA.get(choiceA)){
+					bestChoicesA.put(A, costA);
+					continue;
+				}
+				
+				bestChoicesA.remove(choiceA);
+				choiceA = A;
+				bestChoicesA.put(choiceA, costA);
+			}
+		}
+		
+		if (Math.random() < LOCAL_CHOICE_P) {
+			return (COD) (bestChoicesA.keySet().toArray())[(int)(Math.random() * bestChoicesA.size())];
+		}
+		
+		return oldA;
 	}
 	
 	private List<COD> chooseNeighbors(COD oldA){
@@ -189,9 +261,9 @@ public class CentralizedAgent implements CentralizedBehavior {
 		return task.pickupCity.distanceTo(task.deliveryCity);
 	}
 	
-	public int C(COD cod){
+	public Double C(COD cod){
 		
-		int sum = 0;
+		Double sum = 0.0;
 		
 		for (Vehicle v: cod.linkedVehicleTasks.keySet()) {
 			Task nt = cod.nextTask(v); 
