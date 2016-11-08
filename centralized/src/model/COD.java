@@ -1,6 +1,7 @@
 package model;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -11,33 +12,30 @@ import logist.task.Task;
 
 public class COD {
 
-	public HashMap<Vehicle, LinkedList<Task>> linkedVehicleTasks;
-	public HashMap<Task, TaskInformation> taskInformation;
+	public HashMap<Vehicle, LinkedList<VAction>> linkedVehicleTasks;
+	public HashMap<Task, Vehicle> taskVehiclePair;
 
 	public COD(List<Vehicle> listOfVehicles) {
 		super();
-		linkedVehicleTasks = new HashMap<Vehicle, LinkedList<Task>>();
+		linkedVehicleTasks = new HashMap<Vehicle, LinkedList<VAction>>();
 		for (Vehicle v : listOfVehicles) {
-			linkedVehicleTasks.put(v, new LinkedList<Task>());
+			linkedVehicleTasks.put(v, new LinkedList<VAction>());
 		}
-		taskInformation = new HashMap<Task, TaskInformation>();
+		taskVehiclePair = new HashMap<Task, Vehicle>();
 	}
 
 	public COD(COD oldCOD) {
 		super();
-		HashMap<Vehicle, LinkedList<Task>> lVT = oldCOD.linkedVehicleTasks;
-		HashMap<Task, TaskInformation> tI = oldCOD.taskInformation;
-		linkedVehicleTasks = new HashMap<Vehicle, LinkedList<Task>>();
-		taskInformation = new HashMap<Task, TaskInformation>();
-		Vehicle v;
-		for (Entry<Vehicle, LinkedList<Task>> e : lVT.entrySet()) {
-			v = e.getKey();
-			linkedVehicleTasks.put(v, new LinkedList<Task>());
-			linkedVehicleTasks.get(v).addAll(lVT.get(v));
-			for (Task t : linkedVehicleTasks.get(v)) {
-				taskInformation.put(t, tI.get(t).clone());
+		linkedVehicleTasks = new HashMap<Vehicle, LinkedList<VAction>>();
+		for (Entry<Vehicle, LinkedList<VAction>> e : oldCOD.linkedVehicleTasks.entrySet()) {
+			LinkedList<VAction> list = new LinkedList<VAction>();
+			for (VAction va : e.getValue()) {
+				list.add(va.clone());
 			}
+			linkedVehicleTasks.put(e.getKey(), list);
 		}
+		taskVehiclePair = new HashMap<Task, Vehicle>();
+		taskVehiclePair.putAll(oldCOD.taskVehiclePair);
 	}
 
 	@Override
@@ -45,87 +43,139 @@ public class COD {
 		return new COD(this);
 	}
 
-	public Task nextTask(Task t) {
-		Vehicle vOrig = taskInformation.get(t).vehicle;
-		ListIterator<Task> i = linkedVehicleTasks.get(vOrig).listIterator();
+	public VAction nextVAction(VAction va) {
+		Vehicle vOrig = taskVehiclePair.get(va.task);
+		ListIterator<VAction> i = linkedVehicleTasks.get(vOrig).listIterator();
 
 		while (i.hasNext()) {
-			if (t == i.next()) {
+			if (va == i.next()) {
 				return i.hasNext() ? i.next() : null;
 			}
 		}
 		return null;
 	}
 
-	public void setNextTask(Task tOrig, Task tNext, Vehicle v) {
-		if (tOrig == null) {
+	public void setNextVAction(VAction vaOrig, VAction vaNext, Vehicle v) {
+		if (vaOrig == null) {
 			System.out.println("this needs to be fixed in changing task order bc tpre1 is set to null");
+			System.exit(-1);
 		}
-		if (tNext == null) {
+		if (vaNext == null) {
 			// can happen if we call nextTask on a last task. nextTask will then
 			// return null and so tNext will be null here
 			return;
 		}
 
-		TaskInformation ti1 = taskInformation.get(tOrig);
-		TaskInformation ti2 = taskInformation.get(tNext);
-		if (!ti1.vehicle.equals(ti2.vehicle)) {
-			ti1.vehicle = v;
-			ti2.vehicle = v;
+		if (!taskVehiclePair.get(vaOrig.task).equals(taskVehiclePair.get(vaNext.task))) {
+			// shouldnt happen anymore
+			System.out.println("taO " + vaOrig.task.id + " - taN " + vaNext.task.id);
+			System.exit(-1);
+			// taskVehiclePair.put(vaOrig.task, v);
+			// taskVehiclePair.put(vaNext.task, v);
+
 		}
 
-		ListIterator<Task> i = linkedVehicleTasks.get(v).listIterator();
+		ListIterator<VAction> i = linkedVehicleTasks.get(v).listIterator();
+
 		while (i.hasNext()) {
-			if (tOrig == i.next()) {
+			if (vaOrig == i.next()) {
 				int taskIndex = i.nextIndex();
-				linkedVehicleTasks.get(v).add(taskIndex, tNext);
+				linkedVehicleTasks.get(v).add(taskIndex, vaNext);
 				break;
 			}
 		}
 	}
 
-	public Task nextTask(Vehicle v) {
+	public VAction nextVAction(Vehicle v) {
 		if (linkedVehicleTasks.get(v).size() > 0) {
-			return linkedVehicleTasks.get(v).getFirst();
+			// System.out.println(this);
+			VAction va = linkedVehicleTasks.get(v).getFirst();
+			if (!va.isPickup()) {
+				System.out.println("first va wasnt pickup!");
+				System.exit(-1);
+			}
+			return va;
 		}
 		return null;
 	}
 
-	public void setNextTask(Vehicle vOrig, Task tNext) {
-		if (tNext != null) {
-			linkedVehicleTasks.get(vOrig).add(0, tNext);
-			taskInformation.get(tNext).vehicle = vOrig;
+	public Task nextTask(Vehicle v) {
+		if (linkedVehicleTasks.get(v).size() > 0) {
+			VAction pickup = linkedVehicleTasks.get(v).getFirst();
+			if (!pickup.isPickup()) {
+				System.out.println("first va wasnt pickup!");
+				System.exit(-1);
+			}
+			return pickup.task;
+		}
+		return null;
+	}
+
+	public void setNextVAction(Vehicle vOrig, VAction vaNext) {
+		if (vaNext != null) {
+			linkedVehicleTasks.get(vOrig).add(0, vaNext);
+			taskVehiclePair.put(vaNext.task, vOrig);
 		}
 	}
 
-	public int time(Task t) {
-		return taskInformation.get(t).time;
+	// public int time(Task t) {
+	// return taskInformation.get(t).time;
+	// }
+
+	// public void setTime(Task t, int newTime) {
+	// taskInformation.get(t).time = newTime;
+	// }
+
+	public Vehicle vehicle(VAction va) {
+		return taskVehiclePair.get(va.task);
 	}
 
-	public void setTime(Task t, int newTime) {
-		taskInformation.get(t).time = newTime;
-	}
-
-	public Vehicle vehicle(Task t) {
-		return taskInformation.get(t).vehicle;
-	}
-
-	public void setVehicle(Task t, Vehicle v) {
-		taskInformation.get(t).vehicle = v;
+	public void setVehicle(VAction va, Vehicle v) {
+		taskVehiclePair.put(va.task, v);
 	}
 
 	public boolean addTask(Vehicle v, Task t) {
 		if (v.capacity() >= t.weight) {
-			if (linkedVehicleTasks.get(v).size() > 0) {
-				taskInformation.put(t,
-				        new TaskInformation(taskInformation.get(linkedVehicleTasks.get(v).getLast()).time + 1, v));
-			} else {
-				taskInformation.put(t, new TaskInformation(1, v));
-			}
-			linkedVehicleTasks.get(v).add(t);
+			VAction pickup = new VPickupAction(t, v.capacity() - t.weight);
+			VAction delivery = new VDeliveryAction(t, v.capacity());
+			taskVehiclePair.put(t, v);
+			linkedVehicleTasks.get(v).add(0, delivery);
+			linkedVehicleTasks.get(v).add(0, pickup);
 			return true;
 		}
 		return false;
+	}
+
+	public boolean updateCapacity(Vehicle v, int start) {
+		if (linkedVehicleTasks.get(v).isEmpty()) {
+			return true;
+		}
+		Iterator<VAction> i;
+		VAction pre = null;
+		VAction next = null;
+		if (start > 0) {
+			i = linkedVehicleTasks.get(v).listIterator(start - 1);
+			pre = i.next();
+			next = i.next();
+
+			if (!next.updateCapacity(pre.remainingVCapacity)) {
+				return false;
+			}
+		} else {
+			i = linkedVehicleTasks.get(v).listIterator(start);
+			next = i.next();
+
+			next.updateCapacity(v.capacity());
+		}
+
+		while (i.hasNext()) {
+			pre = next;
+			next = i.next();
+			if (!next.updateCapacity(pre.remainingVCapacity)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
@@ -133,14 +183,12 @@ public class COD {
 
 		StringBuilder s = new StringBuilder();
 		Vehicle v;
-		for (Entry<Vehicle, LinkedList<Task>> e : linkedVehicleTasks.entrySet()) {
+		for (Entry<Vehicle, LinkedList<VAction>> e : linkedVehicleTasks.entrySet()) {
 			v = e.getKey();
 
 			s.append("v" + v.id());
-			for (Task t : e.getValue()) {
-				// s.append("->t" + t.id);
-				s.append("->t" + t.id + "(" + taskInformation.get(t).time + ", v" + taskInformation.get(t).vehicle.id()
-				        + ")");
+			for (VAction va : e.getValue()) {
+				s.append("->" + va);
 			}
 			s.append("\n");
 		}
