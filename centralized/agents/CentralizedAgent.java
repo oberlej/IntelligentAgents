@@ -1,10 +1,8 @@
 package agents;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import logist.LogistSettings;
 import logist.agent.Agent;
@@ -78,7 +76,7 @@ public class CentralizedAgent implements CentralizedBehavior {
 			}
 			plans.add(p);
 		}
-		// System.out.println("Sum for best sol=" + sum);
+		System.out.println("Sum for best sol=" + sum);
 		return plans;
 	}
 
@@ -109,27 +107,21 @@ public class CentralizedAgent implements CentralizedBehavior {
 
 	private COD selectInitialSolution() {
 		COD initA = new COD(listOfVehicles);
-		List<Vehicle> vehicles = new ArrayList<Vehicle>();
-		vehicles.addAll(listOfVehicles);
-		Collections.shuffle(vehicles);
-		List<Task> tasks = new ArrayList<Task>();
-		tasks.addAll(listOfTasks);
-		Collections.shuffle(tasks);
-
+		// random distribution
 		int lastVehicle = 0;
-		for (Task t : tasks) {
+		for (Task t : listOfTasks) {
 			int nbTry = 1;
-			while (!initA.addTask(vehicles.get(lastVehicle++), t)) {
-				if (nbTry == vehicles.size()) {
+			while (!initA.addTask(listOfVehicles.get(lastVehicle++), t)) {
+				if (nbTry == listOfVehicles.size()) {
 					System.out.println("Impossible to give task " + t + " to any vehicle");
 					System.exit(-1);
 				}
 				nbTry++;
-				if (lastVehicle == vehicles.size()) {
+				if (lastVehicle == listOfVehicles.size()) {
 					lastVehicle = 0;
 				}
 			}
-			if (lastVehicle == vehicles.size()) {
+			if (lastVehicle == listOfVehicles.size()) {
 				lastVehicle = 0;
 			}
 		}
@@ -141,21 +133,19 @@ public class CentralizedAgent implements CentralizedBehavior {
 	private COD localChoice(List<COD> N, COD oldA) {
 		// System.out.println("in local choice");
 		HashMap<COD, Double> bestChoicesA = new HashMap<COD, Double>();
-		if (N.isEmpty()) {
-			return oldA;
-		}
-		COD choiceA = N.get(0);
+
+		COD choiceA = oldA;
+
 		bestChoicesA.put(choiceA, C(choiceA));
 
-		double oldCost = C(oldA);
-		// System.out.println("old cost: " + oldCost);
+		System.out.println(N.size());
 
-		for (int i = 1; i < N.size(); i++) {
-			COD A = N.get(i);
-			double costA = C(A);
+		for (COD A : N) {
+
+			Double costA = C(A);
 
 			if (costA <= bestChoicesA.get(choiceA)) {
-				// if (costA <= bestChoicesA.get(choiceA) && costA != oldCost) {
+
 				// equally good so add to the list
 				if (costA < bestChoicesA.get(choiceA)) {
 					bestChoicesA.clear();
@@ -167,8 +157,8 @@ public class CentralizedAgent implements CentralizedBehavior {
 
 		if (Math.random() < LOCAL_CHOICE_P) {
 			COD choice = (COD) bestChoicesA.keySet().toArray()[(int) (Math.random() * bestChoicesA.size())];
-			// System.out.println(bestChoicesA.get(choice));
-			// System.out.println("new cost" + bestChoicesA.get(choice));
+			System.out.println(choice);
+			System.out.println(bestChoicesA.get(choice));
 			return choice;
 		}
 
@@ -182,29 +172,21 @@ public class CentralizedAgent implements CentralizedBehavior {
 
 		// change vehicle
 		Vehicle vRand;
-		// System.out.println(oldA);
-		Random r = new Random();
 		do {
-			vRand = listOfVehicles.get(r.nextInt(listOfVehicles.size()));
+			vRand = listOfVehicles.get((int) (Math.random() * (listOfVehicles.size() - 1)));
 		} while (oldA.nextVAction(vRand) == null);
 
-		// System.out.println("before change vehc");
 		for (Vehicle v : listOfVehicles) {
 			if (!v.equals(vRand)) {
-				for (Task t : listOfTasks) {
-					if (oldA.taskVehiclePair.get(t).equals(vRand) && t.weight <= v.capacity()) {
-						// System.out.println("call changing vehicle");
-
-						COD A = changingVehicle(oldA, vRand, v, t);
-						if (A != null) {
-							N.add(A);
-						}
+				if (oldA.nextVAction(vRand).task.weight < v.capacity()) {
+					COD A = changingVehicle(oldA, vRand, v);
+					if (A != null) {
+						N.add(A);
 					}
 				}
 			}
 		}
 
-		// System.out.println("before ");
 		// change tasks
 		int length = oldA.linkedVehicleTasks.get(vRand).size();
 
@@ -222,15 +204,14 @@ public class CentralizedAgent implements CentralizedBehavior {
 		return N;
 	}
 
-	private COD changingVehicle(COD A, Vehicle v1, Vehicle v2, Task t) {
+	private COD changingVehicle(COD A, Vehicle v1, Vehicle v2) {
 		// System.out.println("in changing vehicle. from v" + v1.id() + " to v"
 		// + v2.id());
 		// System.out.println("Before:\n" + A);
 
 		COD A1 = A.clone();
 
-		int indexT = A.linkedVehicleTasks.get(v1).indexOf(new VPickupAction(t, 0));
-
+		Task t = A1.nextTask(v1);
 		// System.out.println("task t" + t.id);
 		VAction delivery = new VDeliveryAction(t, 0);
 		VAction pickup = new VPickupAction(t, 0);
@@ -239,25 +220,10 @@ public class CentralizedAgent implements CentralizedBehavior {
 		A1.linkedVehicleTasks.get(v1).remove(pickup);
 		// System.out.println("After remove:\n" + A1);
 		// add to v2
+		A1.addTask(v2, t);
 
-		Random r = new Random();
-		if (A1.linkedVehicleTasks.get(v2).size() > 2) {
-			int indexP = r.nextInt(A1.linkedVehicleTasks.get(v2).size() - 1);
-			int indexD = r.nextInt(A1.linkedVehicleTasks.get(v2).size() - indexP) + indexP;
+		A1.updateCapacity(v1, 0);
 
-			A1.linkedVehicleTasks.get(v2).add(indexD, delivery);
-			A1.linkedVehicleTasks.get(v2).add(indexP, pickup);
-
-			A1.taskVehiclePair.put(t, v2);
-		} else {
-			A1.addTask(v2, t);
-		}
-
-		// A1.addTask(v2, t);
-
-		if (indexT < A1.linkedVehicleTasks.get(v1).size()) {
-			A1.updateCapacity(v1, indexT);
-		}
 		// System.out.println("After:\n" + A1);
 		// System.exit(0);
 		return A1.updateCapacity(v2, 0) ? A1 : null;
