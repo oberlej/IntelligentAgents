@@ -21,6 +21,7 @@ public class COD {
 		for (Vehicle v : listOfVehicles) {
 			linkedVehicleTasks.put(v, new LinkedList<VAction>());
 		}
+
 		taskVehiclePair = new HashMap<Task, Vehicle>();
 	}
 

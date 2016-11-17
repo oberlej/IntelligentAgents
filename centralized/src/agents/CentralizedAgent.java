@@ -234,6 +234,7 @@ public class CentralizedAgent implements CentralizedBehavior {
 		// System.out.println("task t" + t.id);
 		VAction delivery = new VDeliveryAction(t, 0);
 		VAction pickup = new VPickupAction(t, 0);
+
 		// remove both vaction from v1
 		A1.linkedVehicleTasks.get(v1).remove(delivery);
 		A1.linkedVehicleTasks.get(v1).remove(pickup);

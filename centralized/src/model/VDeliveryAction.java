@@ -10,6 +10,7 @@ public class VDeliveryAction extends VAction {
 	public VDeliveryAction(Task t, int remainingVCapacity) {
 		super(t, remainingVCapacity);
 		isPickup = false;
+
 	}
 
 	@Override

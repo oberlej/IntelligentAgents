@@ -16,6 +16,7 @@ public class VPickupAction extends VAction {
 	public boolean updateCapacity(int initCapactiy) {
 		remainingVCapacity = initCapactiy - task.weight;
 		return remainingVCapacity >= 0;
+
 	}
 
 	@Override
