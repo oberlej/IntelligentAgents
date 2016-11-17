@@ -3,8 +3,11 @@ package agents;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import logist.LogistSettings;
 import logist.agent.Agent;
@@ -33,7 +36,9 @@ public class CentralizedAgent implements CentralizedBehavior {
 	private Agent agent;
 	private long timeout_setup;
 	private long timeout_plan;
-
+	
+	private Set<COD> neighbors;
+	
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution, Agent agent) {
 		// this code is used to get the timeouts
@@ -61,7 +66,7 @@ public class CentralizedAgent implements CentralizedBehavior {
 		List<Plan> plans = new ArrayList<Plan>();
 
 		COD bestSolution = SLS();
-
+		
 		Plan p;
 		double sum = 0;
 		for (Vehicle v : vehicles) {
@@ -89,22 +94,35 @@ public class CentralizedAgent implements CentralizedBehavior {
 	}
 
 	private COD SLS() {
+		
+		neighbors = new HashSet<COD>();
+		
 		COD A = selectInitialSolution();
+		
+		COD bestA = A;
+		Double costBestA = C(A);
+		
 		// System.out.println("Nb tasks: " + listOfTasks.size());
 		// System.out.println(A);
-		List<COD> N;
 
 		long start_time = System.currentTimeMillis();
-		int i = 0;
+		
 		do {
-			i++;
 			// System.out.println("in sls");
 			COD oldA = A;
-			N = chooseNeighbors(oldA);
-			A = localChoice(N, oldA);
+			chooseNeighbors(oldA);
+			A = localChoice(oldA);
+			
+			Double costA = C(A); 
+			if (costA < costBestA) {
+				bestA = A;
+				costBestA = costA;
+				System.out.println(costA);
+			}
+			
 		} while (start_time + timeout_plan - 300 > System.currentTimeMillis());
 
-		return A;
+		return bestA;
 	}
 
 	private COD selectInitialSolution() {
@@ -138,20 +156,23 @@ public class CentralizedAgent implements CentralizedBehavior {
 
 	}
 
-	private COD localChoice(List<COD> N, COD oldA) {
+	private COD localChoice(COD oldA) {
 		// System.out.println("in local choice");
 		HashMap<COD, Double> bestChoicesA = new HashMap<COD, Double>();
-		if (N.isEmpty()) {
+		if (neighbors.isEmpty()) {
 			return oldA;
 		}
-		COD choiceA = N.get(0);
+		
+		Iterator<COD> i = neighbors.iterator();
+		
+		COD choiceA = i.next();
 		bestChoicesA.put(choiceA, C(choiceA));
 
-		double oldCost = C(oldA);
+//		double oldCost = C(oldA);
 		// System.out.println("old cost: " + oldCost);
-
-		for (int i = 1; i < N.size(); i++) {
-			COD A = N.get(i);
+		
+		while(i.hasNext()) {
+			COD A = i.next();
 			double costA = C(A);
 
 			if (costA <= bestChoicesA.get(choiceA)) {
@@ -164,21 +185,21 @@ public class CentralizedAgent implements CentralizedBehavior {
 				bestChoicesA.put(A, costA);
 			}
 		}
-
+		
 		if (Math.random() < LOCAL_CHOICE_P) {
 			COD choice = (COD) bestChoicesA.keySet().toArray()[(int) (Math.random() * bestChoicesA.size())];
 			// System.out.println(bestChoicesA.get(choice));
 			// System.out.println("new cost" + bestChoicesA.get(choice));
+			neighbors.clear();
 			return choice;
 		}
 
 		return oldA;
 	}
 
-	private List<COD> chooseNeighbors(COD oldA) {
+	private void chooseNeighbors(COD oldA) {
 		// System.out.println("in choose neighb");
 		// neighbor solutions
-		List<COD> N = new ArrayList<COD>();
 
 		// change vehicle
 		Vehicle vRand;
@@ -197,7 +218,7 @@ public class CentralizedAgent implements CentralizedBehavior {
 
 						COD A = changingVehicle(oldA, vRand, v, t);
 						if (A != null) {
-							N.add(A);
+							neighbors.add(A);
 						}
 					}
 				}
@@ -214,12 +235,11 @@ public class CentralizedAgent implements CentralizedBehavior {
 					// System.out.println("call changing task order");
 					COD A = changingVActionOrder(oldA, vRand, i, j);
 					if (A != null) {
-						N.add(A);
+						neighbors.add(A);
 					}
 				}
 			}
 		}
-		return N;
 	}
 
 	private COD changingVehicle(COD A, Vehicle v1, Vehicle v2, Task t) {

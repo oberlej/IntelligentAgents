@@ -28,3 +28,7 @@ centralized/repast.log
 centralized/history.xml
 
 auction/.classpath
+
+.recommenders/*
+
+.recommenders/caches/identified-project-coordinates.json
