@@ -36,9 +36,9 @@ public class CentralizedAgent implements CentralizedBehavior {
 	private Agent agent;
 	private long timeout_setup;
 	private long timeout_plan;
-	
+
 	private Set<COD> neighbors;
-	
+
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution, Agent agent) {
 		// this code is used to get the timeouts
@@ -66,7 +66,7 @@ public class CentralizedAgent implements CentralizedBehavior {
 		List<Plan> plans = new ArrayList<Plan>();
 
 		COD bestSolution = SLS();
-		
+
 		Plan p;
 		double sum = 0;
 		for (Vehicle v : vehicles) {
@@ -94,32 +94,32 @@ public class CentralizedAgent implements CentralizedBehavior {
 	}
 
 	private COD SLS() {
-		
+
 		neighbors = new HashSet<COD>();
-		
+
 		COD A = selectInitialSolution();
-		
+
 		COD bestA = A;
 		Double costBestA = C(A);
-		
+
 		// System.out.println("Nb tasks: " + listOfTasks.size());
 		// System.out.println(A);
 
 		long start_time = System.currentTimeMillis();
-		
+
 		do {
 			// System.out.println("in sls");
 			COD oldA = A;
 			chooseNeighbors(oldA);
 			A = localChoice(oldA);
-			
-			Double costA = C(A); 
+
+			Double costA = C(A);
 			if (costA < costBestA) {
 				bestA = A;
 				costBestA = costA;
 				System.out.println(costA);
 			}
-			
+
 		} while (start_time + timeout_plan - 300 > System.currentTimeMillis());
 
 		return bestA;
@@ -162,16 +162,16 @@ public class CentralizedAgent implements CentralizedBehavior {
 		if (neighbors.isEmpty()) {
 			return oldA;
 		}
-		
+
 		Iterator<COD> i = neighbors.iterator();
-		
+
 		COD choiceA = i.next();
 		bestChoicesA.put(choiceA, C(choiceA));
 
-//		double oldCost = C(oldA);
+		// double oldCost = C(oldA);
 		// System.out.println("old cost: " + oldCost);
-		
-		while(i.hasNext()) {
+
+		while (i.hasNext()) {
 			COD A = i.next();
 			double costA = C(A);
 
@@ -185,7 +185,7 @@ public class CentralizedAgent implements CentralizedBehavior {
 				bestChoicesA.put(A, costA);
 			}
 		}
-		
+
 		if (Math.random() < LOCAL_CHOICE_P) {
 			COD choice = (COD) bestChoicesA.keySet().toArray()[(int) (Math.random() * bestChoicesA.size())];
 			// System.out.println(bestChoicesA.get(choice));

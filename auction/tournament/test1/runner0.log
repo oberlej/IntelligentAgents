@@ -1,0 +1,311 @@
+05:27:30.057 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/agents-YourName-YourName2.xml -a tournament/test1/agents.xml config/agents.xml YourName YourName2
+05:27:30.285 CONFIG | Reading config/agents.xml
+05:27:30.358 WARNING | logist.config.ParserException: Tag <root> has no 'settings' element
+05:27:30.363 SEVERE | LogistPlatform returned error code 254
+05:27:30.368 WARNING | 	at logist.config.ParserException.missingTag(ParserException.java:13)
+05:27:30.369 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/agents-YourName-auction.xml -a tournament/test1/agents.xml config/agents.xml YourName auction
+05:27:30.370 WARNING | 	at logist.config.XMLTag.getUniqueChild(XMLTag.java:94)
+05:27:30.372 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:42)
+05:27:30.373 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:30.374 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:30.375 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:30.508 CONFIG | Reading config/agents.xml
+05:27:30.580 WARNING | logist.config.ParserException: Tag <root> has no 'settings' element
+05:27:30.582 WARNING | 	at logist.config.ParserException.missingTag(ParserException.java:13)
+05:27:30.583 WARNING | 	at logist.config.XMLTag.getUniqueChild(XMLTag.java:94)
+05:27:30.584 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:42)
+05:27:30.585 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:30.586 SEVERE | LogistPlatform returned error code 254
+05:27:30.586 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:30.587 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:30.589 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/agents-YourName-dummy.xml -a tournament/test1/agents.xml config/agents.xml YourName dummy
+05:27:30.722 CONFIG | Reading config/agents.xml
+05:27:30.795 WARNING | logist.config.ParserException: Tag <root> has no 'settings' element
+05:27:30.796 WARNING | 	at logist.config.ParserException.missingTag(ParserException.java:13)
+05:27:30.797 WARNING | 	at logist.config.XMLTag.getUniqueChild(XMLTag.java:94)
+05:27:30.798 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:42)
+05:27:30.799 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:30.800 SEVERE | LogistPlatform returned error code 254
+05:27:30.800 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:30.800 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/agents-YourName2-YourName.xml -a tournament/test1/agents.xml config/agents.xml YourName2 YourName
+05:27:30.801 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:30.939 CONFIG | Reading config/agents.xml
+05:27:31.010 WARNING | logist.config.ParserException: Tag <root> has no 'settings' element
+05:27:31.011 WARNING | 	at logist.config.ParserException.missingTag(ParserException.java:13)
+05:27:31.012 WARNING | 	at logist.config.XMLTag.getUniqueChild(XMLTag.java:94)
+05:27:31.012 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:42)
+05:27:31.013 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:31.014 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:31.015 SEVERE | LogistPlatform returned error code 254
+05:27:31.015 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:31.016 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/agents-YourName2-auction.xml -a tournament/test1/agents.xml config/agents.xml YourName2 auction
+05:27:31.153 CONFIG | Reading config/agents.xml
+05:27:31.226 WARNING | logist.config.ParserException: Tag <root> has no 'settings' element
+05:27:31.227 WARNING | 	at logist.config.ParserException.missingTag(ParserException.java:13)
+05:27:31.228 WARNING | 	at logist.config.XMLTag.getUniqueChild(XMLTag.java:94)
+05:27:31.229 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:42)
+05:27:31.230 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:31.231 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:31.231 SEVERE | LogistPlatform returned error code 254
+05:27:31.232 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:31.232 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/agents-YourName2-dummy.xml -a tournament/test1/agents.xml config/agents.xml YourName2 dummy
+05:27:31.377 CONFIG | Reading config/agents.xml
+05:27:31.450 WARNING | logist.config.ParserException: Tag <root> has no 'settings' element
+05:27:31.451 WARNING | 	at logist.config.ParserException.missingTag(ParserException.java:13)
+05:27:31.452 WARNING | 	at logist.config.XMLTag.getUniqueChild(XMLTag.java:94)
+05:27:31.453 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:42)
+05:27:31.454 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:31.454 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:31.455 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:31.455 SEVERE | LogistPlatform returned error code 254
+05:27:31.456 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/agents-auction-YourName.xml -a tournament/test1/agents.xml config/agents.xml auction YourName
+05:27:31.603 CONFIG | Reading config/agents.xml
+05:27:31.677 WARNING | logist.config.ParserException: Tag <root> has no 'settings' element
+05:27:31.678 WARNING | 	at logist.config.ParserException.missingTag(ParserException.java:13)
+05:27:31.679 WARNING | 	at logist.config.XMLTag.getUniqueChild(XMLTag.java:94)
+05:27:31.680 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:42)
+05:27:31.680 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:31.681 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:31.681 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:31.682 SEVERE | LogistPlatform returned error code 254
+05:27:31.686 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/agents-auction-YourName2.xml -a tournament/test1/agents.xml config/agents.xml auction YourName2
+05:27:31.824 CONFIG | Reading config/agents.xml
+05:27:31.899 WARNING | logist.config.ParserException: Tag <root> has no 'settings' element
+05:27:31.899 WARNING | 	at logist.config.ParserException.missingTag(ParserException.java:13)
+05:27:31.900 WARNING | 	at logist.config.XMLTag.getUniqueChild(XMLTag.java:94)
+05:27:31.901 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:42)
+05:27:31.901 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:31.902 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:31.903 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:31.904 SEVERE | LogistPlatform returned error code 254
+05:27:31.905 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/agents-dummy-YourName.xml -a tournament/test1/agents.xml config/agents.xml dummy YourName
+05:27:32.046 CONFIG | Reading config/agents.xml
+05:27:32.120 WARNING | logist.config.ParserException: Tag <root> has no 'settings' element
+05:27:32.121 WARNING | 	at logist.config.ParserException.missingTag(ParserException.java:13)
+05:27:32.121 WARNING | 	at logist.config.XMLTag.getUniqueChild(XMLTag.java:94)
+05:27:32.122 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:42)
+05:27:32.122 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:32.123 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:32.124 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:32.125 SEVERE | LogistPlatform returned error code 254
+05:27:32.126 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/agents-dummy-YourName2.xml -a tournament/test1/agents.xml config/agents.xml dummy YourName2
+05:27:32.262 CONFIG | Reading config/agents.xml
+05:27:32.335 WARNING | logist.config.ParserException: Tag <root> has no 'settings' element
+05:27:32.336 WARNING | 	at logist.config.ParserException.missingTag(ParserException.java:13)
+05:27:32.337 WARNING | 	at logist.config.XMLTag.getUniqueChild(XMLTag.java:94)
+05:27:32.338 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:42)
+05:27:32.338 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:32.339 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:32.339 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:32.340 SEVERE | LogistPlatform returned error code 254
+05:27:32.341 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction-YourName-YourName2.xml -a tournament/test1/agents.xml config/auction.xml YourName YourName2
+05:27:32.482 CONFIG | Reading config/auction.xml
+05:27:32.556 CONFIG | Reading config/settings_auction.xml
+05:27:32.793 CONFIG | Reading config/topology/england.xml
+05:27:32.821 CONFIG | Reading tournament/test1/agents.xml
+05:27:32.854 CONFIG | Reading config/settings_auction.xml
+05:27:32.891 WARNING | logist.LogistException: agent YourName crashed: java.lang.UnsupportedOperationException
+05:27:32.892 WARNING | 	at logist.agent.TimeoutGuard.schedule(TimeoutGuard.java:34)
+05:27:32.893 WARNING | 	at logist.agent.AuctionAgent.askBid(AuctionAgent.java:90)
+05:27:32.893 WARNING | 	at logist.simulation.Manager.beginRound(Manager.java:132)
+05:27:32.894 WARNING | 	at logist.simulation.Manager.run(Manager.java:60)
+05:27:32.894 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:126)
+05:27:32.895 WARNING | Caused by: java.util.concurrent.ExecutionException: java.lang.UnsupportedOperationException
+05:27:32.895 WARNING | 	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+05:27:32.895 WARNING | 	at java.util.concurrent.FutureTask.get(FutureTask.java:206)
+05:27:32.896 WARNING | 	at logist.agent.TimeoutGuard.schedule(TimeoutGuard.java:29)
+05:27:32.896 WARNING | 	... 4 more
+05:27:32.897 WARNING | Caused by: java.lang.UnsupportedOperationException
+05:27:32.897 WARNING | 	at java.util.Collections$UnmodifiableList.set(Collections.java:1311)
+05:27:32.898 WARNING | 	at java.util.Collections.swap(Collections.java:497)
+05:27:32.898 WARNING | 	at java.util.Collections.shuffle(Collections.java:458)
+05:27:32.899 WARNING | 	at java.util.Collections.shuffle(Collections.java:425)
+05:27:32.899 WARNING | 	at agent.AuctionAgent.askPrice(AuctionAgent.java:86)
+05:27:32.899 WARNING | 	at logist.agent.AuctionAgent$2.call(AuctionAgent.java:101)
+05:27:32.900 WARNING | 	at logist.agent.AuctionAgent$2.call(AuctionAgent.java:1)
+05:27:32.900 WARNING | 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+05:27:32.901 WARNING | 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+05:27:32.901 WARNING | 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+05:27:32.902 WARNING | 	at java.lang.Thread.run(Thread.java:745)
+05:27:33.069 SEVERE | LogistPlatform returned error code 253
+05:27:33.070 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction-YourName-auction.xml -a tournament/test1/agents.xml config/auction.xml YourName auction
+05:27:33.225 CONFIG | Reading config/auction.xml
+05:27:33.304 CONFIG | Reading config/settings_auction.xml
+05:27:33.509 CONFIG | Reading config/topology/england.xml
+05:27:33.525 CONFIG | Reading tournament/test1/agents.xml
+05:27:33.539 WARNING | logist.config.ParserException: Class-path 'agents/auction.jar' does not exist
+05:27:33.540 WARNING | 	at logist.config.AgentParser$Entry.getClassLoader(AgentParser.java:107)
+05:27:33.540 WARNING | 	at logist.config.AgentParser.parseAgents(AgentParser.java:48)
+05:27:33.541 WARNING | 	at logist.config.Parsers.parseAgents(Parsers.java:54)
+05:27:33.541 WARNING | 	at logist.config.ConfigParser.parseAgents(ConfigParser.java:63)
+05:27:33.542 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:50)
+05:27:33.542 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:33.542 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:33.542 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:33.769 SEVERE | LogistPlatform returned error code 254
+05:27:33.772 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction-YourName-dummy.xml -a tournament/test1/agents.xml config/auction.xml YourName dummy
+05:27:33.921 CONFIG | Reading config/auction.xml
+05:27:34.003 CONFIG | Reading config/settings_auction.xml
+05:27:34.202 CONFIG | Reading config/topology/england.xml
+05:27:34.219 CONFIG | Reading tournament/test1/agents.xml
+05:27:34.232 WARNING | logist.config.ParserException: Class-path 'agents/dummy.jar' does not exist
+05:27:34.233 WARNING | 	at logist.config.AgentParser$Entry.getClassLoader(AgentParser.java:107)
+05:27:34.233 WARNING | 	at logist.config.AgentParser.parseAgents(AgentParser.java:48)
+05:27:34.234 WARNING | 	at logist.config.Parsers.parseAgents(Parsers.java:54)
+05:27:34.234 WARNING | 	at logist.config.ConfigParser.parseAgents(ConfigParser.java:63)
+05:27:34.234 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:50)
+05:27:34.235 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:34.235 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:34.235 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:34.467 SEVERE | LogistPlatform returned error code 254
+05:27:34.468 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction-YourName2-YourName.xml -a tournament/test1/agents.xml config/auction.xml YourName2 YourName
+05:27:34.625 CONFIG | Reading config/auction.xml
+05:27:34.704 CONFIG | Reading config/settings_auction.xml
+05:27:34.904 CONFIG | Reading config/topology/england.xml
+05:27:34.922 CONFIG | Reading tournament/test1/agents.xml
+05:27:34.950 CONFIG | Reading config/settings_auction.xml
+05:27:34.993 WARNING | logist.LogistException: agent YourName crashed: java.lang.UnsupportedOperationException
+05:27:34.994 WARNING | 	at logist.agent.TimeoutGuard.schedule(TimeoutGuard.java:34)
+05:27:34.994 WARNING | 	at logist.agent.AuctionAgent.askBid(AuctionAgent.java:90)
+05:27:34.995 WARNING | 	at logist.simulation.Manager.beginRound(Manager.java:132)
+05:27:34.995 WARNING | 	at logist.simulation.Manager.run(Manager.java:60)
+05:27:34.996 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:126)
+05:27:34.996 WARNING | Caused by: java.util.concurrent.ExecutionException: java.lang.UnsupportedOperationException
+05:27:34.996 WARNING | 	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+05:27:34.997 WARNING | 	at java.util.concurrent.FutureTask.get(FutureTask.java:206)
+05:27:34.997 WARNING | 	at logist.agent.TimeoutGuard.schedule(TimeoutGuard.java:29)
+05:27:34.998 WARNING | 	... 4 more
+05:27:34.998 WARNING | Caused by: java.lang.UnsupportedOperationException
+05:27:34.998 WARNING | 	at java.util.Collections$UnmodifiableList.set(Collections.java:1311)
+05:27:34.999 WARNING | 	at java.util.Collections.swap(Collections.java:497)
+05:27:34.999 WARNING | 	at java.util.Collections.shuffle(Collections.java:458)
+05:27:34.999 WARNING | 	at java.util.Collections.shuffle(Collections.java:425)
+05:27:34.999 WARNING | 	at agent.AuctionAgent.askPrice(AuctionAgent.java:86)
+05:27:35.000 WARNING | 	at logist.agent.AuctionAgent$2.call(AuctionAgent.java:101)
+05:27:35.000 WARNING | 	at logist.agent.AuctionAgent$2.call(AuctionAgent.java:1)
+05:27:35.000 WARNING | 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+05:27:35.001 WARNING | 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+05:27:35.001 WARNING | 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+05:27:35.001 WARNING | 	at java.lang.Thread.run(Thread.java:745)
+05:27:35.165 SEVERE | LogistPlatform returned error code 253
+05:27:35.167 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction-YourName2-auction.xml -a tournament/test1/agents.xml config/auction.xml YourName2 auction
+05:27:35.325 CONFIG | Reading config/auction.xml
+05:27:35.401 CONFIG | Reading config/settings_auction.xml
+05:27:35.605 CONFIG | Reading config/topology/england.xml
+05:27:35.621 CONFIG | Reading tournament/test1/agents.xml
+05:27:35.633 WARNING | logist.config.ParserException: Class-path 'agents/auction.jar' does not exist
+05:27:35.634 WARNING | 	at logist.config.AgentParser$Entry.getClassLoader(AgentParser.java:107)
+05:27:35.634 WARNING | 	at logist.config.AgentParser.parseAgents(AgentParser.java:48)
+05:27:35.634 WARNING | 	at logist.config.Parsers.parseAgents(Parsers.java:54)
+05:27:35.635 WARNING | 	at logist.config.ConfigParser.parseAgents(ConfigParser.java:63)
+05:27:35.635 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:50)
+05:27:35.635 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:35.636 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:35.636 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:35.873 SEVERE | LogistPlatform returned error code 254
+05:27:35.877 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction-YourName2-dummy.xml -a tournament/test1/agents.xml config/auction.xml YourName2 dummy
+05:27:36.023 CONFIG | Reading config/auction.xml
+05:27:36.100 CONFIG | Reading config/settings_auction.xml
+05:27:36.307 CONFIG | Reading config/topology/england.xml
+05:27:36.324 CONFIG | Reading tournament/test1/agents.xml
+05:27:36.338 WARNING | logist.config.ParserException: Class-path 'agents/dummy.jar' does not exist
+05:27:36.339 WARNING | 	at logist.config.AgentParser$Entry.getClassLoader(AgentParser.java:107)
+05:27:36.339 WARNING | 	at logist.config.AgentParser.parseAgents(AgentParser.java:48)
+05:27:36.339 WARNING | 	at logist.config.Parsers.parseAgents(Parsers.java:54)
+05:27:36.340 WARNING | 	at logist.config.ConfigParser.parseAgents(ConfigParser.java:63)
+05:27:36.340 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:50)
+05:27:36.340 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:36.340 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:36.341 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:36.578 SEVERE | LogistPlatform returned error code 254
+05:27:36.579 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction-auction-YourName.xml -a tournament/test1/agents.xml config/auction.xml auction YourName
+05:27:36.745 CONFIG | Reading config/auction.xml
+05:27:36.824 CONFIG | Reading config/settings_auction.xml
+05:27:37.036 CONFIG | Reading config/topology/england.xml
+05:27:37.059 CONFIG | Reading tournament/test1/agents.xml
+05:27:37.067 WARNING | logist.config.ParserException: Class-path 'agents/auction.jar' does not exist
+05:27:37.068 WARNING | 	at logist.config.AgentParser$Entry.getClassLoader(AgentParser.java:107)
+05:27:37.068 WARNING | 	at logist.config.AgentParser.parseAgents(AgentParser.java:48)
+05:27:37.068 WARNING | 	at logist.config.Parsers.parseAgents(Parsers.java:54)
+05:27:37.069 WARNING | 	at logist.config.ConfigParser.parseAgents(ConfigParser.java:63)
+05:27:37.069 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:50)
+05:27:37.069 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:37.070 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:37.070 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:37.203 SEVERE | LogistPlatform returned error code 254
+05:27:37.204 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction-auction-YourName2.xml -a tournament/test1/agents.xml config/auction.xml auction YourName2
+05:27:37.391 CONFIG | Reading config/auction.xml
+05:27:37.497 CONFIG | Reading config/settings_auction.xml
+05:27:37.738 CONFIG | Reading config/topology/england.xml
+05:27:37.760 CONFIG | Reading tournament/test1/agents.xml
+05:27:37.772 WARNING | logist.config.ParserException: Class-path 'agents/auction.jar' does not exist
+05:27:37.773 WARNING | 	at logist.config.AgentParser$Entry.getClassLoader(AgentParser.java:107)
+05:27:37.773 WARNING | 	at logist.config.AgentParser.parseAgents(AgentParser.java:48)
+05:27:37.773 WARNING | 	at logist.config.Parsers.parseAgents(Parsers.java:54)
+05:27:37.773 WARNING | 	at logist.config.ConfigParser.parseAgents(ConfigParser.java:63)
+05:27:37.774 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:50)
+05:27:37.774 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:37.774 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:37.775 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:38.011 SEVERE | LogistPlatform returned error code 254
+05:27:38.013 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction-dummy-YourName.xml -a tournament/test1/agents.xml config/auction.xml dummy YourName
+05:27:38.157 CONFIG | Reading config/auction.xml
+05:27:38.235 CONFIG | Reading config/settings_auction.xml
+05:27:38.436 CONFIG | Reading config/topology/england.xml
+05:27:38.453 CONFIG | Reading tournament/test1/agents.xml
+05:27:38.459 WARNING | logist.config.ParserException: Class-path 'agents/dummy.jar' does not exist
+05:27:38.460 WARNING | 	at logist.config.AgentParser$Entry.getClassLoader(AgentParser.java:107)
+05:27:38.460 WARNING | 	at logist.config.AgentParser.parseAgents(AgentParser.java:48)
+05:27:38.461 WARNING | 	at logist.config.Parsers.parseAgents(Parsers.java:54)
+05:27:38.461 WARNING | 	at logist.config.ConfigParser.parseAgents(ConfigParser.java:63)
+05:27:38.462 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:50)
+05:27:38.462 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:38.462 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:38.463 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:38.697 SEVERE | LogistPlatform returned error code 254
+05:27:38.698 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction-dummy-YourName2.xml -a tournament/test1/agents.xml config/auction.xml dummy YourName2
+05:27:38.852 CONFIG | Reading config/auction.xml
+05:27:38.937 CONFIG | Reading config/settings_auction.xml
+05:27:39.144 CONFIG | Reading config/topology/england.xml
+05:27:39.162 CONFIG | Reading tournament/test1/agents.xml
+05:27:39.167 WARNING | logist.config.ParserException: Class-path 'agents/dummy.jar' does not exist
+05:27:39.168 WARNING | 	at logist.config.AgentParser$Entry.getClassLoader(AgentParser.java:107)
+05:27:39.168 WARNING | 	at logist.config.AgentParser.parseAgents(AgentParser.java:48)
+05:27:39.169 WARNING | 	at logist.config.Parsers.parseAgents(Parsers.java:54)
+05:27:39.169 WARNING | 	at logist.config.ConfigParser.parseAgents(ConfigParser.java:63)
+05:27:39.170 WARNING | 	at logist.config.ConfigParser.parse(ConfigParser.java:50)
+05:27:39.170 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:30)
+05:27:39.170 WARNING | 	at logist.config.Parsers.parseConfiguration(Parsers.java:25)
+05:27:39.170 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:116)
+05:27:39.246 SEVERE | LogistPlatform returned error code 254
+05:27:39.257 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction2-YourName-YourName2.xml -a tournament/test1/agents.xml config/auction2.xml YourName YourName2
+05:27:39.408 CONFIG | Reading config/auction2.xml
+05:27:39.493 CONFIG | Reading config/settings_auction.xml
+05:27:39.706 CONFIG | Reading config/topology/the_netherlands.xml
+05:27:39.729 CONFIG | Reading tournament/test1/agents.xml
+05:27:39.766 CONFIG | Reading config/settings_auction.xml
+05:27:39.802 WARNING | logist.LogistException: agent YourName crashed: java.lang.UnsupportedOperationException
+05:27:39.803 WARNING | 	at logist.agent.TimeoutGuard.schedule(TimeoutGuard.java:34)
+05:27:39.803 WARNING | 	at logist.agent.AuctionAgent.askBid(AuctionAgent.java:90)
+05:27:39.804 WARNING | 	at logist.simulation.Manager.beginRound(Manager.java:132)
+05:27:39.804 WARNING | 	at logist.simulation.Manager.run(Manager.java:60)
+05:27:39.804 WARNING | 	at logist.LogistPlatform.main(LogistPlatform.java:126)
+05:27:39.804 WARNING | Caused by: java.util.concurrent.ExecutionException: java.lang.UnsupportedOperationException
+05:27:39.805 WARNING | 	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+05:27:39.805 WARNING | 	at java.util.concurrent.FutureTask.get(FutureTask.java:206)
+05:27:39.805 WARNING | 	at logist.agent.TimeoutGuard.schedule(TimeoutGuard.java:29)
+05:27:39.805 WARNING | 	... 4 more
+05:27:39.806 WARNING | Caused by: java.lang.UnsupportedOperationException
+05:27:39.806 WARNING | 	at java.util.Collections$UnmodifiableList.set(Collections.java:1311)
+05:27:39.806 WARNING | 	at java.util.Collections.swap(Collections.java:497)
+05:27:39.806 WARNING | 	at java.util.Collections.shuffle(Collections.java:458)
+05:27:39.807 WARNING | 	at java.util.Collections.shuffle(Collections.java:425)
+05:27:39.807 WARNING | 	at agent.AuctionAgent.askPrice(AuctionAgent.java:86)
+05:27:39.807 WARNING | 	at logist.agent.AuctionAgent$2.call(AuctionAgent.java:101)
+05:27:39.808 WARNING | 	at logist.agent.AuctionAgent$2.call(AuctionAgent.java:1)
+05:27:39.808 WARNING | 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+05:27:39.808 WARNING | 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+05:27:39.808 WARNING | 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+05:27:39.809 WARNING | 	at java.lang.Thread.run(Thread.java:745)
+05:27:39.828 SEVERE | LogistPlatform returned error code 253
+05:27:39.830 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/test1/auction2-YourName-auction.xml -a tournament/test1/agents.xml config/auction2.xml YourName auction

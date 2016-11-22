@@ -26,7 +26,7 @@ import model.VAction;
 import model.VDeliveryAction;
 import model.VPickupAction;
 
-public class AuctionAgent implements AuctionBehavior {
+public class AuctionAgentInitialLow implements AuctionBehavior {
 
 	private List<Vehicle> listOfVehicles;
 	private List<Task> listOfTasks;
@@ -48,6 +48,8 @@ public class AuctionAgent implements AuctionBehavior {
 
 	private double totalReward = 0;
 	private double currentProfit = 0;
+
+	private double initialCost = 0;
 
 	private List<Task> opponentTasks;
 	private double opponentTotalReward = 0;
@@ -152,8 +154,14 @@ public class AuctionAgent implements AuctionBehavior {
 		}
 		System.out.println("NewProft: " + newProfit);
 
+		if (listOfTasks.size() == 1) {
+			initialCost = newCost;
+			bid = newCost / 3;
+		} else if (listOfTasks.size() <= 3) {
+			bid += initialCost / 3;
+		}
+		System.out.println("Final bid: " + bid);
 		System.out.println();
-
 		return (long) Math.round(bid);
 
 	}
