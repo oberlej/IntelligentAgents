@@ -52,6 +52,8 @@ public class AuctionAgentOpt implements AuctionBehavior {
 	private List<Task> opponentTasks;
 	private double opponentTotalReward = 0;
 
+	private double time = 0;
+
 	private final Double GREED_P = 1D;
 	private final Double PROFIT_P = 1D;
 	private final Double PICKUP_IC_P = 1D;
@@ -127,6 +129,7 @@ public class AuctionAgentOpt implements AuctionBehavior {
 
 	@Override
 	public Long askPrice(Task task) {
+		time++;
 		newPlan = null;
 		newCost = -1;
 		// add the task to a random vehicle
@@ -146,7 +149,7 @@ public class AuctionAgentOpt implements AuctionBehavior {
 		double profit = profit();
 		System.out.println("profit " + profit);
 
-		double pickupIncentiveValue = pickupIncentiveValue();
+		double pickupIncentiveValue = pickupIncentiveValue(task);
 		System.out.println("pickupIncentiveValue " + pickupIncentiveValue);
 
 		double greedValue = greedValue();
@@ -171,7 +174,7 @@ public class AuctionAgentOpt implements AuctionBehavior {
 	}
 
 	private double profit() {
-		double randomize = 0.75 + (int) (Math.random() * 1.25);
+		double randomize = 0.8 + (int) (Math.random() * 1.5);
 		double averageReward = totalReward / listOfTasks.size();
 		return averageReward * 0.1 * randomize;
 	}
@@ -208,8 +211,8 @@ public class AuctionAgentOpt implements AuctionBehavior {
 	private double greedValue() {
 		double value = 0;
 		if (currentProfit < 0) {
-			// compensate for neg proft
-			value = -currentProfit / 3;
+			// compensate for neg profit
+			value = -currentProfit * 0.01 * Math.pow(time > 10 ? 10 : time, 2);
 		}
 		return value;
 	}
@@ -219,8 +222,23 @@ public class AuctionAgentOpt implements AuctionBehavior {
 	 *
 	 * @return
 	 */
-	private double pickupIncentiveValue() {
-		double value = addedCost() * (1f / listOfTasks.size());
+	private double pickupIncentiveValue(Task t) {
+		// important to get early tasks. value higher if our nb tasks low
+		double value = addedCost() * (2f / (listOfTasks.size() * 3));
+
+		// check if the task is interesting
+		City p = t.pickupCity;
+		City d = t.deliveryCity;
+
+		// compute percentage of chance of getting a task on the way
+		double perc = 0;
+		for (City from : p.pathTo(d)) {
+			for (City onTheWay : from.pathTo(d)) {
+				perc += distribution.probability(from, onTheWay);
+			}
+		}
+		System.out.println("perc " + perc);
+		value += perc * value;
 		return value;
 	}
 
@@ -254,6 +272,15 @@ public class AuctionAgentOpt implements AuctionBehavior {
 	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
 		System.out.println("Last best plan found: " + currentPlan);
 		System.out.println("Cost: " + currentCost);
+
+		List<Plan> plans = new ArrayList<Plan>();
+		if (tasks.isEmpty()) {
+			for (Vehicle v : listOfVehicles) {
+				plans.add(new Plan(v.getCurrentCity()));
+			}
+			return plans;
+		}
+
 		isPlan = true;
 		listOfVehicles = vehicles;
 		listOfTasks.clear();
@@ -261,9 +288,9 @@ public class AuctionAgentOpt implements AuctionBehavior {
 			listOfTasks.add(t);
 		}
 
-		List<Plan> plans = new ArrayList<Plan>();
 		selectInitialSolution();
 		SLS();
+
 		System.out.println("New best plan found: " + newPlan);
 		System.out.println("Cost: " + newCost);
 		Plan p;

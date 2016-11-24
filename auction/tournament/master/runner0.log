@@ -1,0 +1,252 @@
+04:51:28.540 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/master/auction-master-rand.xml -a tournament/master/agents.xml config/auction.xml master rand
+04:51:28.783 CONFIG | Reading config/auction.xml
+04:51:28.863 CONFIG | Reading config/settings_auction.xml
+04:51:29.083 CONFIG | Reading config/topology/england.xml
+04:51:29.104 CONFIG | Reading tournament/master/agents.xml
+04:51:29.141 CONFIG | Reading config/settings_auction.xml
+04:51:33.927 CONFIG | addedCost 2191.0
+04:51:33.929 CONFIG | profit 0.0
+04:51:33.930 CONFIG | perc 0.08022732264913203
+04:51:33.930 CONFIG | pickupIncentiveValue 1577.8520896398209
+04:51:33.930 CONFIG | greedValue 0.0
+04:51:33.930 CONFIG | ourRatio 0.0
+04:51:33.930 CONFIG | opponentRatio NaN
+04:51:33.930 CONFIG | opponentValue 0.0
+04:51:33.930 CONFIG | bid 613.1479103601791
+04:51:33.930 CONFIG | our profit: 0.0
+04:51:33.930 CONFIG | 
+04:51:38.679 CONFIG | addedCost 2668.0
+04:51:38.679 CONFIG | profit 24.520000000000003
+04:51:38.679 CONFIG | perc 0.26893135112162303
+04:51:38.679 CONFIG | pickupIncentiveValue 1128.502981896172
+04:51:38.679 CONFIG | greedValue 63.120000000000005
+04:51:38.679 CONFIG | ourRatio 306.5
+04:51:38.679 CONFIG | opponentRatio NaN
+04:51:38.679 CONFIG | opponentValue 0.0
+04:51:38.680 CONFIG | bid 1627.1370181038278
+04:51:38.680 CONFIG | our profit: -1578.0
+04:51:38.680 CONFIG | 
+04:51:43.431 CONFIG | addedCost 274.0
+04:51:43.431 CONFIG | profit 134.4
+04:51:43.431 CONFIG | perc 0.0863199507312122
+04:51:43.431 CONFIG | pickupIncentiveValue 66.1448152706733
+04:51:43.431 CONFIG | greedValue 235.71
+04:51:43.431 CONFIG | ourRatio 746.6666666666666
+04:51:43.431 CONFIG | opponentRatio NaN
+04:51:43.432 CONFIG | opponentValue 0.0
+04:51:43.432 CONFIG | bid 577.9651847293267
+04:51:43.432 CONFIG | our profit: -2619.0
+04:51:43.432 CONFIG | 
+04:51:48.182 CONFIG | addedCost 748.0
+04:51:48.185 CONFIG | profit 56.36000000000001
+04:51:48.185 CONFIG | perc 0.1477405403150809
+04:51:48.185 CONFIG | pickupIncentiveValue 143.08499162354502
+04:51:48.185 CONFIG | greedValue 370.40000000000003
+04:51:48.185 CONFIG | ourRatio 704.5
+04:51:48.185 CONFIG | opponentRatio NaN
+04:51:48.185 CONFIG | opponentValue 0.0
+04:51:48.186 CONFIG | bid 1031.675008376455
+04:51:48.186 CONFIG | our profit: -2315.0
+04:51:48.186 CONFIG | 
+04:51:52.933 CONFIG | addedCost 0.0
+04:51:52.933 CONFIG | profit 61.6
+04:51:52.933 CONFIG | perc 0.5214951840046719
+04:51:52.933 CONFIG | pickupIncentiveValue 0.0
+04:51:52.933 CONFIG | greedValue 507.74999999999994
+04:51:52.933 CONFIG | ourRatio 770.0
+04:51:52.934 CONFIG | opponentRatio NaN
+04:51:52.934 CONFIG | opponentValue 0.0
+04:51:52.934 CONFIG | bid 569.3499999999999
+04:51:52.934 CONFIG | our profit: -2031.0
+04:51:52.934 CONFIG | 
+04:51:57.684 CONFIG | addedCost 201.0
+04:51:57.684 CONFIG | profit 58.92000000000001
+04:51:57.684 CONFIG | perc 0.0
+04:51:57.684 CONFIG | pickupIncentiveValue 22.333333499729633
+04:51:57.684 CONFIG | greedValue 526.32
+04:51:57.685 CONFIG | ourRatio 736.5
+04:51:57.685 CONFIG | opponentRatio NaN
+04:51:57.685 CONFIG | opponentValue 0.0
+04:51:57.685 CONFIG | bid 763.9066665002704
+04:51:57.685 CONFIG | our profit: -1462.0
+04:51:57.685 CONFIG | 
+04:52:02.435 CONFIG | addedCost 0.0
+04:52:02.436 CONFIG | profit 133.27714285714288
+04:52:02.436 CONFIG | perc 0.01927955862714997
+04:52:02.436 CONFIG | pickupIncentiveValue 0.0
+04:52:02.436 CONFIG | greedValue 440.51
+04:52:02.437 CONFIG | ourRatio 740.4285714285714
+04:52:02.437 CONFIG | opponentRatio NaN
+04:52:02.437 CONFIG | opponentValue 0.0
+04:52:02.437 CONFIG | bid 573.7871428571428
+04:52:02.437 CONFIG | our profit: -899.0
+04:52:02.437 CONFIG | 
+04:52:07.186 CONFIG | addedCost 1064.5
+04:52:07.186 CONFIG | profit 129.53250000000003
+04:52:07.186 CONFIG | perc 0.0863199507312122
+04:52:07.187 CONFIG | pickupIncentiveValue 96.36563516803426
+04:52:07.187 CONFIG | greedValue 208.0
+04:52:07.188 CONFIG | ourRatio 719.625
+04:52:07.189 CONFIG | opponentRatio NaN
+04:52:07.190 CONFIG | opponentValue 0.0
+04:52:07.190 CONFIG | bid 1305.6668648319658
+04:52:07.190 CONFIG | our profit: -325.0
+04:52:07.190 CONFIG | 
+04:52:11.942 CONFIG | addedCost 2074.0
+04:52:11.942 CONFIG | profit 62.78222222222223
+04:52:11.943 CONFIG | perc 0.18423948076150937
+04:52:11.943 CONFIG | pickupIncentiveValue 181.93427417769155
+04:52:11.943 CONFIG | greedValue 67.63499999999999
+04:52:11.943 CONFIG | ourRatio 784.7777777777778
+04:52:11.943 CONFIG | opponentRatio NaN
+04:52:11.944 CONFIG | opponentValue 0.0
+04:52:11.944 CONFIG | bid 2022.4829480445305
+04:52:11.944 CONFIG | our profit: -83.5
+04:52:11.944 CONFIG | 
+04:52:16.695 CONFIG | addedCost 0.0
+04:52:16.698 CONFIG | profit 163.53000000000003
+04:52:16.698 CONFIG | perc 0.0
+04:52:16.698 CONFIG | pickupIncentiveValue 0.0
+04:52:16.698 CONFIG | greedValue 135.5
+04:52:16.699 CONFIG | ourRatio 908.5
+04:52:16.699 CONFIG | opponentRatio NaN
+04:52:16.699 CONFIG | opponentValue 0.0
+04:52:16.699 CONFIG | bid 299.03000000000003
+04:52:16.699 CONFIG | our profit: -135.5
+04:52:16.699 CONFIG | 
+04:57:26.101 CONFIG | Last best plan found: v0->va(p, 0)->va(p, 2)->va(p, 6)->va(d, 2)->va(p, 1)->va(p, 4)->va(d, 0)->va(p, 3)->va(p, 9)->va(p, 8)->va(d, 9)->va(d, 3)->va(d, 1)->va(p, 5)->va(d, 4)->va(p, 7)->va(d, 6)->va(d, 5)->va(d, 8)->va(d, 7)
+04:57:26.104 CONFIG | v1
+04:57:26.104 CONFIG | 
+04:57:26.104 CONFIG | Cost: 9220.5
+04:57:35.898 CONFIG | New best plan found: v0->va(p, 0)->va(p, 2)->va(p, 6)->va(d, 2)->va(p, 1)->va(p, 4)->va(d, 0)->va(p, 3)->va(p, 9)->va(p, 8)->va(d, 9)->va(d, 3)->va(d, 1)->va(p, 5)->va(d, 4)->va(p, 7)->va(d, 6)->va(d, 5)->va(d, 8)->va(d, 7)
+04:57:35.898 CONFIG | v1
+04:57:35.899 CONFIG | 
+04:57:35.899 CONFIG | Cost: 9220.5
+05:00:26.054 CONFIG | Wrote tournament/master/auction-master-rand.xml
+05:00:26.165 INFO | LogistPlatform finished successfully!
+05:00:26.202 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/master/auction-rand-master.xml -a tournament/master/agents.xml config/auction.xml rand master
+05:00:26.462 CONFIG | Reading config/auction.xml
+05:00:26.588 CONFIG | Reading config/settings_auction.xml
+05:00:26.854 CONFIG | Reading config/topology/england.xml
+05:00:26.876 CONFIG | Reading tournament/master/agents.xml
+05:00:26.927 CONFIG | Reading config/settings_auction.xml
+05:00:31.725 CONFIG | addedCost 2766.0
+05:00:31.725 CONFIG | profit 0.0
+05:00:31.726 CONFIG | perc 0.08022732264913203
+05:00:31.726 CONFIG | pickupIncentiveValue 1991.9392423294132
+05:00:31.726 CONFIG | greedValue 0.0
+05:00:31.726 CONFIG | ourRatio 0.0
+05:00:31.726 CONFIG | opponentRatio NaN
+05:00:31.726 CONFIG | opponentValue 0.0
+05:00:31.727 CONFIG | bid 774.0607576705868
+05:00:31.727 CONFIG | our profit: 0.0
+05:00:31.727 CONFIG | 
+05:00:36.478 CONFIG | addedCost 3031.0
+05:00:36.478 CONFIG | profit 30.960000000000004
+05:00:36.478 CONFIG | perc 0.26893135112162303
+05:00:36.478 CONFIG | pickupIncentiveValue 1282.0436799577578
+05:00:36.478 CONFIG | greedValue 79.68
+05:00:36.478 CONFIG | ourRatio 387.0
+05:00:36.478 CONFIG | opponentRatio NaN
+05:00:36.478 CONFIG | opponentValue 0.0
+05:00:36.479 CONFIG | bid 1859.5963200422423
+05:00:36.479 CONFIG | our profit: -1992.0
+05:00:36.479 CONFIG | 
+05:00:41.230 CONFIG | addedCost 0.0
+05:00:41.230 CONFIG | profit 70.24000000000001
+05:00:41.230 CONFIG | perc 0.0863199507312122
+05:00:41.230 CONFIG | pickupIncentiveValue 0.0
+05:00:41.231 CONFIG | greedValue 284.67
+05:00:41.231 CONFIG | ourRatio 878.0
+05:00:41.231 CONFIG | opponentRatio NaN
+05:00:41.231 CONFIG | opponentValue 0.0
+05:00:41.231 CONFIG | bid 354.91
+05:00:41.231 CONFIG | our profit: -3163.0
+05:00:41.231 CONFIG | 
+05:00:45.982 CONFIG | addedCost 748.0
+05:00:45.982 CONFIG | profit 59.78000000000001
+05:00:45.982 CONFIG | perc 0.1477405403150809
+05:00:45.982 CONFIG | pickupIncentiveValue 143.08499162354502
+05:00:45.982 CONFIG | greedValue 449.28000000000003
+05:00:45.982 CONFIG | ourRatio 747.25
+05:00:45.982 CONFIG | opponentRatio NaN
+05:00:45.982 CONFIG | opponentValue 0.0
+05:00:45.982 CONFIG | bid 1113.975008376455
+05:00:45.982 CONFIG | our profit: -2808.0
+05:00:45.982 CONFIG | 
+05:00:50.733 CONFIG | addedCost 0.0
+05:00:50.733 CONFIG | profit 65.64800000000001
+05:00:50.733 CONFIG | perc 0.5214951840046719
+05:00:50.733 CONFIG | pickupIncentiveValue 0.0
+05:00:50.733 CONFIG | greedValue 610.5
+05:00:50.733 CONFIG | ourRatio 820.6
+05:00:50.733 CONFIG | opponentRatio NaN
+05:00:50.734 CONFIG | opponentValue 0.0
+05:00:50.734 CONFIG | bid 676.148
+05:00:50.734 CONFIG | our profit: -2442.0
+05:00:50.734 CONFIG | 
+05:00:55.485 CONFIG | addedCost 201.0
+05:00:55.485 CONFIG | profit 143.37
+05:00:55.485 CONFIG | perc 0.0
+05:00:55.485 CONFIG | pickupIncentiveValue 22.333333499729633
+05:00:55.485 CONFIG | greedValue 635.76
+05:00:55.485 CONFIG | ourRatio 796.5
+05:00:55.485 CONFIG | opponentRatio NaN
+05:00:55.486 CONFIG | opponentValue 0.0
+05:00:55.486 CONFIG | bid 957.7966665002704
+05:00:55.486 CONFIG | our profit: -1766.0
+05:00:55.486 CONFIG | 
+05:01:00.247 CONFIG | addedCost 0.0
+05:01:00.247 CONFIG | profit 147.52285714285713
+05:01:00.247 CONFIG | perc 0.01927955862714997
+05:01:00.247 CONFIG | pickupIncentiveValue 0.0
+05:01:00.247 CONFIG | greedValue 494.40999999999997
+05:01:00.247 CONFIG | ourRatio 819.5714285714286
+05:01:00.248 CONFIG | opponentRatio NaN
+05:01:00.248 CONFIG | opponentValue 0.0
+05:01:00.248 CONFIG | bid 641.9328571428571
+05:01:00.248 CONFIG | our profit: -1009.0
+05:01:00.248 CONFIG | 
+05:01:04.988 CONFIG | addedCost 1438.5
+05:01:04.988 CONFIG | profit 143.52750000000003
+05:01:04.988 CONFIG | perc 0.0863199507312122
+05:01:04.988 CONFIG | pickupIncentiveValue 130.2226079748401
+05:01:04.988 CONFIG | greedValue 234.88
+05:01:04.989 CONFIG | ourRatio 797.375
+05:01:04.989 CONFIG | opponentRatio NaN
+05:01:04.989 CONFIG | opponentValue 0.0
+05:01:04.989 CONFIG | bid 1686.68489202516
+05:01:04.989 CONFIG | our profit: -367.0
+05:01:04.989 CONFIG | 
+05:01:09.739 CONFIG | addedCost 1700.0
+05:01:09.740 CONFIG | profit 71.69777777777777
+05:01:09.740 CONFIG | perc 0.18423948076150937
+05:01:09.740 CONFIG | pickupIncentiveValue 149.12645424400947
+05:01:09.740 CONFIG | greedValue 95.985
+05:01:09.740 CONFIG | ourRatio 896.2222222222222
+05:01:09.740 CONFIG | opponentRatio NaN
+05:01:09.740 CONFIG | opponentValue 0.0
+05:01:09.740 CONFIG | bid 1718.5563235337681
+05:01:09.741 CONFIG | our profit: -118.5
+05:01:09.741 CONFIG | 
+05:01:14.491 CONFIG | addedCost 0.0
+05:01:14.492 CONFIG | profit 176.13000000000002
+05:01:14.493 CONFIG | perc 0.0
+05:01:14.493 CONFIG | pickupIncentiveValue 0.0
+05:01:14.493 CONFIG | greedValue 99.5
+05:01:14.493 CONFIG | ourRatio 978.5
+05:01:14.493 CONFIG | opponentRatio NaN
+05:01:14.493 CONFIG | opponentValue 0.0
+05:01:14.493 CONFIG | bid 275.63
+05:01:14.493 CONFIG | our profit: -99.5
+05:01:14.493 CONFIG | 
+05:01:32.258 CONFIG | Last best plan found: v0->va(p, 8)->va(p, 7)->va(p, 2)->va(p, 6)->va(p, 0)->va(d, 0)->va(p, 3)->va(p, 4)->va(d, 2)->va(p, 1)->va(d, 7)->va(d, 8)->va(d, 6)->va(d, 4)->va(d, 1)->va(p, 5)->va(d, 5)->va(p, 9)->va(d, 3)->va(d, 9)
+05:01:32.259 CONFIG | v1
+05:01:32.259 CONFIG | 
+05:01:32.259 CONFIG | Cost: 7596.0
+05:01:42.062 CONFIG | New best plan found: v0->va(p, 8)->va(p, 7)->va(p, 2)->va(p, 6)->va(p, 0)->va(d, 0)->va(p, 3)->va(p, 4)->va(d, 2)->va(p, 1)->va(d, 7)->va(d, 8)->va(d, 6)->va(d, 4)->va(d, 1)->va(p, 5)->va(d, 5)->va(p, 9)->va(d, 3)->va(d, 9)
+05:01:42.066 CONFIG | v1
+05:01:42.067 CONFIG | 
+05:01:42.067 CONFIG | Cost: 7596.0
+05:02:13.374 CONFIG | Wrote tournament/master/auction-rand-master.xml
+05:02:13.511 INFO | LogistPlatform finished successfully!

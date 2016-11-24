@@ -177,6 +177,14 @@ public class AuctionAgent implements AuctionBehavior {
 	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
 		System.out.println("Last best plan found: " + currentPlan);
 		System.out.println("Cost: " + currentCost);
+		List<Plan> plans = new ArrayList<Plan>();
+		if (tasks.isEmpty()) {
+			for (Vehicle v : listOfVehicles) {
+				plans.add(new Plan(v.getCurrentCity()));
+			}
+			return plans;
+		}
+
 		isPlan = true;
 		listOfVehicles = vehicles;
 		listOfTasks.clear();
@@ -184,7 +192,6 @@ public class AuctionAgent implements AuctionBehavior {
 			listOfTasks.add(t);
 		}
 
-		List<Plan> plans = new ArrayList<Plan>();
 		selectInitialSolution();
 		SLS();
 		System.out.println("New best plan found: " + newPlan);
