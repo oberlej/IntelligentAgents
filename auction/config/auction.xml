@@ -5,13 +5,13 @@
 
 	<!-- load settings -->
 	<settings import="config/settings_auction.xml" />
-	
+
 	<!-- load the topology from an external file -->
 	<topology import="config/topology/england.xml" />
-	
+
 	<!-- load agents from an external file -->
 	<agents import="config/agents.xml" />
-	
+
 	<!-- define task distribution -->
 	<tasks number="10" rngSeed="123456">
 		<!--
@@ -22,10 +22,10 @@
 		<weight distribution="constant" value="3" />
 
 	</tasks>
-	
+
 	<!-- the companies and vehicles in the simulation -->
 	<companies>
-	
+
 		<company name="Company A">
 			<!-- the first vehicle (blue) -->
 			<vehicle name="Vehicle 1">
@@ -35,7 +35,7 @@
 				<set capacity="30" />
 				<set cost-per-km="5" />
 			</vehicle>
-			
+
 			<!-- the second vehicle (red) -->
 			<vehicle name="Vehicle 2">
 				<set color="#ff0000" />
@@ -45,7 +45,7 @@
 				<set cost-per-km="5" />
 			</vehicle>
 		</company>
-		
+
 		<company name="Company B">
 			<!-- the third vehicle (green) -->
 			<vehicle name="Vehicle 3">
@@ -55,7 +55,7 @@
 				<set capacity="30" />
 				<set cost-per-km="5" />
 			</vehicle>
-			
+
 			<!-- the fourth vehicle (yellow) -->
 			<vehicle name="Vehicle 4">
 				<set color="#ffff00" />
@@ -65,7 +65,7 @@
 				<set cost-per-km="5" />
 			</vehicle>
 		</company>
-				
+
 		<company name="Company C">
 			<!-- the fifth vehicle (magenta) -->
 			<vehicle name="Vehicle 5">
@@ -75,7 +75,7 @@
 				<set capacity="30" />
 				<set cost-per-km="5" />
 			</vehicle>
-			
+
 			<!-- the sixth vehicle (cyan) -->
 			<vehicle name="Vehicle 6">
 				<set color="#00ffff" />
@@ -85,7 +85,7 @@
 				<set cost-per-km="5" />
 			</vehicle>
 		</company>
-		
+
 	</companies>
-	
+
 </configuration>

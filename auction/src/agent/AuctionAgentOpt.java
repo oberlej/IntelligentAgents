@@ -54,7 +54,7 @@ public class AuctionAgentOpt implements AuctionBehavior {
 
 	private double time = 0;
 
-	private final Double GREED_P = 1D;
+	private final Double DESPERATION_P = 1D;
 	private final Double PROFIT_P = 1D;
 	private final Double PICKUP_IC_P = 1D;
 	private final Double OPPONENT_P = .5D;
@@ -152,14 +152,14 @@ public class AuctionAgentOpt implements AuctionBehavior {
 		double pickupIncentiveValue = pickupIncentiveValue(task);
 		System.out.println("pickupIncentiveValue " + pickupIncentiveValue);
 
-		double greedValue = greedValue();
-		System.out.println("greedValue " + greedValue);
+		double desperationValue = desperationValue();
+		System.out.println("desperationValue " + desperationValue);
 
 		double opponentValue = opponentValue();
 		System.out.println("opponentValue " + opponentValue);
 
 		// compute bid
-		double bid = addedCost + PROFIT_P * profit - PICKUP_IC_P * pickupIncentiveValue + GREED_P * greedValue
+		double bid = addedCost + PROFIT_P * profit - PICKUP_IC_P * pickupIncentiveValue + DESPERATION_P * desperationValue
 		        + OPPONENT_P * opponentValue;
 
 		if (bid < 0) {
@@ -176,7 +176,7 @@ public class AuctionAgentOpt implements AuctionBehavior {
 	private double profit() {
 		double randomize = 0.8 + (int) (Math.random() * 1.5);
 		double averageReward = totalReward / listOfTasks.size();
-		return averageReward * 0.1 * randomize;
+		return averageReward * 0.15 * randomize;
 	}
 
 	private double opponentValue() {
@@ -208,7 +208,7 @@ public class AuctionAgentOpt implements AuctionBehavior {
 	 *
 	 * @return
 	 */
-	private double greedValue() {
+	private double desperationValue() {
 		double value = 0;
 		if (currentProfit < 0) {
 			// compensate for neg profit
@@ -224,7 +224,7 @@ public class AuctionAgentOpt implements AuctionBehavior {
 	 */
 	private double pickupIncentiveValue(Task t) {
 		// important to get early tasks. value is higher if our nb tasks low
-		double value = addedCost() * (2f / (listOfTasks.size() * 3));
+		double value = addedCost() * (2f / (listOfTasks.size() * 5));
 
 		// check if the task is interesting
 		City p = t.pickupCity;

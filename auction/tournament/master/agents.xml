@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <agents>
-	
+	<!-- An auto-generated list of agents and their behavior classes -->
+	<!--  - jar directory : agents/ -->
+	<!--  - generated on  : Thu Nov 24 20:02:27 CET 2016 -->
 	<agent name="master">
 		<set class-path="agents/master.jar"/>
 		<set class-name="agent.AuctionAgentOpt"/>
 	</agent>
-
-	<agent name="rand">
+	<!-- <agent name="basic">
+		<set class-path="agents/master.jar"/>
+		<set class-name="agent.AuctionAgent"/>
+	</agent> -->
+	<agent name="dummy">
 		<set class-path="agents/master.jar"/>
 		<set class-name="template.AuctionTemplate"/>
 	</agent>
