@@ -26,7 +26,7 @@ import model.VAction;
 import model.VDeliveryAction;
 import model.VPickupAction;
 
-public class AuctionAgent implements AuctionBehavior {
+public class AuctionAgentOpt implements AuctionBehavior {
 
 	private List<Vehicle> listOfVehicles;
 	private List<Task> listOfTasks;
@@ -51,6 +51,11 @@ public class AuctionAgent implements AuctionBehavior {
 
 	private List<Task> opponentTasks;
 	private double opponentTotalReward = 0;
+
+	private final Double GREED_P = 1D;
+	private final Double PROFIT_P = 1D;
+	private final Double PICKUP_IC_P = 1D;
+	private final Double OPPONENT_P = 1D;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution, Agent agent) {
@@ -93,14 +98,8 @@ public class AuctionAgent implements AuctionBehavior {
 		// update oher agents information
 	}
 
-	@Override
-	public Long askPrice(Task task) {
-		List<Vehicle> vehicles = listOfVehicles;
-
-		newPlan = null;
-		newCost = -1;
-		// add the task to a random vehicle
-		for (Vehicle v : vehicles) {
+	private void placeTask(Task task) {
+		for (Vehicle v : listOfVehicles) {
 			if (currentPlan.linkedVehicleTasks.get(v).size() < 1 && v.capacity() >= task.weight
 			        || currentPlan.linkedVehicleTasks.get(v).getLast().remainingVCapacity >= task.weight) {
 				newPlan = currentPlan.clone();
@@ -124,6 +123,15 @@ public class AuctionAgent implements AuctionBehavior {
 				break;
 			}
 		}
+	}
+
+	@Override
+	public Long askPrice(Task task) {
+		newPlan = null;
+		newCost = -1;
+		// add the task to a random vehicle
+		placeTask(task);
+
 		// no car can take the task
 		if (newPlan == null) {
 			return null;
@@ -132,24 +140,93 @@ public class AuctionAgent implements AuctionBehavior {
 		// compute minimal cost/best plan with the new task
 		SLS();
 
-		double ratio = 1.0 + random.nextDouble() * 0.05 * task.id;
-		double bid = ratio * (newCost - currentCost);
+		double addedCost = addedCost();
+		System.out.println("addedCost " + addedCost);
+
+		double profit = profit();
+		System.out.println("profit " + profit);
+
+		double pickupIncentiveValue = pickupIncentiveValue();
+		System.out.println("pickupIncentiveValue " + pickupIncentiveValue);
+
+		double greedValue = greedValue();
+		System.out.println("greedValue " + greedValue);
+
+		double opponentValue = opponentValue();
+		System.out.println("opponentValue " + opponentValue);
+
+		// compute bid
+		double bid = addedCost + PROFIT_P * profit - PICKUP_IC_P * pickupIncentiveValue + GREED_P * greedValue
+		        + OPPONENT_P * opponentValue;
+
 		if (bid < 0) {
+			System.out.println("bid was neg");
 			bid = 0;
 		}
-
-		double newProfit = totalReward + bid - newCost;
-
-		if (newProfit < currentProfit) {
-			bid += currentProfit - newProfit;
-			newProfit = totalReward + bid - newCost;
-		}
-
-		System.out.println("stupid bids: " + bid);
-		System.out.println("stupid profit: " + currentProfit);
+		System.out.println("bid " + bid);
+		System.out.println("our profit: " + currentProfit);
 		System.out.println();
 		return (long) Math.round(bid);
 
+	}
+
+	private double profit() {
+		double randomize = 0.75 + (int) (Math.random() * 1.25);
+		double averageReward = totalReward / listOfTasks.size();
+		return averageReward * 0.1 * randomize;
+	}
+
+	private double opponentValue() {
+		// listOfTaks.size() is nb of actual tasks + 1 (bc we add the current
+		// auction task to it)
+
+		double ourRatio = totalReward / listOfTasks.size();
+		double opponentRatio = opponentTotalReward / opponentTasks.size();
+		double ratioDiff = Math.abs(ourRatio - opponentRatio);
+
+		System.out.println("ourRatio " + ourRatio);
+		System.out.println("opponentRatio " + opponentRatio);
+
+		double value = 0;
+		if (ourRatio < opponentRatio) {
+			if (listOfTasks.size() <= opponentTasks.size()) {
+				// we have less tasks => be less greedy => value < 0
+				value = -ratioDiff;
+			} else {
+				// we have more task => be more greedy => value > 0
+				value = ratioDiff;
+			}
+		}
+		return value;
+	}
+
+	/**
+	 * todo: add time influence
+	 *
+	 * @return
+	 */
+	private double greedValue() {
+		double value = 0;
+		if (currentProfit < 0) {
+			// compensate for neg proft
+			value = -currentProfit / 3;
+		}
+		return value;
+	}
+
+	/**
+	 * todo: add task prob
+	 *
+	 * @return
+	 */
+	private double pickupIncentiveValue() {
+		double value = addedCost() * (1f / listOfTasks.size());
+		return value;
+	}
+
+	private double addedCost() {
+		double value = newCost - currentCost;
+		return value < 0 ? 0 : value;
 	}
 
 	// recreate currentPlan with the new tasks

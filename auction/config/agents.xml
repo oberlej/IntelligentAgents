@@ -2,20 +2,25 @@
 
 <agents>
 	<!-- A list of agents and their behavior classes -->
-	
+
 	<!-- #### AUCTION AGENTS ### -->
-	<agent name="YourName2">
-		<set class-path="bin/"/>
-		<set class-name="template.AuctionTemplate"/>
+	<agent name="dummy">
+		<set class-path="bin/" />
+		<set class-name="template.AuctionTemplate" />
 	</agent>
 
-    <agent name="basic">
-        <set class-path="bin/"/>
-        <set class-name="agent.AuctionAgent"/>
-    </agent>	
-    
-        <agent name="initLow">
-        <set class-path="bin/"/>
-        <set class-name="agent.AuctionAgentInitialLow"/>
-    </agent>
+	<agent name="basic">
+		<set class-path="bin/" />
+		<set class-name="agent.AuctionAgent" />
+	</agent>
+
+	<agent name="initLow">
+		<set class-path="bin/" />
+		<set class-name="agent.AuctionAgentInitialLow" />
+	</agent>
+
+	<agent name="opt">
+		<set class-path="bin/" />
+		<set class-name="agent.AuctionAgentOpt" />
+	</agent>
 </agents>
