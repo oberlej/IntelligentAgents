@@ -57,7 +57,7 @@ public class AuctionAgentOpt implements AuctionBehavior {
 	private final Double GREED_P = 1D;
 	private final Double PROFIT_P = 1D;
 	private final Double PICKUP_IC_P = 1D;
-	private final Double OPPONENT_P = 1D;
+	private final Double OPPONENT_P = .5D;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution, Agent agent) {
@@ -223,7 +223,7 @@ public class AuctionAgentOpt implements AuctionBehavior {
 	 * @return
 	 */
 	private double pickupIncentiveValue(Task t) {
-		// important to get early tasks. value higher if our nb tasks low
+		// important to get early tasks. value is higher if our nb tasks low
 		double value = addedCost() * (2f / (listOfTasks.size() * 3));
 
 		// check if the task is interesting
