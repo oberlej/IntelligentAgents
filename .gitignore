@@ -33,4 +33,4 @@ auction/.classpath
 
 .recommenders/caches/identified-project-coordinates.json
 
-auction/tournament/*
+auction/tournament/
