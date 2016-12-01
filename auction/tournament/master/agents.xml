@@ -5,15 +5,12 @@
 	<!--  - jar directory : agents/ -->
 	<!--  - generated on  : Thu Nov 24 20:02:27 CET 2016 -->
 	<agent name="master">
-		<set class-path="agents/master.jar"/>
+		<set class-path="bin"/>
 		<set class-name="agent.AuctionAgentOpt"/>
 	</agent>
-	<!-- <agent name="basic">
-		<set class-path="agents/master.jar"/>
+	<agent name="basic">
+		<set class-path="bin"/>
 		<set class-name="agent.AuctionAgent"/>
-	</agent> -->
-	<agent name="dummy">
-		<set class-path="agents/master.jar"/>
-		<set class-name="template.AuctionTemplate"/>
 	</agent>
+
 </agents>

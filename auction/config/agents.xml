@@ -19,7 +19,7 @@
 		<set class-name="agent.AuctionAgentInitialLow" />
 	</agent>
 
-	<agent name="opt">
+	<agent name="auction-main-22">
 		<set class-path="bin/" />
 		<set class-name="agent.AuctionAgentOpt" />
 	</agent>

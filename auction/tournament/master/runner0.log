@@ -1,252 +1,1170 @@
-09:05:01.006 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/master/auction-master-dummy.xml -a tournament/master/agents.xml /Users/thomasjuelandersen/Documents/Developer/workspace/IntelligentAgents/auction/config/auction.xml master dummy
-09:05:01.277 CONFIG | Reading /Users/thomasjuelandersen/Documents/Developer/workspace/IntelligentAgents/auction/config/auction.xml
-09:05:01.370 CONFIG | Reading config/settings_auction.xml
-09:05:01.687 CONFIG | Reading config/topology/england.xml
-09:05:01.708 CONFIG | Reading tournament/master/agents.xml
-09:05:01.734 CONFIG | Reading config/settings_auction.xml
-09:05:06.519 CONFIG | addedCost 2191.0
-09:05:06.519 CONFIG | profit 0.0
-09:05:06.520 CONFIG | perc 0.08022732264913203
-09:05:06.520 CONFIG | pickupIncentiveValue 946.7112396767959
-09:05:06.520 CONFIG | desperationValue 0.0
-09:05:06.520 CONFIG | ourRatio 0.0
-09:05:06.520 CONFIG | opponentRatio NaN
-09:05:06.520 CONFIG | opponentValue 0.0
-09:05:06.520 CONFIG | bid 1244.288760323204
-09:05:06.520 CONFIG | our profit: 0.0
-09:05:06.520 CONFIG | 
-09:05:11.271 CONFIG | addedCost 2668.0
-09:05:11.271 CONFIG | profit 74.64
-09:05:11.271 CONFIG | perc 0.26893135112162303
-09:05:11.271 CONFIG | pickupIncentiveValue 677.1017790481006
-09:05:11.271 CONFIG | desperationValue 37.88
-09:05:11.271 CONFIG | ourRatio 622.0
-09:05:11.271 CONFIG | opponentRatio NaN
-09:05:11.271 CONFIG | opponentValue 0.0
-09:05:11.272 CONFIG | bid 2103.4182209518995
-09:05:11.272 CONFIG | our profit: -947.0
-09:05:11.272 CONFIG | 
-09:05:16.022 CONFIG | addedCost 274.0
-09:05:16.022 CONFIG | profit 133.88
-09:05:16.022 CONFIG | perc 0.0863199507312122
-09:05:16.022 CONFIG | pickupIncentiveValue 39.68689093654617
-09:05:16.022 CONFIG | desperationValue 136.08
-09:05:16.022 CONFIG | ourRatio 1115.6666666666667
-09:05:16.022 CONFIG | opponentRatio NaN
-09:05:16.022 CONFIG | opponentValue 0.0
-09:05:16.022 CONFIG | bid 504.27310906345383
-09:05:16.022 CONFIG | our profit: -1512.0
-09:05:16.022 CONFIG | 
-09:05:20.773 CONFIG | addedCost 748.0
-09:05:20.773 CONFIG | profit 259.9425
-09:05:20.773 CONFIG | perc 0.1477405403150809
-09:05:20.773 CONFIG | pickupIncentiveValue 85.85099369484753
-09:05:20.773 CONFIG | desperationValue 205.12
-09:05:20.774 CONFIG | ourRatio 962.75
-09:05:20.774 CONFIG | opponentRatio NaN
-09:05:20.774 CONFIG | opponentValue 0.0
-09:05:20.774 CONFIG | bid 1127.2115063051524
-09:05:20.774 CONFIG | our profit: -1282.0
-09:05:20.774 CONFIG | 
-09:05:25.524 CONFIG | addedCost 0.0
-09:05:25.524 CONFIG | profit 119.47200000000001
-09:05:25.524 CONFIG | perc 0.5214951840046719
-09:05:25.524 CONFIG | pickupIncentiveValue 0.0
-09:05:25.524 CONFIG | desperationValue 225.74999999999997
-09:05:25.525 CONFIG | ourRatio 995.6
-09:05:25.525 CONFIG | opponentRatio NaN
-09:05:25.525 CONFIG | opponentValue 0.0
-09:05:25.525 CONFIG | bid 345.222
-09:05:25.525 CONFIG | our profit: -903.0
-09:05:25.525 CONFIG | 
-09:05:30.275 CONFIG | addedCost 201.0
-09:05:30.275 CONFIG | profit 106.46
-09:05:30.275 CONFIG | perc 0.0
-09:05:30.275 CONFIG | pickupIncentiveValue 13.40000069886446
-09:05:30.275 CONFIG | desperationValue 200.88
-09:05:30.275 CONFIG | ourRatio 887.1666666666666
-09:05:30.275 CONFIG | opponentRatio NaN
-09:05:30.275 CONFIG | opponentValue 0.0
-09:05:30.276 CONFIG | bid 494.9399993011355
-09:05:30.276 CONFIG | our profit: -558.0
-09:05:30.276 CONFIG | 
-09:05:35.026 CONFIG | addedCost 0.0
-09:05:35.026 CONFIG | profit 99.73714285714286
-09:05:35.026 CONFIG | perc 0.01927955862714997
-09:05:35.026 CONFIG | pickupIncentiveValue 0.0
-09:05:35.026 CONFIG | desperationValue 129.36
-09:05:35.026 CONFIG | ourRatio 831.1428571428571
-09:05:35.026 CONFIG | opponentRatio NaN
-09:05:35.026 CONFIG | opponentValue 0.0
-09:05:35.027 CONFIG | bid 229.09714285714287
-09:05:35.027 CONFIG | our profit: -264.0
-09:05:35.027 CONFIG | 
-09:05:39.777 CONFIG | addedCost 1064.5
-09:05:39.777 CONFIG | profit 90.705
-09:05:39.777 CONFIG | perc 0.0863199507312122
-09:05:39.777 CONFIG | pickupIncentiveValue 57.81938023924466
-09:05:39.777 CONFIG | desperationValue 22.400000000000002
-09:05:39.777 CONFIG | ourRatio 755.875
-09:05:39.777 CONFIG | opponentRatio NaN
-09:05:39.777 CONFIG | opponentValue 0.0
-09:05:39.778 CONFIG | bid 1119.7856197607553
-09:05:39.778 CONFIG | our profit: -35.0
-09:05:39.778 CONFIG | 
-09:05:44.528 CONFIG | addedCost 2074.0
-09:05:44.528 CONFIG | profit 95.56
-09:05:44.528 CONFIG | perc 0.18423948076150937
-09:05:44.528 CONFIG | pickupIncentiveValue 109.16056633656149
-09:05:44.528 CONFIG | desperationValue 0.0
-09:05:44.528 CONFIG | ourRatio 796.3333333333334
-09:05:44.528 CONFIG | opponentRatio NaN
-09:05:44.528 CONFIG | opponentValue 0.0
-09:05:44.528 CONFIG | bid 2060.3994336634387
-09:05:44.529 CONFIG | our profit: 20.5
-09:05:44.529 CONFIG | 
-09:05:49.279 CONFIG | addedCost 0.0
-09:05:49.279 CONFIG | profit 110.724
-09:05:49.279 CONFIG | perc 0.0
-09:05:49.279 CONFIG | pickupIncentiveValue 0.0
-09:05:49.280 CONFIG | desperationValue 0.0
-09:05:49.280 CONFIG | ourRatio 922.7
-09:05:49.280 CONFIG | opponentRatio NaN
-09:05:49.280 CONFIG | opponentValue 0.0
-09:05:49.280 CONFIG | bid 110.724
-09:05:49.280 CONFIG | our profit: 6.5
-09:05:49.280 CONFIG | 
-09:06:01.865 CONFIG | Last best plan found: v0->va(p, 0)->va(p, 2)->va(p, 6)->va(d, 2)->va(p, 1)->va(p, 4)->va(p, 3)->va(d, 0)->va(p, 9)->va(d, 3)->va(p, 8)->va(d, 9)->va(d, 6)->va(d, 4)->va(p, 5)->va(d, 1)->va(p, 7)->va(d, 5)->va(d, 8)->va(d, 7)
-09:06:01.865 CONFIG | v1
-09:06:01.865 CONFIG | 
-09:06:01.865 CONFIG | Cost: 9220.5
-09:06:11.665 CONFIG | New best plan found: v0->va(p, 0)->va(p, 2)->va(p, 6)->va(d, 2)->va(p, 1)->va(p, 4)->va(p, 3)->va(d, 0)->va(p, 9)->va(d, 3)->va(p, 8)->va(d, 9)->va(d, 6)->va(d, 4)->va(p, 5)->va(d, 1)->va(p, 7)->va(d, 5)->va(d, 8)->va(d, 7)
-09:06:11.665 CONFIG | v1
-09:06:11.665 CONFIG | 
-09:06:11.665 CONFIG | Cost: 9220.5
-09:06:28.021 CONFIG | Wrote tournament/master/auction-master-dummy.xml
-09:06:28.128 INFO | LogistPlatform finished successfully!
-09:06:28.140 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/master/auction-dummy-master.xml -a tournament/master/agents.xml /Users/thomasjuelandersen/Documents/Developer/workspace/IntelligentAgents/auction/config/auction.xml dummy master
-09:06:28.412 CONFIG | Reading /Users/thomasjuelandersen/Documents/Developer/workspace/IntelligentAgents/auction/config/auction.xml
-09:06:28.511 CONFIG | Reading config/settings_auction.xml
-09:06:28.857 CONFIG | Reading config/topology/england.xml
-09:06:28.880 CONFIG | Reading tournament/master/agents.xml
-09:06:28.913 CONFIG | Reading config/settings_auction.xml
-09:06:33.696 CONFIG | addedCost 2766.0
-09:06:33.696 CONFIG | profit 0.0
-09:06:33.696 CONFIG | perc 0.08022732264913203
-09:06:33.696 CONFIG | pickupIncentiveValue 1195.1635275883239
-09:06:33.696 CONFIG | desperationValue 0.0
-09:06:33.696 CONFIG | ourRatio 0.0
-09:06:33.696 CONFIG | opponentRatio NaN
-09:06:33.697 CONFIG | opponentValue 0.0
-09:06:33.697 CONFIG | bid 1570.8364724116761
-09:06:33.697 CONFIG | our profit: 0.0
-09:06:33.697 CONFIG | 
-09:06:38.449 CONFIG | addedCost 3031.0
-09:06:38.449 CONFIG | profit 212.08499999999998
-09:06:38.449 CONFIG | perc 0.26893135112162303
-09:06:38.449 CONFIG | pickupIncentiveValue 769.2261965122913
-09:06:38.449 CONFIG | desperationValue 47.800000000000004
-09:06:38.449 CONFIG | ourRatio 785.5
-09:06:38.449 CONFIG | opponentRatio NaN
-09:06:38.449 CONFIG | opponentValue 0.0
-09:06:38.449 CONFIG | bid 2521.658803487709
-09:06:38.449 CONFIG | our profit: -1195.0
-09:06:38.449 CONFIG | 
-09:06:43.200 CONFIG | addedCost 0.0
-09:06:43.200 CONFIG | profit 368.36999999999995
-09:06:43.200 CONFIG | perc 0.0863199507312122
-09:06:43.200 CONFIG | pickupIncentiveValue 0.0
-09:06:43.200 CONFIG | desperationValue 153.35999999999999
-09:06:43.200 CONFIG | ourRatio 1364.3333333333333
-09:06:43.200 CONFIG | opponentRatio NaN
-09:06:43.200 CONFIG | opponentValue 0.0
-09:06:43.200 CONFIG | bid 521.7299999999999
-09:06:43.200 CONFIG | our profit: -1704.0
-09:06:43.200 CONFIG | 
-09:06:47.951 CONFIG | addedCost 748.0
-09:06:47.951 CONFIG | profit 138.45000000000002
-09:06:47.951 CONFIG | perc 0.1477405403150809
-09:06:47.955 CONFIG | pickupIncentiveValue 85.85099369484753
-09:06:47.955 CONFIG | desperationValue 189.12
-09:06:47.955 CONFIG | ourRatio 1153.75
-09:06:47.955 CONFIG | opponentRatio NaN
-09:06:47.955 CONFIG | opponentValue 0.0
-09:06:47.955 CONFIG | bid 989.7190063051526
-09:06:47.955 CONFIG | our profit: -1182.0
-09:06:47.955 CONFIG | 
-09:06:52.702 CONFIG | addedCost 0.0
-09:06:52.702 CONFIG | profit 134.52
-09:06:52.702 CONFIG | perc 0.5214951840046719
-09:06:52.702 CONFIG | pickupIncentiveValue 0.0
-09:06:52.702 CONFIG | desperationValue 235.0
-09:06:52.702 CONFIG | ourRatio 1121.0
-09:06:52.702 CONFIG | opponentRatio NaN
-09:06:52.702 CONFIG | opponentValue 0.0
-09:06:52.702 CONFIG | bid 369.52
-09:06:52.703 CONFIG | our profit: -940.0
-09:06:52.703 CONFIG | 
-09:06:57.453 CONFIG | addedCost 201.0
-09:06:57.453 CONFIG | profit 119.5
-09:06:57.453 CONFIG | perc 0.0
-09:06:57.453 CONFIG | pickupIncentiveValue 13.40000069886446
-09:06:57.453 CONFIG | desperationValue 205.20000000000002
-09:06:57.453 CONFIG | ourRatio 995.8333333333334
-09:06:57.453 CONFIG | opponentRatio NaN
-09:06:57.453 CONFIG | opponentValue 0.0
-09:06:57.453 CONFIG | bid 512.2999993011356
-09:06:57.453 CONFIG | our profit: -570.0
-09:06:57.453 CONFIG | 
-09:07:02.204 CONFIG | addedCost 0.0
-09:07:02.204 CONFIG | profit 111.20571428571428
-09:07:02.204 CONFIG | perc 0.01927955862714997
-09:07:02.204 CONFIG | pickupIncentiveValue 0.0
-09:07:02.204 CONFIG | desperationValue 126.91
-09:07:02.204 CONFIG | ourRatio 926.7142857142857
-09:07:02.204 CONFIG | opponentRatio NaN
-09:07:02.204 CONFIG | opponentValue 0.0
-09:07:02.204 CONFIG | bid 238.11571428571426
-09:07:02.204 CONFIG | our profit: -259.0
-09:07:02.204 CONFIG | 
-09:07:06.957 CONFIG | addedCost 1438.5
-09:07:06.957 CONFIG | profit 100.875
-09:07:06.957 CONFIG | perc 0.0863199507312122
-09:07:06.957 CONFIG | pickupIncentiveValue 78.13356362062325
-09:07:06.957 CONFIG | desperationValue 13.44
-09:07:06.957 CONFIG | ourRatio 840.625
-09:07:06.957 CONFIG | opponentRatio NaN
-09:07:06.957 CONFIG | opponentValue 0.0
-09:07:06.957 CONFIG | bid 1474.681436379377
-09:07:06.957 CONFIG | our profit: -21.0
-09:07:06.957 CONFIG | 
-09:07:11.708 CONFIG | addedCost 1700.0
-09:07:11.708 CONFIG | profit 246.0
-09:07:11.708 CONFIG | perc 0.18423948076150937
-09:07:11.708 CONFIG | pickupIncentiveValue 89.47587404636187
-09:07:11.708 CONFIG | desperationValue 0.0
-09:07:11.708 CONFIG | ourRatio 911.1111111111111
-09:07:11.708 CONFIG | opponentRatio NaN
-09:07:11.708 CONFIG | opponentValue 0.0
-09:07:11.708 CONFIG | bid 1856.524125953638
-09:07:11.708 CONFIG | our profit: 15.5
-09:07:11.708 CONFIG | 
-09:07:16.459 CONFIG | addedCost 0.0
-09:07:16.459 CONFIG | profit 271.539
-09:07:16.459 CONFIG | perc 0.0
-09:07:16.460 CONFIG | pickupIncentiveValue 0.0
-09:07:16.460 CONFIG | desperationValue 0.0
-09:07:16.460 CONFIG | ourRatio 1005.7
-09:07:16.460 CONFIG | opponentRatio NaN
-09:07:16.460 CONFIG | opponentValue 0.0
-09:07:16.460 CONFIG | bid 271.539
-09:07:16.460 CONFIG | our profit: 172.5
-09:07:16.460 CONFIG | 
-09:09:13.023 CONFIG | Last best plan found: v0->va(p, 8)->va(p, 7)->va(p, 6)->va(p, 0)->va(p, 2)->va(d, 7)->va(p, 1)->va(d, 2)->va(p, 4)->va(d, 0)->va(p, 3)->va(d, 8)->va(d, 4)->va(p, 5)->va(d, 1)->va(d, 6)->va(d, 5)->va(p, 9)->va(d, 3)->va(d, 9)
-09:09:13.024 CONFIG | v1
-09:09:13.024 CONFIG | 
-09:09:13.026 CONFIG | Cost: 7596.0
-09:09:22.824 CONFIG | New best plan found: v0->va(p, 8)->va(p, 7)->va(p, 6)->va(p, 0)->va(p, 2)->va(d, 7)->va(p, 1)->va(d, 2)->va(p, 4)->va(d, 0)->va(p, 3)->va(d, 8)->va(d, 4)->va(p, 5)->va(d, 1)->va(d, 6)->va(d, 5)->va(p, 9)->va(d, 3)->va(d, 9)
-09:09:22.824 CONFIG | v1
-09:09:22.824 CONFIG | 
-09:09:22.824 CONFIG | Cost: 7596.0
-09:10:40.891 CONFIG | Wrote tournament/master/auction-dummy-master.xml
-09:10:41.358 INFO | LogistPlatform finished successfully!
+09:26:03.944 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/master/auction-master-basic.xml -a tournament/master/agents.xml config/auction.xml master basic
+09:26:04.199 CONFIG | Reading config/auction.xml
+09:26:04.297 CONFIG | Reading config/settings_auction.xml
+09:26:04.540 CONFIG | Reading config/topology/england.xml
+09:26:04.560 CONFIG | Reading tournament/master/agents.xml
+09:26:04.603 CONFIG | Reading config/settings_auction.xml
+09:26:04.613 CONFIG | Reading config/settings_auction.xml
+09:26:09.398 CONFIG | addedCost 2191.0
+09:26:09.400 CONFIG | profit 0.0
+09:26:09.400 CONFIG | perc 0.08022732264913203
+09:26:09.400 CONFIG | pickupIncentiveValue 946.7112396767959
+09:26:09.400 CONFIG | desperationValue 0.0
+09:26:09.400 CONFIG | ourRatio 0.0
+09:26:09.400 CONFIG | opponentRatio NaN
+09:26:09.400 CONFIG | opponentValue 0.0
+09:26:09.401 CONFIG | bid 1244.288760323204
+09:26:09.401 CONFIG | our profit: 0.0
+09:26:09.401 CONFIG | 
+09:26:14.150 CONFIG | stupid bids: 2766.0
+09:26:14.150 CONFIG | stupid profit: 0.0
+09:26:14.150 CONFIG | 
+09:26:18.901 CONFIG | addedCost 2382.0
+09:26:18.901 CONFIG | profit 74.64
+09:26:18.902 CONFIG | perc 0.26893135112162303
+09:26:18.902 CONFIG | pickupIncentiveValue 604.5189046823747
+09:26:18.903 CONFIG | desperationValue 37.88
+09:26:18.904 CONFIG | ourRatio 622.0
+09:26:18.904 CONFIG | opponentRatio NaN
+09:26:18.904 CONFIG | opponentValue 0.0
+09:26:18.904 CONFIG | bid 1890.0010953176252
+09:26:18.904 CONFIG | our profit: -947.0
+09:26:18.904 CONFIG | 
+09:26:23.655 CONFIG | stupid bids: 3307.5123852042534
+09:26:23.655 CONFIG | stupid profit: 0.0
+09:26:23.655 CONFIG | 
+09:26:28.408 CONFIG | addedCost 0.0
+09:26:28.410 CONFIG | profit 125.36000000000001
+09:26:28.411 CONFIG | perc 0.0863199507312122
+09:26:28.411 CONFIG | pickupIncentiveValue 0.0
+09:26:28.411 CONFIG | desperationValue 129.51
+09:26:28.412 CONFIG | ourRatio 1044.6666666666667
+09:26:28.412 CONFIG | opponentRatio NaN
+09:26:28.412 CONFIG | opponentValue 0.0
+09:26:28.412 CONFIG | bid 254.87
+09:26:28.412 CONFIG | our profit: -1439.0
+09:26:28.412 CONFIG | 
+09:26:33.164 CONFIG | stupid bids: 2900.287410052222
+09:26:33.165 CONFIG | stupid profit: 0.0
+09:26:33.165 CONFIG | 
+09:26:37.915 CONFIG | addedCost 748.0
+09:26:37.915 CONFIG | profit 228.7575
+09:26:37.915 CONFIG | perc 0.1477405403150809
+09:26:37.915 CONFIG | pickupIncentiveValue 85.85099369484753
+09:26:37.915 CONFIG | desperationValue 189.44
+09:26:37.915 CONFIG | ourRatio 847.25
+09:26:37.916 CONFIG | opponentRatio NaN
+09:26:37.916 CONFIG | opponentValue 0.0
+09:26:37.916 CONFIG | bid 1080.3465063051524
+09:26:37.916 CONFIG | our profit: -1184.0
+09:26:37.916 CONFIG | 
+09:26:42.665 CONFIG | stupid bids: 3129.467084275914
+09:26:42.666 CONFIG | stupid profit: 0.0
+09:26:42.666 CONFIG | 
+09:26:47.416 CONFIG | addedCost 0.0
+09:26:47.417 CONFIG | profit 107.256
+09:26:47.417 CONFIG | perc 0.5214951840046719
+09:26:47.417 CONFIG | pickupIncentiveValue 0.0
+09:26:47.417 CONFIG | desperationValue 213.0
+09:26:47.417 CONFIG | ourRatio 893.8
+09:26:47.418 CONFIG | opponentRatio NaN
+09:26:47.419 CONFIG | opponentValue 0.0
+09:26:47.419 CONFIG | bid 320.256
+09:26:47.420 CONFIG | our profit: -852.0
+09:26:47.420 CONFIG | 
+09:26:52.171 CONFIG | stupid bids: 3648.8644065032745
+09:26:52.171 CONFIG | stupid profit: 0.0
+09:26:52.171 CONFIG | 
+09:26:56.921 CONFIG | addedCost 201.0
+09:26:56.924 CONFIG | profit 95.78
+09:26:56.924 CONFIG | perc 0.0
+09:26:56.924 CONFIG | pickupIncentiveValue 13.40000069886446
+09:26:56.925 CONFIG | desperationValue 191.52
+09:26:56.925 CONFIG | ourRatio 798.1666666666666
+09:26:56.925 CONFIG | opponentRatio NaN
+09:26:56.925 CONFIG | opponentValue 0.0
+09:26:56.925 CONFIG | bid 474.8999993011355
+09:26:56.925 CONFIG | our profit: -532.0
+09:26:56.925 CONFIG | 
+09:27:01.672 CONFIG | stupid bids: 643.8789524261271
+09:27:01.672 CONFIG | stupid profit: 0.0
+09:27:01.672 CONFIG | 
+09:27:06.422 CONFIG | addedCost 0.0
+09:27:06.422 CONFIG | profit 90.24000000000001
+09:27:06.422 CONFIG | perc 0.01927955862714997
+09:27:06.422 CONFIG | pickupIncentiveValue 0.0
+09:27:06.422 CONFIG | desperationValue 126.42
+09:27:06.422 CONFIG | ourRatio 752.0
+09:27:06.422 CONFIG | opponentRatio NaN
+09:27:06.423 CONFIG | opponentValue 0.0
+09:27:06.423 CONFIG | bid 216.66000000000003
+09:27:06.423 CONFIG | our profit: -258.0
+09:27:06.423 CONFIG | 
+09:27:11.173 CONFIG | stupid bids: 3276.989508124903
+09:27:11.173 CONFIG | stupid profit: 0.0
+09:27:11.173 CONFIG | 
+09:27:15.923 CONFIG | addedCost 0.0
+09:27:15.923 CONFIG | profit 184.98375
+09:27:15.923 CONFIG | perc 0.0863199507312122
+09:27:15.923 CONFIG | pickupIncentiveValue 0.0
+09:27:15.923 CONFIG | desperationValue 26.240000000000002
+09:27:15.923 CONFIG | ourRatio 685.125
+09:27:15.923 CONFIG | opponentRatio NaN
+09:27:15.923 CONFIG | opponentValue 0.0
+09:27:15.923 CONFIG | bid 211.22375
+09:27:15.923 CONFIG | our profit: -41.0
+09:27:15.924 CONFIG | 
+09:27:20.673 CONFIG | stupid bids: 1767.5927251386247
+09:27:20.673 CONFIG | stupid profit: 0.0
+09:27:20.673 CONFIG | 
+09:27:25.423 CONFIG | addedCost 4156.0
+09:27:25.423 CONFIG | profit 75.89333333333333
+09:27:25.423 CONFIG | perc 0.18423948076150937
+09:27:25.423 CONFIG | pickupIncentiveValue 218.74219560981172
+09:27:25.423 CONFIG | desperationValue 0.0
+09:27:25.423 CONFIG | ourRatio 632.4444444444445
+09:27:25.423 CONFIG | opponentRatio NaN
+09:27:25.424 CONFIG | opponentValue 0.0
+09:27:25.424 CONFIG | bid 4013.1511377235215
+09:27:25.424 CONFIG | our profit: 170.0
+09:27:25.424 CONFIG | 
+09:27:30.173 CONFIG | stupid bids: 2287.284331442179
+09:27:30.173 CONFIG | stupid profit: 0.0
+09:27:30.173 CONFIG | 
+09:27:34.924 CONFIG | addedCost 850.0
+09:27:34.924 CONFIG | profit 75.89333333333333
+09:27:34.924 CONFIG | perc 0.0
+09:27:34.924 CONFIG | pickupIncentiveValue 37.77777869254351
+09:27:34.924 CONFIG | desperationValue 0.0
+09:27:34.924 CONFIG | ourRatio 632.4444444444445
+09:27:34.925 CONFIG | opponentRatio 2287.0
+09:27:34.925 CONFIG | opponentValue 1654.5555555555557
+09:27:34.925 CONFIG | bid 1715.3933324185678
+09:27:34.925 CONFIG | our profit: 170.0
+09:27:34.925 CONFIG | 
+09:27:39.675 CONFIG | stupid bids: 2194.569794318882
+09:27:39.675 CONFIG | stupid profit: 473.0
+09:27:39.675 CONFIG | 
+09:27:44.426 CONFIG | addedCost 0.0
+09:27:44.429 CONFIG | profit 199.989
+09:27:44.429 CONFIG | perc 0.0
+09:27:44.429 CONFIG | pickupIncentiveValue 0.0
+09:27:44.429 CONFIG | desperationValue 0.0
+09:27:44.430 CONFIG | ourRatio 740.7
+09:27:44.430 CONFIG | opponentRatio 2287.0
+09:27:44.430 CONFIG | opponentValue 1546.3
+09:27:44.430 CONFIG | bid 973.139
+09:27:44.430 CONFIG | our profit: 1035.0
+09:27:44.430 CONFIG | 
+09:27:49.177 CONFIG | stupid bids: 1930.7198641162809
+09:27:49.177 CONFIG | stupid profit: 473.0
+09:27:49.177 CONFIG | 
+09:27:53.927 CONFIG | addedCost 2265.0
+09:27:53.930 CONFIG | profit 91.41818181818184
+09:27:53.930 CONFIG | perc 0.2550753180811942
+09:27:53.930 CONFIG | pickupIncentiveValue 103.37256383412574
+09:27:53.930 CONFIG | desperationValue 0.0
+09:27:53.930 CONFIG | ourRatio 761.8181818181819
+09:27:53.930 CONFIG | opponentRatio 2287.0
+09:27:53.930 CONFIG | opponentValue 1525.181818181818
+09:27:53.930 CONFIG | bid 3015.636527074965
+09:27:53.931 CONFIG | our profit: 2008.0
+09:27:53.931 CONFIG | 
+09:27:58.677 CONFIG | stupid bids: 2949.6462470673096
+09:27:58.677 CONFIG | stupid profit: 473.0
+09:27:58.677 CONFIG | 
+09:28:03.427 CONFIG | addedCost 0.0
+09:28:03.432 CONFIG | profit 91.41818181818184
+09:28:03.432 CONFIG | perc 0.0863199507312122
+09:28:03.432 CONFIG | pickupIncentiveValue 0.0
+09:28:03.432 CONFIG | desperationValue 0.0
+09:28:03.432 CONFIG | ourRatio 761.8181818181819
+09:28:03.432 CONFIG | opponentRatio 2618.5
+09:28:03.433 CONFIG | opponentValue 1856.681818181818
+09:28:03.433 CONFIG | bid 1019.7590909090909
+09:28:03.433 CONFIG | our profit: 2008.0
+09:28:03.433 CONFIG | 
+09:28:08.182 CONFIG | stupid bids: 133.51851223440175
+09:28:08.183 CONFIG | stupid profit: 1173.0
+09:28:08.183 CONFIG | 
+09:28:12.933 CONFIG | addedCost 985.0
+09:28:12.938 CONFIG | profit 205.69090909090912
+09:28:12.938 CONFIG | perc 0.2757944363477151
+09:28:12.938 CONFIG | pickupIncentiveValue 45.696635636744716
+09:28:12.938 CONFIG | desperationValue 0.0
+09:28:12.938 CONFIG | ourRatio 761.8181818181819
+09:28:12.938 CONFIG | opponentRatio 1790.3333333333333
+09:28:12.939 CONFIG | opponentValue 1028.5151515151515
+09:28:12.939 CONFIG | bid 1659.2518492117401
+09:28:12.939 CONFIG | our profit: 2008.0
+09:28:12.939 CONFIG | 
+09:28:17.684 CONFIG | stupid bids: 1127.6502110853846
+09:28:17.684 CONFIG | stupid profit: 1213.5
+09:28:17.684 CONFIG | 
+09:28:22.434 CONFIG | addedCost 748.0
+09:28:22.434 CONFIG | profit 91.41818181818184
+09:28:22.434 CONFIG | perc 0.7113708853105218
+09:28:22.434 CONFIG | pickupIncentiveValue 46.5492866064645
+09:28:22.434 CONFIG | desperationValue 0.0
+09:28:22.434 CONFIG | ourRatio 761.8181818181819
+09:28:22.434 CONFIG | opponentRatio 1624.75
+09:28:22.434 CONFIG | opponentValue 862.9318181818181
+09:28:22.435 CONFIG | bid 1224.3348043026265
+09:28:22.435 CONFIG | our profit: 2008.0
+09:28:22.435 CONFIG | 
+09:28:27.185 CONFIG | stupid bids: 0.0
+09:28:27.185 CONFIG | stupid profit: 1356.5
+09:28:27.185 CONFIG | 
+09:28:31.935 CONFIG | addedCost 0.0
+09:28:31.938 CONFIG | profit 91.41818181818184
+09:28:31.938 CONFIG | perc 0.24533497311543415
+09:28:31.938 CONFIG | pickupIncentiveValue 0.0
+09:28:31.938 CONFIG | desperationValue 0.0
+09:28:31.938 CONFIG | ourRatio 761.8181818181819
+09:28:31.938 CONFIG | opponentRatio 1299.8
+09:28:31.938 CONFIG | opponentValue 537.9818181818181
+09:28:31.938 CONFIG | bid 360.4090909090909
+09:28:31.938 CONFIG | our profit: 2008.0
+09:28:31.938 CONFIG | 
+09:28:36.685 CONFIG | stupid bids: 0.0
+09:28:36.685 CONFIG | stupid profit: 1356.5
+09:28:36.685 CONFIG | 
+09:28:41.436 CONFIG | addedCost 1180.0
+09:28:41.439 CONFIG | profit 91.41818181818184
+09:28:41.439 CONFIG | perc 0.0
+09:28:41.439 CONFIG | pickupIncentiveValue 42.90908955037594
+09:28:41.439 CONFIG | desperationValue 0.0
+09:28:41.439 CONFIG | ourRatio 761.8181818181819
+09:28:41.439 CONFIG | opponentRatio 1083.1666666666667
+09:28:41.439 CONFIG | opponentValue 321.3484848484849
+09:28:41.440 CONFIG | bid 1389.1833346920484
+09:28:41.440 CONFIG | our profit: 2008.0
+09:28:41.440 CONFIG | 
+09:28:46.187 CONFIG | stupid bids: 570.4892241448068
+09:28:46.188 CONFIG | stupid profit: 1356.5
+09:28:46.188 CONFIG | 
+09:28:50.938 CONFIG | addedCost 748.0
+09:28:50.942 CONFIG | profit 205.69090909090912
+09:28:50.942 CONFIG | perc 0.07487214721699915
+09:28:50.942 CONFIG | pickupIncentiveValue 29.236521478528843
+09:28:50.942 CONFIG | desperationValue 0.0
+09:28:50.942 CONFIG | ourRatio 761.8181818181819
+09:28:50.942 CONFIG | opponentRatio 1009.8571428571429
+09:28:50.942 CONFIG | opponentValue 248.03896103896102
+09:28:50.942 CONFIG | bid 1048.4738681318609
+09:28:50.942 CONFIG | our profit: 2008.0
+09:28:50.943 CONFIG | 
+09:28:55.689 CONFIG | stupid bids: 1530.2881188320514
+09:28:55.689 CONFIG | stupid profit: 1452.0
+09:28:55.689 CONFIG | 
+09:29:00.439 CONFIG | addedCost 476.0
+09:29:00.440 CONFIG | profit 94.28
+09:29:00.440 CONFIG | perc 0.28622869001991336
+09:29:00.440 CONFIG | pickupIncentiveValue 20.408162946017875
+09:29:00.440 CONFIG | desperationValue 0.0
+09:29:00.440 CONFIG | ourRatio 785.6666666666666
+09:29:00.440 CONFIG | opponentRatio 1009.8571428571429
+09:29:00.440 CONFIG | opponentValue 224.19047619047626
+09:29:00.440 CONFIG | bid 661.9670751492201
+09:29:00.440 CONFIG | our profit: 2308.0
+09:29:00.440 CONFIG | 
+09:29:05.190 CONFIG | stupid bids: 1167.4290954030218
+09:29:05.190 CONFIG | stupid profit: 1452.0
+09:29:05.190 CONFIG | 
+09:29:09.941 CONFIG | addedCost 0.0
+09:29:09.944 CONFIG | profit 209.56153846153845
+09:29:09.945 CONFIG | perc 0.16992759656225623
+09:29:09.945 CONFIG | pickupIncentiveValue 0.0
+09:29:09.945 CONFIG | desperationValue 0.0
+09:29:09.945 CONFIG | ourRatio 776.1538461538462
+09:29:09.945 CONFIG | opponentRatio 1009.8571428571429
+09:29:09.945 CONFIG | opponentValue 233.7032967032967
+09:29:09.945 CONFIG | bid 326.4131868131868
+09:29:09.945 CONFIG | our profit: 2494.0
+09:29:09.945 CONFIG | 
+09:29:14.692 CONFIG | stupid bids: 0.0
+09:29:14.692 CONFIG | stupid profit: 1452.0
+09:29:14.692 CONFIG | 
+09:29:19.442 CONFIG | addedCost 985.0
+09:29:19.442 CONFIG | profit 93.13846153846154
+09:29:19.442 CONFIG | perc 0.37492394075301555
+09:29:19.442 CONFIG | pickupIncentiveValue 41.670771781631096
+09:29:19.442 CONFIG | desperationValue 0.0
+09:29:19.443 CONFIG | ourRatio 776.1538461538462
+09:29:19.443 CONFIG | opponentRatio 883.625
+09:29:19.443 CONFIG | opponentValue 107.47115384615381
+09:29:19.443 CONFIG | bid 1090.2032666799073
+09:29:19.443 CONFIG | our profit: 2494.0
+09:29:19.443 CONFIG | 
+09:29:24.192 CONFIG | stupid bids: 0.0
+09:29:24.192 CONFIG | stupid profit: 1452.0
+09:29:24.192 CONFIG | 
+09:29:28.942 CONFIG | addedCost 985.0
+09:29:28.942 CONFIG | profit 209.56153846153845
+09:29:28.942 CONFIG | perc 0.2743336682165092
+09:29:28.942 CONFIG | pickupIncentiveValue 38.62211274960846
+09:29:28.942 CONFIG | desperationValue 0.0
+09:29:28.943 CONFIG | ourRatio 776.1538461538462
+09:29:28.943 CONFIG | opponentRatio 785.4444444444445
+09:29:28.943 CONFIG | opponentValue 9.290598290598268
+09:29:28.943 CONFIG | bid 1160.584724857229
+09:29:28.943 CONFIG | our profit: 2494.0
+09:29:28.943 CONFIG | 
+09:29:33.692 CONFIG | stupid bids: 943.9173511780821
+09:29:33.692 CONFIG | stupid profit: 1452.0
+09:29:33.692 CONFIG | 
+09:29:38.442 CONFIG | addedCost 0.0
+09:29:38.443 CONFIG | profit 93.13846153846154
+09:29:38.443 CONFIG | perc 0.9124613248095934
+09:29:38.443 CONFIG | pickupIncentiveValue 0.0
+09:29:38.452 CONFIG | desperationValue 0.0
+09:29:38.453 CONFIG | ourRatio 776.1538461538462
+09:29:38.453 CONFIG | opponentRatio 801.3
+09:29:38.453 CONFIG | opponentValue 25.146153846153766
+09:29:38.453 CONFIG | bid 105.71153846153842
+09:29:38.453 CONFIG | our profit: 2494.0
+09:29:38.453 CONFIG | 
+09:29:43.193 CONFIG | stupid bids: 1277.6801433370174
+09:29:43.193 CONFIG | stupid profit: 1738.5
+09:29:43.193 CONFIG | 
+09:29:47.943 CONFIG | addedCost 1755.0
+09:29:47.943 CONFIG | profit 87.39428571428573
+09:29:47.943 CONFIG | perc 0.0
+09:29:47.943 CONFIG | pickupIncentiveValue 50.14285742305219
+09:29:47.943 CONFIG | desperationValue 0.0
+09:29:47.943 CONFIG | ourRatio 728.2857142857143
+09:29:47.943 CONFIG | opponentRatio 801.3
+09:29:47.943 CONFIG | opponentValue 73.01428571428562
+09:29:47.943 CONFIG | bid 1828.7585711483762
+09:29:47.943 CONFIG | our profit: 2600.0
+09:29:47.943 CONFIG | 
+09:29:52.693 CONFIG | stupid bids: 585.1795547309416
+09:29:52.693 CONFIG | stupid profit: 1738.5
+09:29:52.693 CONFIG | 
+09:29:57.444 CONFIG | addedCost 0.0
+09:29:57.444 CONFIG | profit 87.39428571428573
+09:29:57.444 CONFIG | perc 0.0
+09:29:57.444 CONFIG | pickupIncentiveValue 0.0
+09:29:57.444 CONFIG | desperationValue 0.0
+09:29:57.444 CONFIG | ourRatio 728.2857142857143
+09:29:57.445 CONFIG | opponentRatio 781.6363636363636
+09:29:57.445 CONFIG | opponentValue 53.35064935064929
+09:29:57.445 CONFIG | bid 114.06961038961038
+09:29:57.445 CONFIG | our profit: 2600.0
+09:29:57.445 CONFIG | 
+09:30:02.194 CONFIG | stupid bids: 0.0
+09:30:02.194 CONFIG | stupid profit: 1748.5
+09:30:02.194 CONFIG | 
+09:30:06.944 CONFIG | addedCost 0.0
+09:30:06.944 CONFIG | profit 87.39428571428573
+09:30:06.945 CONFIG | perc 0.9124613248095934
+09:30:06.945 CONFIG | pickupIncentiveValue 0.0
+09:30:06.945 CONFIG | desperationValue 0.0
+09:30:06.945 CONFIG | ourRatio 728.2857142857143
+09:30:06.945 CONFIG | opponentRatio 716.5
+09:30:06.945 CONFIG | opponentValue 0.0
+09:30:06.945 CONFIG | bid 87.39428571428573
+09:30:06.945 CONFIG | our profit: 2600.0
+09:30:06.945 CONFIG | 
+09:30:11.695 CONFIG | stupid bids: 1240.01960966067
+09:30:11.695 CONFIG | stupid profit: 1748.5
+09:30:11.695 CONFIG | 
+09:30:16.445 CONFIG | addedCost 0.0
+09:30:16.449 CONFIG | profit 82.26400000000001
+09:30:16.449 CONFIG | perc 0.5705255511747818
+09:30:16.449 CONFIG | pickupIncentiveValue 0.0
+09:30:16.449 CONFIG | desperationValue 0.0
+09:30:16.449 CONFIG | ourRatio 685.5333333333333
+09:30:16.449 CONFIG | opponentRatio 716.5
+09:30:16.449 CONFIG | opponentValue 30.966666666666697
+09:30:16.449 CONFIG | bid 97.74733333333336
+09:30:16.449 CONFIG | our profit: 2687.0
+09:30:16.449 CONFIG | 
+09:30:21.196 CONFIG | stupid bids: 2415.3164605564516
+09:30:21.196 CONFIG | stupid profit: 1748.5
+09:30:21.196 CONFIG | 
+09:30:25.948 CONFIG | addedCost 1064.5
+09:30:25.948 CONFIG | profit 175.179375
+09:30:25.949 CONFIG | perc 0.0863199507312122
+09:30:25.949 CONFIG | pickupIncentiveValue 28.90969011962233
+09:30:25.949 CONFIG | desperationValue 0.0
+09:30:25.949 CONFIG | ourRatio 648.8125
+09:30:25.949 CONFIG | opponentRatio 716.5
+09:30:25.949 CONFIG | opponentValue 67.6875
+09:30:25.949 CONFIG | bid 1244.6134348803776
+09:30:25.949 CONFIG | our profit: 2785.0
+09:30:25.949 CONFIG | 
+09:30:30.700 CONFIG | stupid bids: 0.0
+09:30:30.700 CONFIG | stupid profit: 1748.5
+09:30:30.700 CONFIG | 
+09:30:35.452 CONFIG | addedCost 0.0
+09:30:35.456 CONFIG | profit 77.8575
+09:30:35.456 CONFIG | perc 0.28330285586171117
+09:30:35.456 CONFIG | pickupIncentiveValue 0.0
+09:30:35.456 CONFIG | desperationValue 0.0
+09:30:35.456 CONFIG | ourRatio 648.8125
+09:30:35.456 CONFIG | opponentRatio 661.3846153846154
+09:30:35.456 CONFIG | opponentValue 12.572115384615358
+09:30:35.456 CONFIG | bid 84.14355769230768
+09:30:35.456 CONFIG | our profit: 2785.0
+09:30:35.456 CONFIG | 
+09:30:40.202 CONFIG | stupid bids: 508.60266404896146
+09:30:40.202 CONFIG | stupid profit: 1748.5
+09:30:40.202 CONFIG | 
+09:30:44.952 CONFIG | addedCost 0.0
+09:30:44.954 CONFIG | profit 166.20882352941177
+09:30:44.954 CONFIG | perc 0.5705255511747818
+09:30:44.954 CONFIG | pickupIncentiveValue 0.0
+09:30:44.954 CONFIG | desperationValue 0.0
+09:30:44.954 CONFIG | ourRatio 615.5882352941177
+09:30:44.954 CONFIG | opponentRatio 661.3846153846154
+09:30:44.954 CONFIG | opponentValue 45.79638009049768
+09:30:44.954 CONFIG | bid 189.1070135746606
+09:30:44.954 CONFIG | our profit: 2869.0
+09:30:44.954 CONFIG | 
+09:30:49.704 CONFIG | stupid bids: 2205.82985842349
+09:30:49.705 CONFIG | stupid profit: 1748.5
+09:30:49.705 CONFIG | 
+09:30:54.455 CONFIG | addedCost 0.0
+09:30:54.455 CONFIG | profit 71.02666666666667
+09:30:54.455 CONFIG | perc 0.3233889673845835
+09:30:54.455 CONFIG | pickupIncentiveValue 0.0
+09:30:54.455 CONFIG | desperationValue 0.0
+09:30:54.455 CONFIG | ourRatio 591.8888888888889
+09:30:54.455 CONFIG | opponentRatio 661.3846153846154
+09:30:54.455 CONFIG | opponentValue 69.49572649572644
+09:30:54.455 CONFIG | bid 105.7745299145299
+09:30:54.455 CONFIG | our profit: 3058.0
+09:30:54.455 CONFIG | 
+09:30:59.205 CONFIG | stupid bids: 0.0
+09:30:59.205 CONFIG | stupid profit: 1748.5
+09:30:59.205 CONFIG | 
+09:31:03.956 CONFIG | addedCost 1064.5
+09:31:03.957 CONFIG | profit 159.81
+09:31:03.957 CONFIG | perc 0.3788113372764859
+09:31:03.957 CONFIG | pickupIncentiveValue 32.61654897936348
+09:31:03.957 CONFIG | desperationValue 0.0
+09:31:03.957 CONFIG | ourRatio 591.8888888888889
+09:31:03.957 CONFIG | opponentRatio 614.1428571428571
+09:31:03.957 CONFIG | opponentValue 22.253968253968196
+09:31:03.957 CONFIG | bid 1202.8204351476206
+09:31:03.957 CONFIG | our profit: 3058.0
+09:31:03.957 CONFIG | 
+09:31:08.708 CONFIG | stupid bids: 1917.9807747272087
+09:31:08.709 CONFIG | stupid profit: 2111.0
+09:31:08.710 CONFIG | 
+09:31:13.461 CONFIG | addedCost 347.0
+09:31:13.461 CONFIG | profit 168.4942105263158
+09:31:13.461 CONFIG | perc 0.0
+09:31:13.462 CONFIG | pickupIncentiveValue 7.3052634708583355
+09:31:13.462 CONFIG | desperationValue 0.0
+09:31:13.462 CONFIG | ourRatio 624.0526315789474
+09:31:13.462 CONFIG | opponentRatio 614.1428571428571
+09:31:13.462 CONFIG | opponentValue 0.0
+09:31:13.462 CONFIG | bid 508.18894705545745
+09:31:13.462 CONFIG | our profit: 3196.5
+09:31:13.462 CONFIG | 
+09:31:18.213 CONFIG | stupid bids: 0.0
+09:31:18.214 CONFIG | stupid profit: 2111.0
+09:31:18.214 CONFIG | 
+09:31:22.967 CONFIG | addedCost 0.0
+09:31:22.973 CONFIG | profit 74.8863157894737
+09:31:22.973 CONFIG | perc 0.3233889673845835
+09:31:22.973 CONFIG | pickupIncentiveValue 0.0
+09:31:22.973 CONFIG | desperationValue 0.0
+09:31:22.973 CONFIG | ourRatio 624.0526315789474
+09:31:22.973 CONFIG | opponentRatio 573.2
+09:31:22.973 CONFIG | opponentValue 0.0
+09:31:22.973 CONFIG | bid 74.8863157894737
+09:31:22.974 CONFIG | our profit: 3196.5
+09:31:22.974 CONFIG | 
+09:31:27.717 CONFIG | stupid bids: 0.0
+09:31:27.718 CONFIG | stupid profit: 2111.0
+09:31:27.718 CONFIG | 
+09:31:32.468 CONFIG | addedCost 0.0
+09:31:32.468 CONFIG | profit 74.8863157894737
+09:31:32.469 CONFIG | perc 0.0
+09:31:32.469 CONFIG | pickupIncentiveValue 0.0
+09:31:32.469 CONFIG | desperationValue 0.0
+09:31:32.469 CONFIG | ourRatio 624.0526315789474
+09:31:32.469 CONFIG | opponentRatio 537.375
+09:31:32.469 CONFIG | opponentValue 0.0
+09:31:32.469 CONFIG | bid 74.8863157894737
+09:31:32.469 CONFIG | our profit: 3196.5
+09:31:32.469 CONFIG | 
+09:31:37.220 CONFIG | stupid bids: 2276.875871289426
+09:31:37.223 CONFIG | stupid profit: 2111.0
+09:31:37.223 CONFIG | 
+09:31:41.972 CONFIG | addedCost 0.0
+09:31:41.973 CONFIG | profit 71.592
+09:31:41.973 CONFIG | perc 0.0
+09:31:41.973 CONFIG | pickupIncentiveValue 0.0
+09:31:41.973 CONFIG | desperationValue 0.0
+09:31:41.973 CONFIG | ourRatio 596.6
+09:31:41.973 CONFIG | opponentRatio 537.375
+09:31:41.973 CONFIG | opponentValue 0.0
+09:31:41.973 CONFIG | bid 71.592
+09:31:41.973 CONFIG | our profit: 3271.5
+09:31:41.973 CONFIG | 
+09:31:46.723 CONFIG | stupid bids: 0.0
+09:31:46.726 CONFIG | stupid profit: 2111.0
+09:31:46.726 CONFIG | 
+09:31:51.476 CONFIG | addedCost 0.0
+09:31:51.477 CONFIG | profit 71.592
+09:31:51.477 CONFIG | perc 0.4345799417104523
+09:31:51.477 CONFIG | pickupIncentiveValue 0.0
+09:31:51.477 CONFIG | desperationValue 0.0
+09:31:51.478 CONFIG | ourRatio 596.6
+09:31:51.478 CONFIG | opponentRatio 505.7647058823529
+09:31:51.478 CONFIG | opponentValue 0.0
+09:31:51.478 CONFIG | bid 71.592
+09:31:51.478 CONFIG | our profit: 3271.5
+09:31:51.478 CONFIG | 
+09:31:56.226 CONFIG | stupid bids: 578.9534736267018
+09:31:56.229 CONFIG | stupid profit: 2111.0
+09:31:56.229 CONFIG | 
+09:32:00.978 CONFIG | addedCost 766.0
+09:32:00.978 CONFIG | profit 154.33714285714285
+09:32:00.983 CONFIG | perc 0.1854261689107446
+09:32:00.984 CONFIG | pickupIncentiveValue 17.295932953491405
+09:32:00.984 CONFIG | desperationValue 0.0
+09:32:00.984 CONFIG | ourRatio 571.6190476190476
+09:32:00.984 CONFIG | opponentRatio 505.7647058823529
+09:32:00.984 CONFIG | opponentValue 0.0
+09:32:00.984 CONFIG | bid 903.0412099036515
+09:32:00.984 CONFIG | our profit: 3343.5
+09:32:00.984 CONFIG | 
+09:32:05.734 CONFIG | stupid bids: 973.4215897587118
+09:32:05.737 CONFIG | stupid profit: 2111.0
+09:32:05.738 CONFIG | 
+09:32:10.495 CONFIG | addedCost 0.0
+09:32:10.495 CONFIG | profit 70.40181818181817
+09:32:10.496 CONFIG | perc 0.3233889673845835
+09:32:10.497 CONFIG | pickupIncentiveValue 0.0
+09:32:10.497 CONFIG | desperationValue 0.0
+09:32:10.499 CONFIG | ourRatio 586.6818181818181
+09:32:10.499 CONFIG | opponentRatio 505.7647058823529
+09:32:10.499 CONFIG | opponentValue 0.0
+09:32:10.501 CONFIG | bid 70.40181818181817
+09:32:10.503 CONFIG | our profit: 3480.5
+09:32:10.503 CONFIG | 
+09:32:15.254 CONFIG | stupid bids: 0.0
+09:32:15.257 CONFIG | stupid profit: 2111.0
+09:32:15.257 CONFIG | 
+09:32:20.007 CONFIG | addedCost 985.0
+09:32:20.008 CONFIG | profit 70.40181818181817
+09:32:20.008 CONFIG | perc 0.2757944363477151
+09:32:20.008 CONFIG | pickupIncentiveValue 22.848317818372358
+09:32:20.008 CONFIG | desperationValue 0.0
+09:32:20.008 CONFIG | ourRatio 586.6818181818181
+09:32:20.008 CONFIG | opponentRatio 477.6666666666667
+09:32:20.008 CONFIG | opponentValue 0.0
+09:32:20.008 CONFIG | bid 1032.553500363446
+09:32:20.008 CONFIG | our profit: 3480.5
+09:32:20.008 CONFIG | 
+09:32:24.761 CONFIG | stupid bids: 1643.522663902299
+09:32:24.761 CONFIG | stupid profit: 2111.0
+09:32:24.761 CONFIG | 
+09:34:36.525 CONFIG | Last best plan found: v1->va(p, 7)->va(p, 10)->va(p, 0)->va(p, 2)->va(d, 10)->va(p, 6)->va(p, 37)->va(p, 25)->va(p, 29)->va(d, 0)->va(p, 3)->va(d, 37)->va(p, 22)->va(p, 39)->va(p, 28)->va(p, 4)->va(d, 39)->va(d, 2)->va(d, 7)->va(p, 1)->va(p, 26)->va(d, 6)->va(d, 3)->va(p, 34)->va(p, 17)->va(d, 28)->va(p, 9)->va(d, 22)->va(d, 26)->va(d, 9)->va(d, 29)->va(p, 36)->va(p, 18)->va(d, 25)->va(d, 34)->va(d, 4)->va(d, 18)->va(d, 1)->va(p, 5)->va(d, 17)->va(p, 31)->va(d, 5)->va(d, 36)->va(d, 31)
+09:34:36.529 CONFIG | v0
+09:34:36.530 CONFIG | 
+09:34:36.530 CONFIG | Cost: 10411.5
+09:34:46.319 CONFIG | New best plan found: v1->va(p, 7)->va(p, 10)->va(p, 0)->va(p, 2)->va(d, 10)->va(p, 6)->va(p, 37)->va(p, 25)->va(p, 29)->va(d, 0)->va(p, 3)->va(d, 37)->va(p, 22)->va(p, 39)->va(p, 28)->va(p, 4)->va(d, 39)->va(d, 2)->va(d, 7)->va(p, 1)->va(p, 26)->va(d, 6)->va(d, 3)->va(p, 34)->va(p, 17)->va(d, 28)->va(p, 9)->va(d, 22)->va(d, 26)->va(d, 9)->va(d, 29)->va(p, 36)->va(p, 18)->va(d, 25)->va(d, 34)->va(d, 4)->va(d, 18)->va(d, 1)->va(p, 5)->va(d, 17)->va(p, 31)->va(d, 5)->va(d, 36)->va(d, 31)
+09:34:46.333 CONFIG | v0
+09:34:46.334 CONFIG | 
+09:34:46.334 CONFIG | Cost: 10411.5
+09:34:46.334 CONFIG | Last best plan found: v0->va(p, 8)->va(p, 14)->va(p, 11)->va(p, 16)->va(p, 27)->va(p, 21)->va(d, 8)->va(p, 30)->va(p, 38)->va(p, 19)->va(p, 33)->va(p, 12)->va(d, 16)->va(d, 19)->va(p, 13)->va(p, 20)->va(d, 21)->va(p, 35)->va(d, 11)->va(p, 15)->va(d, 20)->va(d, 12)->va(p, 32)->va(d, 27)->va(d, 13)->va(d, 30)->va(d, 33)->va(d, 14)->va(d, 32)->va(d, 15)->va(d, 38)->va(d, 35)
+09:34:46.334 CONFIG | v1->va(p, 23)->va(p, 24)->va(d, 23)->va(d, 24)
+09:34:46.334 CONFIG | 
+09:34:46.334 CONFIG | Cost: 6487.0
+09:34:56.133 CONFIG | New best plan found: v0->va(p, 8)->va(p, 14)->va(p, 11)->va(p, 16)->va(p, 27)->va(p, 21)->va(d, 8)->va(p, 30)->va(p, 38)->va(p, 19)->va(p, 33)->va(p, 12)->va(d, 16)->va(d, 19)->va(p, 13)->va(p, 20)->va(d, 21)->va(p, 35)->va(d, 11)->va(p, 15)->va(d, 20)->va(d, 12)->va(p, 32)->va(d, 27)->va(d, 13)->va(d, 30)->va(d, 33)->va(d, 14)->va(d, 32)->va(d, 15)->va(d, 38)->va(d, 35)
+09:34:56.133 CONFIG | v1->va(p, 23)->va(p, 24)->va(d, 23)->va(d, 24)
+09:34:56.133 CONFIG | 
+09:34:56.133 CONFIG | Cost: 6487.0
+09:36:50.959 CONFIG | Wrote tournament/master/auction-master-basic.xml
+09:36:51.428 INFO | LogistPlatform finished successfully!
+09:36:51.463 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/master/auction-basic-master.xml -a tournament/master/agents.xml config/auction.xml basic master
+09:36:51.638 CONFIG | Reading config/auction.xml
+09:36:51.728 CONFIG | Reading config/settings_auction.xml
+09:36:52.033 CONFIG | Reading config/topology/england.xml
+09:36:52.057 CONFIG | Reading tournament/master/agents.xml
+09:36:52.096 CONFIG | Reading config/settings_auction.xml
+09:36:52.104 CONFIG | Reading config/settings_auction.xml
+09:36:56.891 CONFIG | stupid bids: 2191.0
+09:36:56.891 CONFIG | stupid profit: 0.0
+09:36:56.891 CONFIG | 
+09:37:01.643 CONFIG | addedCost 2766.0
+09:37:01.643 CONFIG | profit 0.0
+09:37:01.643 CONFIG | perc 0.08022732264913203
+09:37:01.643 CONFIG | pickupIncentiveValue 1195.1635275883239
+09:37:01.643 CONFIG | desperationValue 0.0
+09:37:01.643 CONFIG | ourRatio 0.0
+09:37:01.643 CONFIG | opponentRatio NaN
+09:37:01.643 CONFIG | opponentValue 0.0
+09:37:01.643 CONFIG | bid 1570.8364724116761
+09:37:01.643 CONFIG | our profit: 0.0
+09:37:01.643 CONFIG | 
+09:37:06.394 CONFIG | stupid bids: 2700.087557850576
+09:37:06.394 CONFIG | stupid profit: 0.0
+09:37:06.394 CONFIG | 
+09:37:11.144 CONFIG | addedCost 2382.0
+09:37:11.144 CONFIG | profit 94.25999999999999
+09:37:11.144 CONFIG | perc 0.26893135112162303
+09:37:11.144 CONFIG | pickupIncentiveValue 604.5189046823747
+09:37:11.144 CONFIG | desperationValue 47.800000000000004
+09:37:11.144 CONFIG | ourRatio 785.5
+09:37:11.144 CONFIG | opponentRatio NaN
+09:37:11.145 CONFIG | opponentValue 0.0
+09:37:11.145 CONFIG | bid 1919.5410953176254
+09:37:11.145 CONFIG | our profit: -1195.0
+09:37:11.145 CONFIG | 
+09:37:15.896 CONFIG | stupid bids: 2355.6560888437816
+09:37:15.896 CONFIG | stupid profit: 0.0
+09:37:15.896 CONFIG | 
+09:37:20.647 CONFIG | addedCost 0.0
+09:37:20.647 CONFIG | profit 139.64000000000001
+09:37:20.647 CONFIG | perc 0.0863199507312122
+09:37:20.647 CONFIG | pickupIncentiveValue 0.0
+09:37:20.647 CONFIG | desperationValue 149.13
+09:37:20.647 CONFIG | ourRatio 1163.6666666666667
+09:37:20.647 CONFIG | opponentRatio NaN
+09:37:20.647 CONFIG | opponentValue 0.0
+09:37:20.648 CONFIG | bid 288.77
+09:37:20.648 CONFIG | our profit: -1657.0
+09:37:20.648 CONFIG | 
+09:37:25.398 CONFIG | stupid bids: 2288.5435743228018
+09:37:25.398 CONFIG | stupid profit: 0.0
+09:37:25.398 CONFIG | 
+09:37:30.148 CONFIG | addedCost 748.0
+09:37:30.148 CONFIG | profit 113.4
+09:37:30.148 CONFIG | perc 0.1477405403150809
+09:37:30.148 CONFIG | pickupIncentiveValue 85.85099369484753
+09:37:30.148 CONFIG | desperationValue 218.88
+09:37:30.148 CONFIG | ourRatio 945.0
+09:37:30.148 CONFIG | opponentRatio NaN
+09:37:30.149 CONFIG | opponentValue 0.0
+09:37:30.149 CONFIG | bid 994.4290063051525
+09:37:30.149 CONFIG | our profit: -1368.0
+09:37:30.149 CONFIG | 
+09:37:34.900 CONFIG | stupid bids: 2986.8501602325873
+09:37:34.900 CONFIG | stupid profit: 0.0
+09:37:34.900 CONFIG | 
+09:37:39.650 CONFIG | addedCost 0.0
+09:37:39.651 CONFIG | profit 114.57600000000001
+09:37:39.651 CONFIG | perc 0.5214951840046719
+09:37:39.651 CONFIG | pickupIncentiveValue 0.0
+09:37:39.651 CONFIG | desperationValue 280.5
+09:37:39.651 CONFIG | ourRatio 954.8
+09:37:39.651 CONFIG | opponentRatio NaN
+09:37:39.651 CONFIG | opponentValue 0.0
+09:37:39.651 CONFIG | bid 395.076
+09:37:39.651 CONFIG | our profit: -1122.0
+09:37:39.651 CONFIG | 
+09:37:44.402 CONFIG | stupid bids: 1245.8002898495367
+09:37:44.405 CONFIG | stupid profit: 0.0
+09:37:44.406 CONFIG | 
+09:37:49.157 CONFIG | addedCost 0.0
+09:37:49.158 CONFIG | profit 103.38
+09:37:49.158 CONFIG | perc 0.0
+09:37:49.158 CONFIG | pickupIncentiveValue 0.0
+09:37:49.158 CONFIG | desperationValue 261.72
+09:37:49.158 CONFIG | ourRatio 861.5
+09:37:49.158 CONFIG | opponentRatio NaN
+09:37:49.158 CONFIG | opponentValue 0.0
+09:37:49.158 CONFIG | bid 365.1
+09:37:49.158 CONFIG | our profit: -727.0
+09:37:49.158 CONFIG | 
+09:37:53.909 CONFIG | stupid bids: 2599.2472401337627
+09:37:53.909 CONFIG | stupid profit: 0.0
+09:37:53.909 CONFIG | 
+09:37:58.660 CONFIG | addedCost 0.0
+09:37:58.660 CONFIG | profit 94.86857142857143
+09:37:58.660 CONFIG | perc 0.01927955862714997
+09:37:58.660 CONFIG | pickupIncentiveValue 0.0
+09:37:58.660 CONFIG | desperationValue 177.38
+09:37:58.660 CONFIG | ourRatio 790.5714285714286
+09:37:58.660 CONFIG | opponentRatio NaN
+09:37:58.660 CONFIG | opponentValue 0.0
+09:37:58.660 CONFIG | bid 272.24857142857144
+09:37:58.660 CONFIG | our profit: -362.0
+09:37:58.660 CONFIG | 
+09:38:03.411 CONFIG | stupid bids: 1431.4273368399438
+09:38:03.411 CONFIG | stupid profit: 0.0
+09:38:03.411 CONFIG | 
+09:38:08.161 CONFIG | addedCost 0.0
+09:38:08.161 CONFIG | profit 195.9525
+09:38:08.161 CONFIG | perc 0.0863199507312122
+09:38:08.161 CONFIG | pickupIncentiveValue 0.0
+09:38:08.161 CONFIG | desperationValue 57.6
+09:38:08.162 CONFIG | ourRatio 725.75
+09:38:08.162 CONFIG | opponentRatio NaN
+09:38:08.162 CONFIG | opponentValue 0.0
+09:38:08.163 CONFIG | bid 253.55249999999998
+09:38:08.163 CONFIG | our profit: -90.0
+09:38:08.163 CONFIG | 
+09:38:12.913 CONFIG | stupid bids: 4106.382595718637
+09:38:12.913 CONFIG | stupid profit: 0.0
+09:38:12.913 CONFIG | 
+09:38:17.663 CONFIG | addedCost 1814.0
+09:38:17.663 CONFIG | profit 181.8
+09:38:17.663 CONFIG | perc 0.18423948076150937
+09:38:17.663 CONFIG | pickupIncentiveValue 95.47602089417673
+09:38:17.663 CONFIG | desperationValue 0.0
+09:38:17.663 CONFIG | ourRatio 673.3333333333334
+09:38:17.663 CONFIG | opponentRatio NaN
+09:38:17.663 CONFIG | opponentValue 0.0
+09:38:17.663 CONFIG | bid 1900.3239791058231
+09:38:17.664 CONFIG | our profit: 164.0
+09:38:17.664 CONFIG | 
+09:38:22.419 CONFIG | stupid bids: 1742.4400480587485
+09:38:22.420 CONFIG | stupid profit: 0.0
+09:38:22.420 CONFIG | 
+09:38:27.164 CONFIG | addedCost 1051.0
+09:38:27.167 CONFIG | profit 214.92
+09:38:27.167 CONFIG | perc 0.0
+09:38:27.167 CONFIG | pickupIncentiveValue 42.039999060332775
+09:38:27.167 CONFIG | desperationValue 0.0
+09:38:27.167 CONFIG | ourRatio 796.0
+09:38:27.167 CONFIG | opponentRatio NaN
+09:38:27.167 CONFIG | opponentValue 0.0
+09:38:27.167 CONFIG | bid 1223.8800009396673
+09:38:27.167 CONFIG | our profit: 250.0
+09:38:27.167 CONFIG | 
+09:38:31.916 CONFIG | stupid bids: 1325.16068521567
+09:38:31.916 CONFIG | stupid profit: 0.0
+09:38:31.916 CONFIG | 
+09:38:36.666 CONFIG | addedCost 474.5
+09:38:36.667 CONFIG | profit 100.18909090909091
+09:38:36.667 CONFIG | perc 0.0
+09:38:36.667 CONFIG | pickupIncentiveValue 17.254544908180833
+09:38:36.668 CONFIG | desperationValue 0.0
+09:38:36.668 CONFIG | ourRatio 834.9090909090909
+09:38:36.668 CONFIG | opponentRatio NaN
+09:38:36.668 CONFIG | opponentValue 0.0
+09:38:36.668 CONFIG | bid 557.4345460009101
+09:38:36.668 CONFIG | our profit: 423.0
+09:38:36.668 CONFIG | 
+09:38:41.417 CONFIG | stupid bids: 1915.8283516022527
+09:38:41.417 CONFIG | stupid profit: 0.0
+09:38:41.417 CONFIG | 
+09:38:46.167 CONFIG | addedCost 0.0
+09:38:46.168 CONFIG | profit 97.41
+09:38:46.168 CONFIG | perc 0.2550753180811942
+09:38:46.169 CONFIG | pickupIncentiveValue 0.0
+09:38:46.169 CONFIG | desperationValue 0.0
+09:38:46.169 CONFIG | ourRatio 811.75
+09:38:46.169 CONFIG | opponentRatio NaN
+09:38:46.169 CONFIG | opponentValue 0.0
+09:38:46.169 CONFIG | bid 97.41
+09:38:46.169 CONFIG | our profit: 505.5
+09:38:46.169 CONFIG | 
+09:38:50.918 CONFIG | stupid bids: 2409.289622514929
+09:38:50.918 CONFIG | stupid profit: 0.0
+09:38:50.918 CONFIG | 
+09:38:55.668 CONFIG | addedCost 0.0
+09:38:55.672 CONFIG | profit 204.3276923076923
+09:38:55.672 CONFIG | perc 0.0863199507312122
+09:38:55.672 CONFIG | pickupIncentiveValue 0.0
+09:38:55.672 CONFIG | desperationValue 0.0
+09:38:55.672 CONFIG | ourRatio 756.7692307692307
+09:38:55.673 CONFIG | opponentRatio NaN
+09:38:55.673 CONFIG | opponentValue 0.0
+09:38:55.673 CONFIG | bid 204.3276923076923
+09:38:55.673 CONFIG | our profit: 626.0
+09:38:55.673 CONFIG | 
+09:39:00.425 CONFIG | stupid bids: 1044.035265833542
+09:39:00.425 CONFIG | stupid profit: 0.0
+09:39:00.425 CONFIG | 
+09:39:05.179 CONFIG | addedCost 1727.5
+09:39:05.181 CONFIG | profit 193.66714285714286
+09:39:05.181 CONFIG | perc 0.2757944363477151
+09:39:05.181 CONFIG | pickupIncentiveValue 62.96956860303211
+09:39:05.181 CONFIG | desperationValue 0.0
+09:39:05.181 CONFIG | ourRatio 717.2857142857143
+09:39:05.181 CONFIG | opponentRatio NaN
+09:39:05.181 CONFIG | opponentValue 0.0
+09:39:05.181 CONFIG | bid 1858.1975742541108
+09:39:05.181 CONFIG | our profit: 830.0
+09:39:05.181 CONFIG | 
+09:39:09.930 CONFIG | stupid bids: 3326.8296337129573
+09:39:09.930 CONFIG | stupid profit: 15.5
+09:39:09.930 CONFIG | 
+09:39:14.680 CONFIG | addedCost 569.0
+09:39:14.681 CONFIG | profit 193.66714285714286
+09:39:14.681 CONFIG | perc 0.7113708853105218
+09:39:14.681 CONFIG | pickupIncentiveValue 27.822001119515743
+09:39:14.681 CONFIG | desperationValue 0.0
+09:39:14.681 CONFIG | ourRatio 717.2857142857143
+09:39:14.681 CONFIG | opponentRatio 1044.0
+09:39:14.681 CONFIG | opponentValue 326.71428571428567
+09:39:14.681 CONFIG | bid 898.2022845947699
+09:39:14.681 CONFIG | our profit: 830.0
+09:39:14.681 CONFIG | 
+09:39:19.431 CONFIG | stupid bids: 606.639086083457
+09:39:19.435 CONFIG | stupid profit: 15.5
+09:39:19.435 CONFIG | 
+09:39:24.181 CONFIG | addedCost 0.0
+09:39:24.181 CONFIG | profit 87.52000000000001
+09:39:24.181 CONFIG | perc 0.24533497311543415
+09:39:24.181 CONFIG | pickupIncentiveValue 0.0
+09:39:24.181 CONFIG | desperationValue 0.0
+09:39:24.181 CONFIG | ourRatio 729.3333333333334
+09:39:24.181 CONFIG | opponentRatio 1044.0
+09:39:24.181 CONFIG | opponentValue 314.66666666666663
+09:39:24.181 CONFIG | bid 244.85333333333332
+09:39:24.181 CONFIG | our profit: 1159.0
+09:39:24.182 CONFIG | 
+09:39:28.932 CONFIG | stupid bids: 956.4194014817682
+09:39:28.933 CONFIG | stupid profit: 15.5
+09:39:28.933 CONFIG | 
+09:39:33.683 CONFIG | addedCost 0.0
+09:39:33.684 CONFIG | profit 83.8875
+09:39:33.685 CONFIG | perc 0.0
+09:39:33.685 CONFIG | pickupIncentiveValue 0.0
+09:39:33.686 CONFIG | desperationValue 0.0
+09:39:33.686 CONFIG | ourRatio 699.0625
+09:39:33.686 CONFIG | opponentRatio 1044.0
+09:39:33.686 CONFIG | opponentValue 344.9375
+09:39:33.687 CONFIG | bid 256.35625
+09:39:33.687 CONFIG | our profit: 1404.0
+09:39:33.688 CONFIG | 
+09:39:38.440 CONFIG | stupid bids: 1870.917698127747
+09:39:38.443 CONFIG | stupid profit: 15.5
+09:39:38.443 CONFIG | 
+09:39:43.193 CONFIG | addedCost 0.0
+09:39:43.193 CONFIG | profit 181.71
+09:39:43.193 CONFIG | perc 0.07487214721699915
+09:39:43.193 CONFIG | pickupIncentiveValue 0.0
+09:39:43.193 CONFIG | desperationValue 0.0
+09:39:43.193 CONFIG | ourRatio 673.0
+09:39:43.194 CONFIG | opponentRatio 1044.0
+09:39:43.194 CONFIG | opponentValue 371.0
+09:39:43.194 CONFIG | bid 367.21000000000004
+09:39:43.194 CONFIG | our profit: 1660.0
+09:39:43.194 CONFIG | 
+09:39:47.944 CONFIG | stupid bids: 5017.68683737952
+09:39:47.947 CONFIG | stupid profit: 15.5
+09:39:47.947 CONFIG | 
+09:39:52.695 CONFIG | addedCost 0.0
+09:39:52.695 CONFIG | profit 177.11999999999998
+09:39:52.695 CONFIG | perc 0.28622869001991336
+09:39:52.695 CONFIG | pickupIncentiveValue 0.0
+09:39:52.695 CONFIG | desperationValue 0.0
+09:39:52.696 CONFIG | ourRatio 656.0
+09:39:52.696 CONFIG | opponentRatio 1044.0
+09:39:52.696 CONFIG | opponentValue 388.0
+09:39:52.696 CONFIG | bid 371.12
+09:39:52.696 CONFIG | our profit: 2027.0
+09:39:52.696 CONFIG | 
+09:39:57.447 CONFIG | stupid bids: 4308.17763352584
+09:39:57.450 CONFIG | stupid profit: 15.5
+09:39:57.450 CONFIG | 
+09:40:02.199 CONFIG | addedCost 0.0
+09:40:02.199 CONFIG | profit 76.92
+09:40:02.199 CONFIG | perc 0.16992759656225623
+09:40:02.199 CONFIG | pickupIncentiveValue 0.0
+09:40:02.199 CONFIG | desperationValue 0.0
+09:40:02.199 CONFIG | ourRatio 641.0
+09:40:02.199 CONFIG | opponentRatio 1044.0
+09:40:02.199 CONFIG | opponentValue 403.0
+09:40:02.199 CONFIG | bid 278.42
+09:40:02.199 CONFIG | our profit: 2398.0
+09:40:02.199 CONFIG | 
+09:40:06.950 CONFIG | stupid bids: 901.2344630096537
+09:40:06.950 CONFIG | stupid profit: 15.5
+09:40:06.950 CONFIG | 
+09:40:11.701 CONFIG | addedCost 985.0
+09:40:11.701 CONFIG | profit 74.742
+09:40:11.701 CONFIG | perc 0.37492394075301555
+09:40:11.701 CONFIG | pickupIncentiveValue 27.086001027415094
+09:40:11.701 CONFIG | desperationValue 0.0
+09:40:11.701 CONFIG | ourRatio 622.85
+09:40:11.701 CONFIG | opponentRatio 1044.0
+09:40:11.701 CONFIG | opponentValue 421.15
+09:40:11.701 CONFIG | bid 1243.230998972585
+09:40:11.701 CONFIG | our profit: 2676.0
+09:40:11.701 CONFIG | 
+09:40:16.451 CONFIG | stupid bids: 1250.297845856585
+09:40:16.452 CONFIG | stupid profit: 442.0
+09:40:16.452 CONFIG | 
+09:40:21.203 CONFIG | addedCost 855.0
+09:40:21.203 CONFIG | profit 74.742
+09:40:21.203 CONFIG | perc 0.2743336682165092
+09:40:21.203 CONFIG | pickupIncentiveValue 21.791105239433136
+09:40:21.203 CONFIG | desperationValue 0.0
+09:40:21.203 CONFIG | ourRatio 622.85
+09:40:21.203 CONFIG | opponentRatio 972.5
+09:40:21.203 CONFIG | opponentValue 349.65
+09:40:21.203 CONFIG | bid 1082.7758947605669
+09:40:21.203 CONFIG | our profit: 2676.0
+09:40:21.203 CONFIG | 
+09:40:25.954 CONFIG | stupid bids: 3255.391395629429
+09:40:25.954 CONFIG | stupid profit: 442.0
+09:40:25.954 CONFIG | 
+09:40:30.705 CONFIG | addedCost 303.5
+09:40:30.708 CONFIG | profit 77.37142857142858
+09:40:30.708 CONFIG | perc 0.9124613248095934
+09:40:30.708 CONFIG | pickupIncentiveValue 11.055848271296352
+09:40:30.708 CONFIG | desperationValue 0.0
+09:40:30.708 CONFIG | ourRatio 644.7619047619048
+09:40:30.708 CONFIG | opponentRatio 972.5
+09:40:30.708 CONFIG | opponentValue 327.7380952380952
+09:40:30.708 CONFIG | bid 533.6846279191798
+09:40:30.708 CONFIG | our profit: 2904.0
+09:40:30.708 CONFIG | 
+09:40:35.455 CONFIG | stupid bids: 1339.4089595600392
+09:40:35.455 CONFIG | stupid profit: 442.0
+09:40:35.455 CONFIG | 
+09:40:40.205 CONFIG | addedCost 0.0
+09:40:40.208 CONFIG | profit 76.76727272727273
+09:40:40.208 CONFIG | perc 0.0
+09:40:40.208 CONFIG | pickupIncentiveValue 0.0
+09:40:40.208 CONFIG | desperationValue 0.0
+09:40:40.208 CONFIG | ourRatio 639.7272727272727
+09:40:40.208 CONFIG | opponentRatio 972.5
+09:40:40.208 CONFIG | opponentValue 332.77272727272725
+09:40:40.208 CONFIG | bid 243.15363636363634
+09:40:40.208 CONFIG | our profit: 3134.5
+09:40:40.208 CONFIG | 
+09:40:44.955 CONFIG | stupid bids: 1156.1901310123817
+09:40:44.955 CONFIG | stupid profit: 442.0
+09:40:44.955 CONFIG | 
+09:40:49.706 CONFIG | addedCost 0.0
+09:40:49.709 CONFIG | profit 74.69739130434783
+09:40:49.709 CONFIG | perc 0.0
+09:40:49.709 CONFIG | pickupIncentiveValue 0.0
+09:40:49.709 CONFIG | desperationValue 0.0
+09:40:49.709 CONFIG | ourRatio 622.4782608695652
+09:40:49.709 CONFIG | opponentRatio 972.5
+09:40:49.709 CONFIG | opponentValue 350.02173913043475
+09:40:49.709 CONFIG | bid 249.7082608695652
+09:40:49.709 CONFIG | our profit: 3377.5
+09:40:49.709 CONFIG | 
+09:40:54.456 CONFIG | stupid bids: 2604.0428710525994
+09:40:54.456 CONFIG | stupid profit: 442.0
+09:40:54.456 CONFIG | 
+09:40:59.210 CONFIG | addedCost 0.0
+09:40:59.210 CONFIG | profit 163.87875
+09:40:59.210 CONFIG | perc 0.9124613248095934
+09:40:59.210 CONFIG | pickupIncentiveValue 0.0
+09:40:59.210 CONFIG | desperationValue 0.0
+09:40:59.210 CONFIG | ourRatio 606.9583333333334
+09:40:59.210 CONFIG | opponentRatio 972.5
+09:40:59.210 CONFIG | opponentValue 365.54166666666663
+09:40:59.210 CONFIG | bid 346.64958333333334
+09:40:59.210 CONFIG | our profit: 3627.5
+09:40:59.210 CONFIG | 
+09:41:03.960 CONFIG | stupid bids: 3840.534619404531
+09:41:03.960 CONFIG | stupid profit: 442.0
+09:41:03.960 CONFIG | 
+09:41:08.712 CONFIG | addedCost 0.0
+09:41:08.712 CONFIG | profit 71.5872
+09:41:08.712 CONFIG | perc 0.5705255511747818
+09:41:08.712 CONFIG | pickupIncentiveValue 0.0
+09:41:08.712 CONFIG | desperationValue 0.0
+09:41:08.712 CONFIG | ourRatio 596.56
+09:41:08.712 CONFIG | opponentRatio 972.5
+09:41:08.712 CONFIG | opponentValue 375.94000000000005
+09:41:08.712 CONFIG | bid 259.5572
+09:41:08.712 CONFIG | our profit: 3974.5
+09:41:08.712 CONFIG | 
+09:41:13.462 CONFIG | stupid bids: 2308.641760808589
+09:41:13.462 CONFIG | stupid profit: 442.0
+09:41:13.462 CONFIG | 
+09:41:18.216 CONFIG | addedCost 0.0
+09:41:18.216 CONFIG | profit 70.03384615384616
+09:41:18.216 CONFIG | perc 0.0863199507312122
+09:41:18.216 CONFIG | pickupIncentiveValue 0.0
+09:41:18.216 CONFIG | desperationValue 0.0
+09:41:18.216 CONFIG | ourRatio 583.6153846153846
+09:41:18.216 CONFIG | opponentRatio 972.5
+09:41:18.216 CONFIG | opponentValue 388.88461538461536
+09:41:18.217 CONFIG | bid 264.4761538461538
+09:41:18.217 CONFIG | our profit: 4234.5
+09:41:18.217 CONFIG | 
+09:41:22.967 CONFIG | stupid bids: 1205.5621839200917
+09:41:22.967 CONFIG | stupid profit: 442.0
+09:41:22.967 CONFIG | 
+09:41:27.717 CONFIG | addedCost 1985.0
+09:41:27.717 CONFIG | profit 68.61333333333333
+09:41:27.717 CONFIG | perc 0.28330285586171117
+09:41:27.717 CONFIG | pickupIncentiveValue 37.7386092416252
+09:41:27.717 CONFIG | desperationValue 0.0
+09:41:27.717 CONFIG | ourRatio 571.7777777777778
+09:41:27.717 CONFIG | opponentRatio 972.5
+09:41:27.717 CONFIG | opponentValue 400.7222222222222
+09:41:27.717 CONFIG | bid 2216.235835202819
+09:41:27.717 CONFIG | our profit: 4498.5
+09:41:27.717 CONFIG | 
+09:41:32.467 CONFIG | stupid bids: 2827.8650733628992
+09:41:32.467 CONFIG | stupid profit: 684.0
+09:41:32.467 CONFIG | 
+09:41:37.222 CONFIG | addedCost 0.0
+09:41:37.225 CONFIG | profit 154.38
+09:41:37.225 CONFIG | perc 0.5705255511747818
+09:41:37.225 CONFIG | pickupIncentiveValue 0.0
+09:41:37.225 CONFIG | desperationValue 0.0
+09:41:37.225 CONFIG | ourRatio 571.7777777777778
+09:41:37.225 CONFIG | opponentRatio 1050.3333333333333
+09:41:37.225 CONFIG | opponentValue 478.55555555555543
+09:41:37.225 CONFIG | bid 393.6577777777777
+09:41:37.225 CONFIG | our profit: 4498.5
+09:41:37.225 CONFIG | 
+09:41:41.972 CONFIG | stupid bids: 4266.453895328734
+09:41:41.972 CONFIG | stupid profit: 684.0
+09:41:41.972 CONFIG | 
+09:41:46.722 CONFIG | addedCost 1150.0
+09:41:46.722 CONFIG | profit 67.85142857142857
+09:41:46.723 CONFIG | perc 0.3233889673845835
+09:41:46.723 CONFIG | pickupIncentiveValue 21.7413902999505
+09:41:46.723 CONFIG | desperationValue 0.0
+09:41:46.723 CONFIG | ourRatio 565.4285714285714
+09:41:46.723 CONFIG | opponentRatio 1050.3333333333333
+09:41:46.723 CONFIG | opponentValue 484.9047619047618
+09:41:46.723 CONFIG | bid 1438.562419223859
+09:41:46.723 CONFIG | our profit: 4892.5
+09:41:46.723 CONFIG | 
+09:41:51.473 CONFIG | stupid bids: 4660.781779924375
+09:41:51.473 CONFIG | stupid profit: 684.0
+09:41:51.473 CONFIG | 
+09:41:56.224 CONFIG | addedCost 0.0
+09:41:56.224 CONFIG | profit 71.46620689655172
+09:41:56.224 CONFIG | perc 0.3788113372764859
+09:41:56.224 CONFIG | pickupIncentiveValue 0.0
+09:41:56.224 CONFIG | desperationValue 0.0
+09:41:56.224 CONFIG | ourRatio 595.551724137931
+09:41:56.224 CONFIG | opponentRatio 1050.3333333333333
+09:41:56.224 CONFIG | opponentValue 454.7816091954022
+09:41:56.224 CONFIG | bid 298.85701149425284
+09:41:56.224 CONFIG | our profit: 5181.5
+09:41:56.224 CONFIG | 
+09:42:00.974 CONFIG | stupid bids: 781.7729503187379
+09:42:00.974 CONFIG | stupid profit: 684.0
+09:42:00.974 CONFIG | 
+09:42:05.724 CONFIG | addedCost 1002.5
+09:42:05.724 CONFIG | profit 158.13
+09:42:05.725 CONFIG | perc 0.0
+09:42:05.725 CONFIG | pickupIncentiveValue 13.366666990332305
+09:42:05.725 CONFIG | desperationValue 0.0
+09:42:05.725 CONFIG | ourRatio 585.6666666666666
+09:42:05.725 CONFIG | opponentRatio 1050.3333333333333
+09:42:05.725 CONFIG | opponentValue 464.66666666666663
+09:42:05.725 CONFIG | bid 1379.596666343001
+09:42:05.725 CONFIG | our profit: 5480.5
+09:42:05.725 CONFIG | 
+09:42:10.475 CONFIG | stupid bids: 1787.0135154181569
+09:42:10.475 CONFIG | stupid profit: 1119.0
+09:42:10.475 CONFIG | 
+09:42:15.225 CONFIG | addedCost 2158.5
+09:42:15.225 CONFIG | profit 70.28
+09:42:15.225 CONFIG | perc 0.3233889673845835
+09:42:15.225 CONFIG | pickupIncentiveValue 38.087135403584924
+09:42:15.225 CONFIG | desperationValue 0.0
+09:42:15.225 CONFIG | ourRatio 585.6666666666666
+09:42:15.225 CONFIG | opponentRatio 983.25
+09:42:15.225 CONFIG | opponentValue 397.58333333333337
+09:42:15.225 CONFIG | bid 2389.484531263082
+09:42:15.225 CONFIG | our profit: 5480.5
+09:42:15.225 CONFIG | 
+09:42:19.975 CONFIG | stupid bids: 3000.5678452610377
+09:42:19.975 CONFIG | stupid profit: 1160.0
+09:42:19.975 CONFIG | 
+09:42:24.725 CONFIG | addedCost 1700.0
+09:42:24.725 CONFIG | profit 70.28
+09:42:24.725 CONFIG | perc 0.0
+09:42:24.725 CONFIG | pickupIncentiveValue 22.666667215526104
+09:42:24.725 CONFIG | desperationValue 0.0
+09:42:24.725 CONFIG | ourRatio 585.6666666666666
+09:42:24.725 CONFIG | opponentRatio 1144.0
+09:42:24.725 CONFIG | opponentValue 558.3333333333334
+09:42:24.725 CONFIG | bid 2026.7799994511406
+09:42:24.725 CONFIG | our profit: 5480.5
+09:42:24.725 CONFIG | 
+09:42:29.475 CONFIG | stupid bids: 0.0
+09:42:29.475 CONFIG | stupid profit: 1160.0
+09:42:29.475 CONFIG | 
+09:42:34.235 CONFIG | addedCost 0.0
+09:42:34.235 CONFIG | profit 170.68354838709675
+09:42:34.236 CONFIG | perc 0.0
+09:42:34.236 CONFIG | pickupIncentiveValue 0.0
+09:42:34.236 CONFIG | desperationValue 0.0
+09:42:34.236 CONFIG | ourRatio 632.1612903225806
+09:42:34.236 CONFIG | opponentRatio 1144.0
+09:42:34.236 CONFIG | opponentValue 511.8387096774194
+09:42:34.236 CONFIG | bid 426.6029032258065
+09:42:34.236 CONFIG | our profit: 5807.5
+09:42:34.236 CONFIG | 
+09:42:38.986 CONFIG | stupid bids: 3095.1571432822593
+09:42:38.986 CONFIG | stupid profit: 1160.0
+09:42:38.986 CONFIG | 
+09:42:43.738 CONFIG | addedCost 835.0
+09:42:43.741 CONFIG | profit 75.85935483870968
+09:42:43.741 CONFIG | perc 0.4345799417104523
+09:42:43.741 CONFIG | pickupIncentiveValue 15.456441715105893
+09:42:43.741 CONFIG | desperationValue 0.0
+09:42:43.741 CONFIG | ourRatio 632.1612903225806
+09:42:43.741 CONFIG | opponentRatio 953.3333333333334
+09:42:43.741 CONFIG | opponentValue 321.17204301075276
+09:42:43.741 CONFIG | bid 1055.9889346289801
+09:42:43.741 CONFIG | our profit: 5807.5
+09:42:43.741 CONFIG | 
+09:42:48.488 CONFIG | stupid bids: 870.4598421089776
+09:42:48.488 CONFIG | stupid profit: 1160.0
+09:42:48.488 CONFIG | 
+09:42:53.244 CONFIG | addedCost 719.0
+09:42:53.249 CONFIG | profit 77.44875
+09:42:53.249 CONFIG | perc 0.1854261689107446
+09:42:53.249 CONFIG | pickupIncentiveValue 10.654017851842552
+09:42:53.249 CONFIG | desperationValue 0.0
+09:42:53.249 CONFIG | ourRatio 645.40625
+09:42:53.249 CONFIG | opponentRatio 953.3333333333334
+09:42:53.250 CONFIG | opponentValue 307.92708333333337
+09:42:53.250 CONFIG | bid 939.7582738148242
+09:42:53.250 CONFIG | our profit: 6028.5
+09:42:53.250 CONFIG | 
+09:42:58.000 CONFIG | stupid bids: 0.0
+09:42:58.003 CONFIG | stupid profit: 1658.0
+09:42:58.003 CONFIG | 
+09:43:02.753 CONFIG | addedCost 0.0
+09:43:02.753 CONFIG | profit 174.25968749999998
+09:43:02.753 CONFIG | perc 0.3233889673845835
+09:43:02.753 CONFIG | pickupIncentiveValue 0.0
+09:43:02.753 CONFIG | desperationValue 0.0
+09:43:02.753 CONFIG | ourRatio 645.40625
+09:43:02.753 CONFIG | opponentRatio 941.4285714285714
+09:43:02.753 CONFIG | opponentValue 296.02232142857144
+09:43:02.753 CONFIG | bid 322.2708482142857
+09:43:02.753 CONFIG | our profit: 6028.5
+09:43:02.753 CONFIG | 
+09:43:07.503 CONFIG | stupid bids: 671.0782681133643
+09:43:07.503 CONFIG | stupid profit: 1658.0
+09:43:07.503 CONFIG | 
+09:43:12.254 CONFIG | addedCost 849.0
+09:43:12.254 CONFIG | profit 77.44875
+09:43:12.254 CONFIG | perc 0.2757944363477151
+09:43:12.254 CONFIG | pickupIncentiveValue 13.539368657492439
+09:43:12.254 CONFIG | desperationValue 0.0
+09:43:12.254 CONFIG | ourRatio 645.40625
+09:43:12.254 CONFIG | opponentRatio 823.75
+09:43:12.254 CONFIG | opponentValue 178.34375
+09:43:12.254 CONFIG | bid 1002.0812563425076
+09:43:12.254 CONFIG | our profit: 6028.5
+09:43:12.254 CONFIG | 
+09:44:26.996 CONFIG | Last best plan found: v0->va(p, 20)->va(p, 13)->va(p, 39)->va(p, 38)->va(p, 33)->va(p, 37)->va(d, 13)->va(d, 39)->va(p, 32)->va(d, 38)->va(d, 33)->va(p, 35)->va(d, 37)->va(d, 35)->va(d, 32)->va(p, 28)->va(d, 20)->va(d, 28)
+09:44:26.999 CONFIG | v1
+09:44:26.999 CONFIG | 
+09:44:26.999 CONFIG | Cost: 5285.0
+09:44:36.797 CONFIG | New best plan found: v0->va(p, 20)->va(p, 13)->va(p, 39)->va(p, 38)->va(p, 33)->va(p, 37)->va(d, 13)->va(d, 39)->va(p, 32)->va(d, 38)->va(d, 33)->va(p, 35)->va(d, 37)->va(d, 35)->va(d, 32)->va(p, 28)->va(d, 20)->va(d, 28)
+09:44:36.799 CONFIG | v1
+09:44:36.800 CONFIG | 
+09:44:36.800 CONFIG | Cost: 5285.0
+09:44:36.810 CONFIG | Last best plan found: v0->va(p, 8)->va(p, 9)->va(p, 34)->va(d, 34)->va(p, 36)->va(d, 9)->va(p, 27)->va(p, 7)->va(d, 8)->va(d, 27)->va(d, 7)->va(d, 36)
+09:44:36.810 CONFIG | v1->va(p, 31)->va(p, 23)->va(p, 10)->va(d, 10)->va(p, 12)->va(p, 30)->va(p, 19)->va(p, 0)->va(p, 6)->va(p, 2)->va(p, 3)->va(p, 29)->va(d, 0)->va(d, 19)->va(p, 25)->va(p, 22)->va(d, 30)->va(p, 4)->va(d, 12)->va(d, 2)->va(p, 26)->va(d, 31)->va(p, 1)->va(p, 11)->va(d, 25)->va(d, 22)->va(d, 29)->va(p, 18)->va(d, 26)->va(p, 17)->va(d, 3)->va(p, 14)->va(d, 6)->va(d, 23)->va(p, 5)->va(p, 24)->va(d, 1)->va(d, 4)->va(d, 18)->va(d, 17)->va(p, 16)->va(d, 24)->va(d, 5)->va(p, 21)->va(d, 16)->va(p, 15)->va(d, 11)->va(d, 15)->va(d, 14)->va(d, 21)
+09:44:36.810 CONFIG | 
+09:44:36.811 CONFIG | Cost: 14624.5
+09:44:46.614 CONFIG | New best plan found: v0->va(p, 8)->va(p, 9)->va(p, 34)->va(d, 34)->va(p, 36)->va(d, 9)->va(p, 27)->va(p, 7)->va(d, 8)->va(d, 27)->va(d, 7)->va(d, 36)
+09:44:46.614 CONFIG | v1->va(p, 31)->va(p, 23)->va(p, 10)->va(d, 10)->va(p, 12)->va(p, 30)->va(p, 19)->va(p, 0)->va(p, 6)->va(p, 2)->va(p, 3)->va(p, 29)->va(d, 0)->va(d, 19)->va(p, 25)->va(p, 22)->va(d, 30)->va(p, 4)->va(d, 12)->va(d, 2)->va(p, 26)->va(d, 31)->va(p, 1)->va(p, 11)->va(d, 25)->va(d, 22)->va(d, 29)->va(p, 18)->va(d, 26)->va(p, 17)->va(d, 3)->va(p, 14)->va(d, 6)->va(d, 23)->va(p, 5)->va(p, 24)->va(d, 1)->va(d, 4)->va(d, 18)->va(d, 17)->va(p, 16)->va(d, 24)->va(d, 5)->va(p, 21)->va(d, 16)->va(p, 15)->va(d, 11)->va(d, 15)->va(d, 14)->va(d, 21)
+09:44:46.614 CONFIG | 
+09:44:46.614 CONFIG | Cost: 14624.5
+09:47:16.644 CONFIG | Wrote tournament/master/auction-basic-master.xml
+09:47:16.962 INFO | LogistPlatform finished successfully!

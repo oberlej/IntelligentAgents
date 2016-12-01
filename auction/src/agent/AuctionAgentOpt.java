@@ -1,6 +1,7 @@
 package agent;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -30,7 +31,6 @@ public class AuctionAgentOpt implements AuctionBehavior {
 
 	private List<Vehicle> listOfVehicles;
 	private List<Task> listOfTasks;
-	private Topology topology;
 	private TaskDistribution distribution;
 	private Agent agent;
 	private long timeout_bid;
@@ -61,7 +61,6 @@ public class AuctionAgentOpt implements AuctionBehavior {
 
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution, Agent agent) {
-		this.topology = topology;
 		this.distribution = distribution;
 		this.agent = agent;
 		listOfVehicles = agent.vehicles();
@@ -94,23 +93,35 @@ public class AuctionAgentOpt implements AuctionBehavior {
 			// discard pland
 			opponentTasks.add(previous);
 			opponentTotalReward += bids[winner];
-
 			listOfTasks.remove(listOfTasks.size() - 1);
 		}
-		// update oher agents information
 	}
 
 	private void placeTask(Task task) {
-		for (Vehicle v : listOfVehicles) {
-			if (currentPlan.linkedVehicleTasks.get(v).size() < 1 && v.capacity() >= task.weight
-			        || currentPlan.linkedVehicleTasks.get(v).getLast().remainingVCapacity >= task.weight) {
+		List<Vehicle> mixedVehicles = new ArrayList<Vehicle>();
+		mixedVehicles.addAll(listOfVehicles);
+		Collections.shuffle(mixedVehicles);
+
+		for (Vehicle v : mixedVehicles) {
+			if (v.capacity() >= task.weight) {
 				newPlan = currentPlan.clone();
 				VAction delivery = new VDeliveryAction(task, 0);
 				VAction pickup = new VPickupAction(task, 0);
 
 				if (newPlan.linkedVehicleTasks.get(v).size() > 0) {
-					int indexP = random.nextInt(newPlan.linkedVehicleTasks.get(v).size() - 1);
-					int indexD = random.nextInt(newPlan.linkedVehicleTasks.get(v).size() - indexP) + indexP;
+					int indexP = -1;
+					int indexD = -1;
+					boolean enoughCap = false;
+					do {
+						indexP = random.nextInt(newPlan.linkedVehicleTasks.get(v).size() - 1);
+						indexD = random.nextInt(newPlan.linkedVehicleTasks.get(v).size() - indexP) + indexP;
+						if (indexP == 0) {
+							enoughCap = true;
+						} else {
+							enoughCap = currentPlan.linkedVehicleTasks.get(v)
+							        .get(indexP - 1).remainingVCapacity >= task.weight;
+						}
+					} while (!enoughCap);
 
 					newPlan.linkedVehicleTasks.get(v).add(indexD, delivery);
 					newPlan.linkedVehicleTasks.get(v).add(indexP, pickup);
@@ -119,12 +130,12 @@ public class AuctionAgentOpt implements AuctionBehavior {
 				} else {
 					newPlan.addTask(v, task);
 				}
-
 				listOfTasks.add(task);
 
 				break;
 			}
 		}
+
 	}
 
 	@Override
@@ -159,8 +170,8 @@ public class AuctionAgentOpt implements AuctionBehavior {
 		System.out.println("opponentValue " + opponentValue);
 
 		// compute bid
-		double bid = addedCost + PROFIT_P * profit - PICKUP_IC_P * pickupIncentiveValue + DESPERATION_P * desperationValue
-		        + OPPONENT_P * opponentValue;
+		double bid = addedCost + PROFIT_P * profit - PICKUP_IC_P * pickupIncentiveValue
+		        + DESPERATION_P * desperationValue + OPPONENT_P * opponentValue;
 
 		if (bid < 0) {
 			System.out.println("bid was neg");
@@ -294,13 +305,11 @@ public class AuctionAgentOpt implements AuctionBehavior {
 		System.out.println("New best plan found: " + newPlan);
 		System.out.println("Cost: " + newCost);
 		Plan p;
-		double sum = 0;
 		for (Vehicle v : vehicles) {
 			p = new Plan(v.homeCity());
 			City currentCity = v.homeCity();
 			for (VAction va : newPlan.linkedVehicleTasks.get(v)) {
 				if (!currentCity.equals(va.getCity())) {
-					sum += currentCity.distanceTo(va.getCity()) * v.costPerKm();
 					createMoves(currentCity, va.getCity(), p);
 				}
 
